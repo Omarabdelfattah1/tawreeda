@@ -29,6 +29,7 @@ class SupplierFactory extends Factory
         return [
             'company_name' => $this->faker->name() . '_company',
             'state' => $state,
+            'type' => $this->faker->randomElement(['مصنع','مورد']),
             'employees_number' => rand(2,1000),
             'company_logo' => 'logos/8BRQj7so2NnXA67mMR68zpUY67QA4Xfj5PPtEA4H.png',
             'company_CRN' => 147852369,
