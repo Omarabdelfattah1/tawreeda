@@ -45,36 +45,36 @@ class LoginController extends Controller
         return redirect(url()->previous());
     }
 
-    public function username(){
-        return 'email'  'mobile';
-    }
-    // public function login(Request $request)
-    // {
-    //     // Check validation
-    //     $this->validate($request, [
-    //         'mobile' => 'required',            
-    //     ]);
-
-    //     // Get user record
-    //     $user = User::where('mobile', $request->get('mobile'))->first();
-
-    //     // Check Condition Mobile No. Found or Not
-    //     if(is_null($user) || !Hash::check($request->get('password'),$user->password)) {
-    //         $messages = [];
-    //         $messages[]=['message'=>'البيانات غير متطابقة']; // Add the message
-    //         // dd($messages);
-    //         return redirect()->back()->withErrors($messages)->withInput();
-    //     }   
-    //     if($user->locked){
-    //         session()->flash('message' ,'تم إيقاف حسابك');
-    //         return redirect()->back();
-    //     }    
-        
-    //     // Set Auth Details
-    //     \Auth::login($user);
-        
-    //     // Redirect home page
-    //     return back();
+    // public function username(){
+    //     return 'email'  'mobile';
     // }
+    public function login(Request $request)
+    {
+        // Check validation
+        $this->validate($request, [
+            'mobile' => 'required',            
+        ]);
+
+        // Get user record
+        $user = User::where('mobile', $request->get('mobile'))->first();
+
+        // Check Condition Mobile No. Found or Not
+        if(is_null($user) || !Hash::check($request->get('password'),$user->password)) {
+            $messages = [];
+            $messages[]=['message'=>'البيانات غير متطابقة']; // Add the message
+            // dd($messages);
+            return redirect()->back()->withErrors($messages)->withInput();
+        }   
+        if($user->locked){
+            session()->flash('message' ,'تم إيقاف حسابك');
+            return redirect()->back();
+        }    
+        
+        // Set Auth Details
+        \Auth::login($user);
+        
+        // Redirect home page
+        return back();
+    }
     
 }
