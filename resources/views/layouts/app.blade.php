@@ -71,8 +71,11 @@
                     <div class="dropdown-menu dropdown-menu-left text-right" aria-labelledby="navbarDropdown">
                     @if(auth()->user()->userable instanceof \App\Models\Supplier)
                       <a class="dropdown-item" href="{{route('supplier.requests.index')}}">
+                    @elseif(auth()->user()->userable instanceof \App\Models\Admin)
+                      <a class="dropdown-item" href="{{route('dashboard.home')}}">
                     @else
-                      <a class="dropdown-item" href="{{route('buyer.requests.index')}}">
+                    <a class="dropdown-item" href="{{route('buyer.requests.index')}}">
+
                     @endif
                     {{ __('الملف الشخصي') }}
                       </a>
@@ -131,7 +134,7 @@
       </div>
     </div>
   </footer>
-  <a target="_blank" href="https://wa.me/201158265854" style="position:fixed;bottom:40px;right:40px;z-index:1111;"><img style="width:70px;" src="{{asset('assets/xd/whatsapp.svg')}}" alt=""></a>
+  <a target="_blank" href="https://wa.me/{{env('TAWREEDA_ADMIN_MOBILE')}}" style="position:fixed;bottom:40px;right:40px;z-index:1111;"><img style="width:70px;" src="{{asset('assets/xd/whatsapp.svg')}}" alt=""></a>
   <!-- /.footer -->
   <!-- Scripts -->
   

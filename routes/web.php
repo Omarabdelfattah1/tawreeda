@@ -68,6 +68,7 @@ Route::get('/telegram/connect',[
     'uses' => 'TelegramController@callback',
     'as' => 'telegram.connect'
 ]);
+
 Route::get('departments/{id}/categories','DepartmentController@get_categories')->name('single_dept_categories'); 
 Route::get('categories/{id}/tagproducts','DepartmentController@get_tagproducts'); 
 

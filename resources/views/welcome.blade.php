@@ -11,8 +11,8 @@
           <p style="line-height: 50px;font-weight: 500;" class="lead-3 mt-3">توريدة هتوصلك بكل المصانع بشكل مباشر و بدون وسطاء عشان توصل للمنتج الي انت عايزه بافضل سعر و جودة و حتوصلك عروض الأسعار بسرعة و بسهولة على موبايلك</p>
           @guest
           <div class="mt-5">
-              <a style="height:70;font-size: 25px;" href="sells-product.html" class="btn btn-xl rounded-lg btn-primary m-3 d-inline-block" >بتبيع منتج</a>
-              <a style="height:70;font-size: 25px;" href="need-product.html" class="btn btn-xl rounded-lg btn-outline-primary m-3 d-inline-block" >عاوز منتج</a>
+              <a style="height:70;font-size: 25px;" href="/why-us-supplier" class="btn btn-xl rounded-lg btn-primary m-3 d-inline-block" >بتبيع منتج</a>
+              <a style="height:70;font-size: 25px;" href="/why-us-buyer" class="btn btn-xl rounded-lg btn-outline-primary m-3 d-inline-block" >عاوز منتج</a>
           </div>
           @endguest
         </div>

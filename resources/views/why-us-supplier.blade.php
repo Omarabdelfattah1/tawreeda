@@ -197,7 +197,7 @@
           </div>
         </div>
       </div>
-      <a href="join-us-suppliers.html" class="py-3 px-6 mx-auto mt-6 lead-3 btn rounded-lg btn-primary font-weight-bold"> إنضم إلينا</a>
+      <a href="{{route('register.supplier')}}" class="py-3 px-6 mx-auto mt-6 lead-3 btn rounded-lg btn-primary font-weight-bold"> إنضم إلينا</a>
     </div> 
       
   </header>

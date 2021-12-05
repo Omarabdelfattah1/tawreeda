@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <a href="prices-offer.html" class="px-6 py-2 mx-auto mt-6 lead-3 btn rounded-lg btn-primary">أطلب عرض أسعار</a>
+      <a href="{{route('request')}}" class="px-6 py-2 mx-auto mt-6 lead-3 btn rounded-lg btn-primary">أطلب عرض أسعار</a>
       <h1 class="mt-6 pt-6 mx-auto lead-3 text-default">لو بتدور على منتج، توريدة هتقدملك ايه ؟</h1>
 
       <div class="row mt-6 pt-6">
