@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->integer('userable_id');
             $table->text('summary')->nullable();
             $table->boolean('locked')->default(false);
+            $table->boolean('verified')->default(false);
             $table->string('telegram_id')->nullable();
             $table->rememberToken();
             $table->timestamps();

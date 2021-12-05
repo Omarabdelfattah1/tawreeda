@@ -31,7 +31,6 @@ class UserFactory extends Factory
             'title' =>'مهندس',
             'photo' => 'users/photos/Akrpb1Z0brM442Zk6Yi35OrLSOrMcSnJ3ftTS38h.jpg',
             'mobile' => $this->faker->regexify('20[0-9]{9}'),
-            'verified' => rand(0,1),
             'summary' => 'مدير'
         ];
     }
