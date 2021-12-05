@@ -46,7 +46,7 @@ class LoginController extends Controller
     }
 
     public function username(){
-        return 'email' or 'mobile';
+        return 'email'  'mobile';
     }
     // public function login(Request $request)
     // {
