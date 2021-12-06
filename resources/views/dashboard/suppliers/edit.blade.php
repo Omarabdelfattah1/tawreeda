@@ -15,25 +15,6 @@
   });
 </script>
 <script>
-  $('form').submit(function( event ) {
-    event.preventDefault();
-    var formData = new FormData(this);
-    $.ajax({
-        url: $(this).attr('action'),
-        method: 'post',
-        processData: false,
-        contentType: false,
-        cache: false,
-        data: formData, // Remember that you need to have your csrf token included
-        dataType: 'json',
-        success: function( _response ){
-            alert('تم تحديث البيانات بنجاح');
-        },
-        error: function( _response ){
-            alert('الرجاء إختيار بيانات صالحة');
-        }
-    });
-});
 function delete_img(id){
     $('#img'+id).remove();
 
@@ -88,10 +69,6 @@ function delete_img(id){
       @include('dashboard.suppliers.reviews')
       @include('dashboard.suppliers.settings')
       @include('dashboard.suppliers.profile')
-      
-      
-      
-      
     </div>
   </div>
 </div>

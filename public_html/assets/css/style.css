@@ -95,6 +95,18 @@
     color: #FF6A00;
     border-bottom:2px solid #FF6A00; 
   }
+
+  @media(max-width:490px){
+    #myTab .nav-item .nav-link {
+      font-size:13px;
+    }
+  }
+  @media(max-width:443px){
+    #myTab .nav-item .nav-link {
+      font-size:12px;
+      padding: 3px;
+    }
+  }
   @media(max-width:994px){
     .navbar-left{
       width: 100%;
@@ -147,9 +159,7 @@
     
   }
 
-  .container{
-    max-width: 2000px;
-  }
+ 
   h1,h2,h3,h4,h5,h6{
     color: #656565;
   }

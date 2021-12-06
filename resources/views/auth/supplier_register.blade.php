@@ -27,15 +27,11 @@
                 <div class="form-group">
                   <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
                   <select name="state" id="govern" class="form-control form-control-lg rounded-lg border border-secondary">
-                    <option value="القاهرة">
-                      لقاهرة
+                    @foreach(config('states') as $state)
+                    <option value="{{$state}}">
+                      {{$state}}
                     </option>
-                    <option value="الإسكندرية">
-                      الإسكندرية</option>
-                    <option value="الشرقية">
-                      الشرقية
-
-                    </option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group">

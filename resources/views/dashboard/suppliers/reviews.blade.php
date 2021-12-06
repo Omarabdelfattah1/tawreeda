@@ -17,7 +17,7 @@
                 <form class="form-inline" action="{{route('dashboard.reviews.destroy',$review)}}" method="post">
                   @csrf
                   @method('delete')
-                  <button class="btn btn-none text-primary p-0" href="" class="text-primary mr-2"><span class="fa fa-trash"></span></button>
+                  <button class="btn btn-none text-primary p-0" type="submit" class="text-primary mr-2"><span class="fa fa-trash"></span></button>
                 </form>
                 </h6>
                 <h6 class="mb-1"> {{$review->buyer->user->name}}</h6>              

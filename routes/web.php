@@ -135,6 +135,7 @@ Route::group(['as'=>'dashboard.','middleware'=>['auth','admin'],'prefix'=>'/dash
     Route::resource('/reports','Dashboard\ReportsController');
     Route::delete('/reviews/{review}/delete',function(\App\Models\Review $review){
         $review->delete();
+        return redirect()->back();
     })->name('reviews.destroy');
     Route::get('/requests','Dashboard\RequestsController@index')->name('requests.index');
     Route::get('/requests/{request}','Dashboard\RequestsController@show')->name('requests.show');

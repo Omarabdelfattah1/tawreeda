@@ -2,10 +2,6 @@
 
 @section('styles')
 <style>
-  @media(min-width:1200){
-
-}
-
 @media(max-width:994px){
 
   #categories{
@@ -27,7 +23,7 @@
 
 
   <div class="container pt-6 mt-6">
-    <div class="row mt-6 py-2 shadow-lg bg-white rounded-lg mx-4">
+    <div class="row mt-6 py-2 shadow-lg bg-white rounded-lg mx-4 w-100 mx-auto">
       <div class="col-lg-9 col-md-12 row pl-0"  id="media1">
         <div class="col-lg-3 col-md-5 col-sm-5 col-xs-8 text-center py-2">
           <img src="{{asset('storage/'.$supplier->company_logo)}}" alt="" class="w-80">
@@ -91,7 +87,7 @@
     </div>
   
   
-    <div class="mt-6 card mx-4 px-5">
+    <div class="mt-6 card mx-4 px-5 w-100 mx-auto">
       <ul class="nav nav-tabs px-0 font-weight-bold" id="myTab" role="tablist" style="height: 60px;">
         <li class="nav-item" style="border-left:1px solid #f1f2f3 !important;">
           <a  style="height: 100%;line-height: 30px;" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
@@ -336,7 +332,7 @@
     <div class="modal-dialog">
       <div class="modal-content text-right p-2 pb-1 rounded-lg font-weight-bold">
         <div class="modal-header" style="border-bottom: 0px;">
-          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">عندك حساب؟</h2>
+          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">تقييم المورد</h2>
         </div>
         <div class="modal-body rounded-lg">
           <!-- form  -->
