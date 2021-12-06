@@ -13,6 +13,7 @@
 </div>
 <div class="bg-white">
   <div class="pt-2">
+    @if(count($offers))
   @foreach($offers as $offer)
     <div class="row m-3" style="background-color: #FAFAFA">
       <div class="col-md-2 p-2 text-center"><img class="mr-3" style="width: 100px;" src="{{asset('storage/'.$offer->request->buyer->company_logo)}}" alt=""></div>
@@ -43,6 +44,12 @@
       </div>
     </div>
   @endforeach
+  @else
+  <div class="row m-3" style="background-color: #FAFAFA">
+    لا يوجد عروض
+
+  </div>
+  @endif
   </div>
 </div>
 

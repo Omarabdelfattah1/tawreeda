@@ -7,6 +7,7 @@
     </h6>
     <div class="bg-white">
       <div class="pt-6">
+        @if(auth()->user()->userable->reviews)
         @foreach(auth()->user()->userable->reviews as $review)
         <div class="d-flex justify-content-between p-3 pl-6 mb-5" >
           <div>
@@ -28,6 +29,11 @@
           </div>
         </div>
         @endforeach
+        @else
+        <div>
+        لم تقم بعمل أي تقييمات
+        </div>
+        @endif
       </div>
     </div>
   </div>

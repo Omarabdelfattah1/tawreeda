@@ -17,6 +17,7 @@
           <div  class="py-3" style="display:table-cell;padding:6px;">نوع الإتصال</div>
           <div  class="py-3" style="display:table-cell;padding:6px;">الحالة</div>
         </div>
+        @if(count(auth()->user()->userable->calls))
         @foreach(auth()->user()->userable->calls as $call)
         <div style="display:table-row;font-size:12px;width: auto;clear: both;" class="sm-tbl-row mb-3">
           <div style="display:table-cell;" class="sm-tbl-cell">
@@ -62,6 +63,11 @@
           </div>
         </div>
         @endforeach
+        @else
+        <div>
+          لا يوجد طلبات إتصال
+        </div>
+        @endif
       </div>
   </div>
 </div>

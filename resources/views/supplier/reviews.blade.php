@@ -71,6 +71,7 @@
           </div>
         </div>
         
+        @if(count(auth()->user()->userable->reviews))
         @foreach(auth()->user()->userable->reviews as $review)
         <div class="d-flex justify-content-between text-sm border-bottom mb-2">
           <div class="mb-2">
@@ -95,6 +96,9 @@
           </div>
         </div>
         @endforeach
+        @else
+<div>لا يوجد أي تقييمات</div>
+        @endif
       </div>
     </div>
   </div>
