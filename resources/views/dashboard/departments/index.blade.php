@@ -5,12 +5,12 @@
             الأقسام
           </div>
           <div>
-          <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary rounded">إضافة فئة</button>
+          <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary rounded">إضافة قسم</button>
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title text-primary" id="exampleModalLabel">إضافة مستخدم</h5>
+                  <h5 class="modal-title text-primary" id="exampleModalLabel">إضافة قسم</h5>
                 </div>
                 <form class="modal-body" action="{{route('dashboard.departments.store')}}" method="post" enctype="multipart/form-data">
                   @csrf
@@ -24,7 +24,7 @@
                       <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
                         <div class="py-2 mx-auto"> 
-                          <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
+                          <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
                           <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="dep_img">
@@ -73,7 +73,7 @@
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">عدد الفئات</div>
                 
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
-                  {{count($department->categories)}}
+                  {{$department->categories_count}}
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">
@@ -123,7 +123,7 @@
                             <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
                               <div class="py-2 mx-auto"> 
-                                <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
+                                <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                               </div>
                               <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
                                 <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="dep_img">

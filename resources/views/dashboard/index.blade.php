@@ -24,7 +24,7 @@
               </div>
               <div class="col-6 my-1 ">
                 <div class="media bg-white py-4 px-3 text-center rounded-lg mb-1">
-                  <img class="ml-2 my-2" src="{{asset('assets/xd/investor.svg')}}" style="width:30px;" alt="">
+                  <img class="ml-2 my-2" src="{{asset('assets/xd/investor-home.svg')}}" style="width:30px;" alt="">
                   <div>
                     <p style="font-size: 20px;color: #FF6A00;" class="font-weight-bold mb-0">{{$buyers_count}}</p>
                     <p class="font-weight-bold mb-1" style="font-size: 13px;">عدد المشترين</p>
@@ -42,7 +42,7 @@
               </div>
               <div class="col-6 my-1 ">
                 <div class="media bg-white py-4 px-3 text-center rounded-lg mb-1">
-                  <img class="ml-2 my-2" src="{{asset('assets/xd/supplier.svg')}}" style="width:30px;" alt="">
+                  <img class="ml-2 my-2" src="{{asset('assets/xd/menu.svg')}}" style="width:30px;" alt="">
                   <div>
                     <p style="font-size: 20px;color: #78D25B;" class="font-weight-bold mb-0">{{$departments_count}}</p>
                     <p class="font-weight-bold mb-1" style="font-size: 13px;">عدد الأقسام</p>
@@ -60,7 +60,7 @@
               </div>
               <div class="col-6 my-1 ">
                 <div class="media bg-white py-4 px-3 text-center rounded-lg mb-1">
-                  <img class="ml-2 my-2" src="{{asset('assets/xd/supplier.svg')}}" style="width:30px;" alt="">
+                  <img class="ml-2 my-2" src="{{asset('assets/xd/alert-home.svg')}}" style="width:30px;" alt="">
                   <div>
                     <p style="font-size: 20px;color: #6257F7;" class="font-weight-bold mb-0">{{$reports_count}}</p>
                     <p class="font-weight-bold mb-1" style="font-size: 13px;">عدد البلاغات</p>
@@ -70,6 +70,7 @@
             </div>
           </div>
           <div class="col-lg-7 md-m-3" >
+            @if($requests->count())
             <div class="row justify-content-between">
               <p class="font-weight-bold mb-3" >أخر طلبات العروض</p>
               <a href="{{route('dashboard.requests.index')}}" class="font-weight-bold">عرض الكل</a>
@@ -107,6 +108,10 @@
             </div>
             </div>
             @endforeach
+            @else
+
+            لا يوجد طلبات أسعار
+            @endif
           </div>
         </div>
       

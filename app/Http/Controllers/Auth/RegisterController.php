@@ -6,9 +6,6 @@ use DB;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Category;
-use App\Models\Department;
-use App\Models\Supplier;
 use App\Models\Buyer;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -50,9 +47,8 @@ class RegisterController extends Controller
         return view('auth.buyer_register');
     }
     public function showSupplierRegisterationFrom(){
-        return view('auth.supplier_register')
-        ->with('categories',Category::all())
-        ->with('departments',Department::all());
+        return view('auth.supplier_register');
+        
     }
     
     public function storeBuyer(array $data){

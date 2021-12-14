@@ -87,6 +87,7 @@
       </div>
       <div class="col-md-5 " style="background-color: #FAFAFA">
         <h6 >المرفقات:</h6>
+        
         @foreach($request->files as $file)
         <div  class="d-flex mt-6 justify-content-between rounded-lg p-4" style="border: 2px solid #C39B324F !important">
           <div class="media">
@@ -120,6 +121,7 @@
       <div class="tab-content mb-6 text-right px-5 " id="myTabContent">
         <div class="tab-pane fade show active px-4 pt-2" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="row justify-content-between">
+            @if($request->offers()->count())
             @foreach($request->offers as $offer)
             <div class="col-md-6 row mb-4 " style="background-color: #FAFAFA;">
               <div class="col-md-3 px-0">
@@ -154,6 +156,9 @@
           
             </div>
             @endforeach
+            @else
+            لا يوجد أي عروض بعد
+            @endif
           </div>
         </div>
         <div class="tab-pane fade px-4 pt-2" id="product" role="tabpanel" aria-labelledby="product-tab">

@@ -58,7 +58,7 @@
 @yield('styles')
 </head>
 
-<body data-aos-easing="ease" data-aos-duration="1500" data-aos-delay="0" style="background-image:url({{asset('assets/xd/dashboard-bg.png')}} ;font-family: 'DroidArabic Kufi-Regular';font-weight: normal;font-style: normal;" >
+<body data-aos-easing="ease" data-aos-duration="1500" data-aos-delay="0" style="background-image:url({{asset('assets/xd/dashboard-bg.png')}}) ;font-family: 'DroidArabic Kufi-Regular';font-weight: normal;font-style: normal;" >
 
 
   <!-- Navbar -->

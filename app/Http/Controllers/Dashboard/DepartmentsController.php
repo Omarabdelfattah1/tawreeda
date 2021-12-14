@@ -16,7 +16,7 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.departments.index')->with('departments',Department::paginate(15));
+        return view('dashboard.departments.index')->with('departments',Department::withCount('categories')->paginate(15));
     }
 
     
@@ -51,7 +51,9 @@ class DepartmentsController extends Controller
     public function show($id)
     {
         $department = Department::find($id);
-        return view('dashboard.departments.show')->with('department',$department); 
+
+        $categories = $department->categories()->withCount('tagproducts')->get();
+        return view('dashboard.departments.show',['department'=>$department,'categories' => $categories]); 
     }
     
 

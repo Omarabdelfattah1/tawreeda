@@ -3,7 +3,7 @@
 
 <div class="d-flex justify-content-between pt-6">
           <div class="text-right" style="font-size:30px;">
-            الأقسام
+            الفئات
           </div>
           <div>
           
@@ -57,7 +57,7 @@
               <div  class="py-3" style="display:table-cell;padding:6px;">التعديل</div>
             </div>
             
-            @foreach($department->categories as $category)
+            @foreach($categories as $category)
             <div style="display:table-row;font-size:12px;width: auto;clear: both;border-bottom: 4px solid #F4F4F4 !important;" class="sm-tbl-row bg-white">
               
               <div style="display:table-cell" class="sm-tbl-cell">
@@ -81,7 +81,7 @@
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">عدد المنتجات</div>
                 
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
-                  {{$category->tagproducts()->count()}}
+                  {{$category->tagproducts_count}}
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">

@@ -18,7 +18,7 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-        return view('dashboard.suppliers.index')->with('suppliers',Supplier::paginate(25));
+        return view('dashboard.suppliers.index')->with('suppliers',Supplier::with('user')->paginate(25));
     }
 
     /**

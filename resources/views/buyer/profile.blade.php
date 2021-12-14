@@ -27,9 +27,16 @@
             <input type="text" name="title" value="{{auth()->user()->title}}" id="name" placeholder="مثال: مهندس " class="form-control rounded-lg">
               
           </div>
-          @if(empty(auth()->user()->telegram_id))
           <div class="form-group col-md-6">
-            <label class="mb-3" for="name">  تفعيل إشعارات تيليجرام:</label>
+            <label class="mb-3" for="name">  
+            @if(empty(auth()->user()->telegram_id))
+              تفعيل إشعارات تيليجرام:
+            @else
+
+            تغيير حساب التليجرام 
+            @endif
+            
+            </label>
             
             <script async 
               src="https://telegram.org/js/telegram-widget.js?15"
@@ -40,7 +47,6 @@
               >
             </script>
           </div>
-          @endif
           <div class="form-group col-md-6">
             <label class="mb-3" for="name">  نبذة عن صفة المستخدم:</label>
             <input type="text" name="summary" value="{{auth()->user()->summary}}" id="name" placeholder="" class="form-control rounded-lg">

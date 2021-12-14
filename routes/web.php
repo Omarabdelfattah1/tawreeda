@@ -48,8 +48,12 @@ Route::post('/report', function (Request $request) {
 })->name('report');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('soon');
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/dashboard-login', function () {
     return view('dashboard.login');
 });

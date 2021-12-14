@@ -34,7 +34,7 @@ class Filtersuppliers extends Component
     public function render()
     {
         // dd($this->suppliers);
-        $suppliers = Category::find($this->category->id)->suppliers();
+        $suppliers = Category::find($this->category->id)->suppliers()->with('reviews');
         // dd($suppliers);
         return view('livewire.filtersuppliers')
         ->with('suppliers',$suppliers->when($this->states,function($query,$states){

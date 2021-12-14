@@ -17,7 +17,7 @@ class BuyersController extends Controller
      */
     public function index()
     {
-        return view('dashboard.buyers.index')->with('buyers',Buyer::paginate(10));
+        return view('dashboard.buyers.index')->with('buyers',Buyer::with('user')->paginate(10));
     }
 
     /**
