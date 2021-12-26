@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use DB;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Buyer;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Category;
+use App\Models\Tagproduct;
+use App\Models\Department;
+use App\Models\Supplier;
 
 class RegisterController extends Controller
 {
@@ -47,7 +51,14 @@ class RegisterController extends Controller
         return view('auth.buyer_register');
     }
     public function showSupplierRegisterationFrom(){
-        return view('auth.supplier_register');
+        return view('auth.supplier_register')
+        ->with('tagproducts',Tagproduct::all())
+        ->with('categories',Category::all())
+        ->with('department',Department::all());
+        
+    }
+    public function showSupplierRegisteration(){
+        return view('auth.test_register_supplier');
         
     }
     

@@ -7,7 +7,10 @@
         <ul class="list-group px-2" id="states" style="height:250px;overflow:auto;">
           <li class="list-group-item"><input type="checkbox" class="ml-3">كل المحافظات </li>
           @foreach(config('states') as $state)
-          <li class="list-group-item"><input type="checkbox" wire:model="states.{{$state}}" value="{{$state}}" class="ml-3 states">{{$state}}</li>
+          <li class="list-group-item">
+            <input type="checkbox" wire:model="states.{{$state}}" value="{{$state}}" class="ml-3 states">
+            {{$state}}
+          </li>
           @endforeach
         </ul>
         <h6 class="mt-3 text-default">تصفية حسب</h6>

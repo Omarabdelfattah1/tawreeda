@@ -31,7 +31,7 @@ function delete_img(id){
 
 <div class="row" id="content">
   <div class="col-12 justify-content-between text-right" style="font-size:30px;">
-    تعديل مشتري <span class="text-primary">{{$supplier->user->name}}</span>
+    تعديل بائع <span class="text-primary">{{$supplier->user->name}}</span>
   </div>
 
 

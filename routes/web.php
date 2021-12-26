@@ -15,7 +15,14 @@ use App\Models\File;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('soon');
+});
 
+Route::get('/home',function ()
+{
+    return view('welcome');
+})->name('home');
 
 
 Route::post('/file/delete', function (Request $request) {
@@ -47,9 +54,7 @@ Route::post('/report', function (Request $request) {
     return redirect()->back();
 })->name('report');
 
-Route::get('/', function () {
-    return view('soon');
-});
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -78,6 +83,8 @@ Route::get('categories/{id}/tagproducts','DepartmentController@get_tagproducts')
 
 Route::post('/request','RequestController@store')->name('request');
 Auth::routes();
+Route::get('/register-supplier','Auth\RegisterController@showSupplierRegisteration');
+
 Route::name('register.')->group(function(){
     Route::prefix('/register')->group(function(){
         Route::get('/supplier','Auth\RegisterController@showSupplierRegisterationFrom')->name('supplier');
@@ -157,27 +164,3 @@ Route::get('/departments','DepartmentController@departments')->name('departments
 Route::get('/{department}/categories','DepartmentController@categories')->name('categories');
 Route::get('/{category}/suppliers','DepartmentController@suppliers')->name('suppliers');
 Route::get('/{supplier}','DepartmentController@supplier')->name('supplier');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/login/facebook', function () {
-    return Socialite::driver('facebook')->redirect();
-});
-
-Route::get('/facebook/callback', function () {
-    $user = Socialite::driver('facebook')->user();
-
-    // $user->token
-});

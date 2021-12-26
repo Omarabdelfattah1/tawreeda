@@ -2,54 +2,60 @@
 
 namespace App\Http\Livewire;
 
+use DB;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Tagproduct;
 use App\Models\Department;
 use App\Models\Supplier;
+use Livewire\WithFileUploads;
+
 class RegisterSupplier extends Component
 {
+    use WithFileUploads;
     public $currentPage = 1;
-    public $success;
-
-    // Form feilds
+    public $success = false;
     public $feilds = [
-        'supplier' => [
             'company_name' => '',
             'state' => '',
             'company_address' => '',
             'about' => '',
-            'department' => [],
-            'categories' => [],
             'company_CRN' => '',
             'employees_number' => 1,
             'company_TXCard' => '',
             'cataloge' => '',
-        ],
-        'user' => [
             'name' => '',
             'email' => '',
-            'phone' => '',
+            'mobile' => '',
             'password' => ''
-        ]
-    ];
-    public $pages = 2;
+        ];
+    public $pages = 2;  
     private $validationRules = [
         1 => [
-            'feilds.supplier.company_name' => ['required', 'min:3'],
-            'feilds.supplier.state' => ['required'],
-            'feilds.supplier.company_address' => ['required'],
-            'feilds.supplier.about' => ['required'],
-            'feilds.supplier.department' => ['required'],
-            'feilds.supplier.categories' => ['required'],
+            'feilds.company_name' => ['required', 'min:3'],
+            'feilds.state' => ['required'],
+            'feilds.company_address' => ['required'],
+            'feilds.about' => ['required']
         ],
         2 => [
-            'feilds.user.password' => ['required', 'string', 'min:8'],
-            'feilds.user.confirmPassword' => ['required', 'string', 'same:password', 'min:8'],
+            'feilds.name' => ['required', 'string', 'max:255'],
+            'feilds.mobile' => ['required','string', 'max:255', 'unique:users,mobile'],
+            'feilds.email' => ['required','string', 'max:255', 'unique:users,email'],
+            'feilds.password' => ['required:confirmed', 'string', 'min:8'],
+            'feilds.password_confirmation' => ['required:confirmed', 'string', 'min:8','same:feilds.password'],
         ],
     ];
 
+    protected $messages = [
+        'required' => 'هذا الحقل مطلوب',
+        'unique' => 'هناك حساب أخر لديه هذه البيانات',
+        'feilds.*.min'=> 'يجب أن يكون هذا الحقل :min أحرف أو أكثر',    
+        'feilds.password.confirmed' => 'كلمتي السر غير متطابقتين',
+        'feilds.password_confirmation.same' => 'كلمتي السر غير متطابقتين',
+    ];
+    
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
@@ -57,7 +63,8 @@ class RegisterSupplier extends Component
 
     public function goToNextPage()
     {
-        $this->validate($this->validationRules[$this->currentPage]);
+        
+        $this->validate($this->validationRules[1]);
         $this->currentPage++;
     }
 
@@ -66,27 +73,53 @@ class RegisterSupplier extends Component
         $this->currentPage--;
     }
 
-    public function resetSuccess()
-    {
-        $this->reset('success');
-    }
-
     public function submit()
     {
         $rules = collect($this->validationRules)->collapse()->toArray();
 
         $this->validate($rules);
-
-        User::create([
-            'name' => "{$this->firstName} {$this->lastName}",
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
-        ]);
-
+        $data = $this->feilds;
+        DB::transaction(function() use ($data,&$user){
+            $userable;
+            $userable = Supplier::create([
+                'company_name' => $data['company_name'],
+                'state' =>  $data['state'],
+                'company_address' =>  $data['company_address'],
+                'about' =>  $data['about'],
+                'company_CRN' =>  $data['company_CRN'],
+                'employees_number' => 1,
+                'company_TXCard' =>  $data['company_TXCard'],
+                'cataloge' =>  $data['cataloge'],
+            ]);
+            if($data['cataloge']){
+                $path = $data['cataloge']->store('public/cataloge');
+                $userable->company_cataloge = str_replace('public/','',$path);
+                $userable->save();
+            }
+            $user = $userable->user()->create([
+                'title' => $data['title'],
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'mobile' => $data['mobile'],
+                'password' => Hash::make($data['password']),
+            ]);
+            if($data['photo']){
+                $path = $data['photo']->store('public/users/photos');
+                $user->photo = str_replace('public/','',$path);
+                $user->save();
+            }
+        });
+        session()->flash('message','
+        <h5 class="modal-title text-primary mx-auto">شكراً لإنضمامك لأسرة موردينا</h5>
+        
+        <div class="modal-body bg-primary rounded-lg">
+        هنتواصل معاك في أقرب وقت لتأكيد تسجيلك <br>
+        إستنا مننا رسالة على whatsapp
+        </div>');
         $this->reset();
         $this->resetValidation();
+        return redirect()->to('/register/supplier');
 
-        $this->success = 'User created successfully!';
     }
     public function render()
     {

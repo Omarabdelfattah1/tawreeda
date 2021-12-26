@@ -7,24 +7,24 @@
             <div class="row">
               <div class="form-group col-md-6">
                 <label class="mb-3" for="name">إسم المستخدم:</label>
-                <input type="text" name="name" value="{{auth()->user()->name}}" id="name" placeholder="" class="form-control rounded-lg">
+                <input type="text" name="name" value="{{$supplier->user->name}}" id="name" placeholder="" class="form-control rounded-lg">
               </div>
               <div class="form-group col-md-6">
                 <label class="mb-3" for="name"> رقم الموبيل:</label>
-                <input type="text" name="" name="mobile" value="{{auth()->user()->mobile}}" id="name" placeholder="" class="form-control rounded-lg">
+                <input type="text" name="" name="mobile" value="{{$supplier->user->mobile}}" id="name" placeholder="" class="form-control rounded-lg">
               </div>
               <div class="form-group col-md-6">
                 <label class="mb-3" for="name">  عنوان البريد الإلكتروني:</label>
-                <input type="text" name="" name="email" value="{{auth()->user()->email}}" id="name" placeholder="" class="form-control rounded-lg">
+                <input type="text" name="" name="email" value="{{$supplier->user->email}}" id="name" placeholder="" class="form-control rounded-lg">
               </div>
               <div class="form-group col-md-6">
                 <label class="mb-3" for="name">  اللقب:</label>
-                <input type="text" name="title" value="{{auth()->user()->title}}" id="name" placeholder="مثال: مهندس " class="form-control rounded-lg">
+                <input type="text" name="title" value="{{$supplier->user->title}}" id="name" placeholder="مثال: مهندس " class="form-control rounded-lg">
                   
               </div>
               <div class="form-group col-md-6">
                 <label class="mb-3" for="name">  نبذة عن صفة المستخدم:</label>
-                <input type="text" name="summary" value="{{auth()->user()->summary}}" id="name" placeholder="" class="form-control rounded-lg">
+                <input type="text" name="summary" value="{{$supplier->user->summary}}" id="name" placeholder="" class="form-control rounded-lg">
               </div>
               <div class="form-group col-md-6" style="clear: right;">
                 <label class="mb-3"> صورة المستخدم:</label>

@@ -56,6 +56,8 @@
   <meta property="og:url" content="http://thetheme.io/thesaas/">
   <meta name="twitter:card" content="summary_large_image">
 @yield('styles')
+@livewireStyles
+
 </head>
 
 <body data-aos-easing="ease" data-aos-duration="1500" data-aos-delay="0" style="background-image:url({{asset('assets/xd/dashboard-bg.png')}}) ;font-family: 'DroidArabic Kufi-Regular';font-weight: normal;font-style: normal;" >
@@ -152,4 +154,6 @@
     // })
   </script>
 @yield('scripts')
+@livewireScripts
+
 </body></html>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-test')
 @section('styles')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
@@ -7,8 +7,8 @@
 
 @endsection
 
-@section('content')
-      <header  class="header pb-3">
+@section('test')
+<header  class="header pb-3">
       <div class="container">
     
     <div class="row">
