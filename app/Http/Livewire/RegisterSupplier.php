@@ -27,6 +27,7 @@ class RegisterSupplier extends Component
             'company_TXCard' => '',
             'cataloge' => '',
             'name' => '',
+            'photo' => '',
             'email' => '',
             'mobile' => '',
             'password' => ''
@@ -80,7 +81,6 @@ class RegisterSupplier extends Component
         $this->validate($rules);
         $data = $this->feilds;
         DB::transaction(function() use ($data,&$user){
-            $userable;
             $userable = Supplier::create([
                 'company_name' => $data['company_name'],
                 'state' =>  $data['state'],
@@ -103,6 +103,7 @@ class RegisterSupplier extends Component
                 'mobile' => $data['mobile'],
                 'password' => Hash::make($data['password']),
             ]);
+            // dd($user , $userable);
             if($data['photo']){
                 $path = $data['photo']->store('public/users/photos');
                 $user->photo = str_replace('public/','',$path);
@@ -118,7 +119,7 @@ class RegisterSupplier extends Component
         </div>');
         $this->reset();
         $this->resetValidation();
-        return redirect()->to('/register/supplier');
+        return redirect()->to('/register-supplier');
 
     }
     public function render()

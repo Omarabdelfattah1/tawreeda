@@ -90,6 +90,8 @@
         <div class="col-md-4" id="middle">
           <div class="mb-6">
             <h1 class="text-primary lead-6 font-weight-bold text-center">مورد؟</h1>
+      <a href="{{route('register.supplier')}}" class="py-3 px-6 mx-auto mt-6 lead-3 btn rounded-lg btn-primary font-weight-bold"> إنضم إلينا</a>
+
             <p class="lead-1 mt-5  text-center">بيع <span class="text-primary font-weight-bold">أكتر </span> بيع <span class="text-primary font-weight-bold">أسرع</span></p>
           </div>
           <div style="line-height: 22px;" class="card p-6 shadow-lg">
