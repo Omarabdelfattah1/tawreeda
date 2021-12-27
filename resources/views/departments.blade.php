@@ -4,7 +4,7 @@
 <header class="header pb-5">
   <div class="container text-center">
     <h1 class="text-primary mb-5 text-center" style="font-size: 50px;">الموردين</h1>
-    <h3 class="text-default mb-6 text-center" style="font-size: 30px;">إختر الفئةالتي تبحث عنها</h3>
+    <h3 class="text-default mb-6 text-center" style="font-size: 30px;">إختر الفئة التي تبحث عنها</h3>
     <div class="row mt-6 ">
       <div class="col-9 row mx-auto justify-content-between ">
         @foreach($departments as $d)
