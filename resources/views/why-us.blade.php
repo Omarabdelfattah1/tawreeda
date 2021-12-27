@@ -11,7 +11,7 @@
           <h2 class="text-default  text-big">إنت مين؟</h2>
           <div class="mt-5 my-6 pr-4">
             <a href="/why-us-supplier" class="px-6 pb-3 btn btn-lg rounded-lg btn-primary text-md ml-6">بتبيع منتج</a>
-            <a href="/why-us-buyer" class="px-6 pb-3 btn btn-lg rounded-lg btn-outline-primary text-md">عاوز منتج</a>
+            <a href="/why-us-buyer" class="px-6 pb-3 btn btn-lg rounded-lg btn-outline-primary text-md">عايز منتج</a>
           </div>
         </div>
         <div class="col-md-6">

@@ -90,7 +90,7 @@
         <div class="col-md-4" id="middle">
           <div class="mb-6">
             <h1 class="text-primary lead-6 font-weight-bold text-center">مورد؟</h1>
-      <a href="{{route('register.supplier')}}" class="py-3 px-6 mx-auto mt-6 lead-3 btn rounded-lg btn-primary font-weight-bold"> إنضم إلينا</a>
+            <a href="{{route('register.supplier')}}" class="py-3 px-6 mx-auto mt-6 lead-3 btn rounded-lg btn-primary font-weight-bold"> إنضم إلينا</a>
 
             <p class="lead-1 mt-5  text-center">بيع <span class="text-primary font-weight-bold">أكتر </span> بيع <span class="text-primary font-weight-bold">أسرع</span></p>
           </div>
@@ -181,21 +181,21 @@
           <img style="max-width:45px;" src="assets/xd/facebook.svg" alt="" class="pull-right ml-2">
           <div class="media-body text-right">
             <h1 class="font-weight-bold mb-0 lead-1">أكتر من <span class="text-primary">3000</span> جنية شهرياً</h1>
-            <p>اقل رقم حتصرفوا عشان تجيب مندوب مبيعات بمصاريفه</p>
+            <p>اقل رقم حتصرفوا عشان تجيب حد يمسك الفيسبوك</p>
           </div>
         </div>
         <div class="media" id="media3">
           <img style="max-width:45px;" src="assets/xd/mobile-phone.svg" alt="" class="pull-right ml-2">
           <div class="media-body text-right">
             <h1 class="font-weight-bold mb-0 lead-1">أكتر من <span class="text-primary">1000</span> جنية شهرياً</h1>
-            <p>اقل رقم حتصرفوا عشان تجيب مندوب مبيعات بمصاريفه</p>
+            <p>مصاريف لأصحاب الصفحات عشان تعمل إعلانات</p>
           </div>
         </div>
         <div class="media" id="media4">
           <img style="max-width:45px;" src="assets/xd/work.svg" alt="" class="pull-right ml-2">
           <div class="media-body text-right">
             <h1 class="font-weight-bold mb-0 lead-1">أكتر من <span class="text-primary">30 ساعة شهرية</span> </h1>
-            <p>اقل رقم حتصرفوا عشان تجيب مندوب مبيعات بمصاريفه</p>
+            <p>من وقتك و وقت فريقك في الرد على ناس بتضيع وقت و مش جد</p>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@
                   <img src="assets/xd/save-time.png" alt="" style="display: block;"> حفظ للوقت
                 </h1>
                 <p class="mt-5">بتجمع ارقام من النت وبتكلم ناس كتير
-                  بس تضيع وقت ومش قادر تتابع مع كل دول</p>
+                  بس بتضيع وقت ومش قادر تتابع مع كل دول</p>
               </div>
               <div class="card p-4 shadow-lg mt-5">
                 <h1 class="mx-auto lead-1"  style="width:40%">
