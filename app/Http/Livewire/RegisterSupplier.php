@@ -96,7 +96,6 @@ class RegisterSupplier extends Component
                 $userable->save();
             }
             $user = $userable->user()->create([
-                'title' => $data['title'],
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'mobile' => $data['mobile'],

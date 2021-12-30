@@ -49,6 +49,13 @@
     </div>
     </div>
 </div>
+<div class="text-right">
+        
+    @if ($feilds['photo'])
+        عرض الصورة:
+        <a target="_blank" href="{{ $feilds['cataloge']->temporaryUrl() }}">عرض الملف</a>
+    @endif
+    </div>
 @error('feilds.photo')
     <span class="text-danger">
         <strong>{{ $message }}</strong>

@@ -43,7 +43,7 @@
         Swal.fire({
           title: `<div class='text-center'>{!!  session()->get('message') !!}</div> `,
           html: '',
-          timer: 3000,
+          timer: 7000,
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading()
