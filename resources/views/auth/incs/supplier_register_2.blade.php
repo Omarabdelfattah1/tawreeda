@@ -17,7 +17,7 @@
     </span>
 @enderror
 <div class="form-group clearfix">
-    <label for="user-email" class="float-right mb-5"> عنوان البريد الإلكتروني </label>
+    <label for="user-email" class="float-right mb-5"> عنوان البريد الإلكتروني إن وجد</label>
     <input type="email" wire:model="feilds.email" id="user-email" value="{{old('email')}}" name="email" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="البريد الإلكتروني">
 </div>
 @error('feilds.email')
@@ -26,7 +26,7 @@
     </span>
 @enderror
     <div class="form-group clearfix">
-    <label for="title" class="float-right mb-5">  اللقب  <span class="text-danger" style="font-size:20px;">*</span></label>
+    <label for="title" class="float-right mb-5">  اللقب  </span></label>
     <input wire:model="feilds.title" name="title" id="" value="{{old('title')}}" class="form-control form-control-lg rounded-lg border border-secondary">
 </div>
 @error('feilds.title')

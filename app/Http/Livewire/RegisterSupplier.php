@@ -43,7 +43,6 @@ class RegisterSupplier extends Component
         2 => [
             'feilds.name' => ['required', 'string', 'max:255'],
             'feilds.mobile' => ['required','string', 'max:255', 'unique:users,mobile'],
-            'feilds.email' => ['required','string', 'max:255', 'unique:users,email'],
             'feilds.password' => ['required:confirmed', 'string', 'min:8'],
             'feilds.password_confirmation' => ['required:confirmed', 'string', 'min:8','same:feilds.password'],
         ],

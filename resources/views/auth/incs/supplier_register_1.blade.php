@@ -11,6 +11,7 @@
 <div class="form-group" >
     <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
     <select  name="state" wire:model="feilds.state" id="govern" class="form-control form-control-lg rounded-lg border border-secondary">
+    <option disabled selected value>--إختر المحافظة--</option>
     @foreach(config('states') as $state)
     <option class="text-right" value="{{$state}}">
         {{$state}}
@@ -43,7 +44,7 @@
     @enderror
 </div>
 <div class="form-group">
-    <label for="crn" class="float-right mb-5">رقم السجل التجاري</label>
+    <label for="crn" class="float-right mb-5">رقم السجل التجاري إن وجد</label>
     <input wire:model.lazy="feilds.company_CRN" id="crn" name="company_CRN" value="{{old('company_CRN')}}"  class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : 322787">
     @error('feilds.company_CRN')
     <span class="text-danger">
@@ -52,7 +53,7 @@
     @enderror            
 </div>
 <div class="form-group">
-    <label for="tax" class="float-right mb-5">البطاقة الضريبية</label>
+    <label for="tax" class="float-right mb-5"> البطاقة الضريبية إن وجد</label>
     <input wire:model.lazy="feilds.company_TXCard" id="tax" name="company_TXCard" value="{{old('company_TXCard')}}" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : 322787">
     @error('feilds.company_TXCard')
     <span class="text-danger">
@@ -81,6 +82,14 @@
             <input wire:model.lazy="feilds.cataloge" type="file" value="{{old('cataloge')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="cataloge">
             </div>
         </div>
+        
+    </div>
+    <div class="text-right">
+        
+    @if ($feilds['cataloge'])
+        عرض الكاتالوج:
+        <a target="_blank" href="{{ $feilds['cataloge']->temporaryUrl() }}">عرض الملف</a>
+    @endif
     </div>
     @error('feilds.cataloge')
     <span class="text-danger">
