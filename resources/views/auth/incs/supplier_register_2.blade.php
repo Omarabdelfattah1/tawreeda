@@ -25,15 +25,7 @@
         <strong>{{ $message }}</strong>
     </span>
 @enderror
-    <div class="form-group clearfix">
-    <label for="title" class="float-right mb-5">  اللقب  </span></label>
-    <input wire:model="feilds.title" name="title" id="" value="{{old('title')}}" class="form-control form-control-lg rounded-lg border border-secondary">
-</div>
-@error('feilds.title')
-    <span class="text-danger">
-        <strong>{{ $message }}</strong>
-    </span>
-@enderror
+    
 <div class="form-group clearfix">
     <label for="summary" class="float-right mb-5">  نبذة عن صفة المستخدم  <span class="text-danger" style="font-size:20px;">*</span></label>
     <input wire:model="feilds.summary" id="summary" value="{{old('summary')}}" name="summary" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : صاحب الشركة و مدير تنفيذي">
