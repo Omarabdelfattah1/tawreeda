@@ -25,7 +25,6 @@
         <strong>{{ $message }}</strong>
     </span>
 @enderror
-    
 <div class="form-group clearfix">
     <label for="summary" class="float-right mb-5">  نبذة عن صفة المستخدم  <span class="text-danger" style="font-size:20px;">*</span></label>
     <input wire:model="feilds.summary" id="summary" value="{{old('summary')}}" name="summary" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : صاحب الشركة و مدير تنفيذي">
@@ -49,13 +48,6 @@
     </div>
     </div>
 </div>
-<div class="text-right">
-        
-    @if ($feilds['photo'])
-        عرض الصورة:
-        <a target="_blank" href="{{ $feilds['cataloge']->temporaryUrl() }}">عرض الملف</a>
-    @endif
-    </div>
 @error('feilds.photo')
     <span class="text-danger">
         <strong>{{ $message }}</strong>
@@ -63,7 +55,7 @@
 @enderror
 <div class="form-group clearfix">
     <label for="password" class="float-right mb-5">  كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
-    <input wire:model="feilds.password" id="password" name="password" class="form-control form-control-lg rounded-lg border border-secondary" type="password">
+    <input wire:model.lazy="feilds.password" id="password" name="password" class="form-control form-control-lg rounded-lg border border-secondary" type="password">
 </div>
 @error('feilds.password')
     <span class="text-danger">
@@ -72,7 +64,7 @@
 @enderror
 <div class="form-group clearfix">
     <label for="password-confirm" class="float-right mb-5">  تأكيد كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
-    <input wire:model="feilds.password_confirmation" id="password-confirm" name="password_confirmation" class="form-control form-control-lg rounded-lg border border-secondary" type="password">
+    <input wire:model.lazy="feilds.password_confirmation" id="password-confirm" name="password_confirmation" class="form-control form-control-lg rounded-lg border border-secondary" type="password">
 </div>
 @error('feilds.password_confirmation')
     <span class="text-danger">

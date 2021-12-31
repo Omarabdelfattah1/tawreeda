@@ -87,7 +87,6 @@ class RegisterController extends Controller
         }
         $rules = [
             'company_name' => ['required'],
-            'title' => ['required', 'string', 'max:255'],
             'summary' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable','email', 'max:255', 'unique:users'],

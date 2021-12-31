@@ -11,7 +11,7 @@
 <div class="form-group" >
     <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
     <select  name="state" wire:model="feilds.state" id="govern" class="form-control form-control-lg rounded-lg border border-secondary">
-    <option disabled selected value>--إختر المحافظة--</option>
+    <option value="" selected>--إختر المحافظة--</option>
     @foreach(config('states') as $state)
     <option class="text-right" value="{{$state}}">
         {{$state}}

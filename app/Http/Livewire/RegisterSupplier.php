@@ -43,17 +43,18 @@ class RegisterSupplier extends Component
         2 => [
             'feilds.name' => ['required', 'string', 'max:255'],
             'feilds.mobile' => ['required','string', 'max:255', 'unique:users,mobile'],
-            'feilds.password' => ['required:confirmed', 'string', 'min:8'],
-            'feilds.password_confirmation' => ['required:confirmed', 'string', 'min:8','same:feilds.password'],
+            'feilds.email' => ['nullable','string', 'max:255', 'unique:users,email'],
+            'feilds.password' => ['required', 'string', 'min:8','confirmed'],
+            'feilds.password_confirmation' => ['required'],
         ],
     ];
 
     protected $messages = [
+        'string' => 'يجب أن يكون نصاً',
         'required' => 'هذا الحقل مطلوب',
         'unique' => 'هناك حساب أخر لديه هذه البيانات',
-        'feilds.*.min'=> 'يجب أن يكون هذا الحقل :min أحرف أو أكثر',    
-        'feilds.password.confirmed' => 'كلمتي السر غير متطابقتين',
-        'feilds.password_confirmation.same' => 'كلمتي السر غير متطابقتين',
+        'min'=> 'يجب أن يكون هذا الحقل :min أحرف أو أكثر',    
+        'confirmed' => 'كلمتي السر غير متطابقتين',
     ];
     
     public function updated($propertyName)
