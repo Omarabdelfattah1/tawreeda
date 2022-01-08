@@ -73,6 +73,7 @@
           <a style="" class="navbar-brand mr-auto" href="/">
             <img class="logo-dark" src="{{asset('assets/xd/logo1.svg')}}" alt="logo" style="height:56px;">
           </a>
+          
         </div>
   </nav>
 
@@ -121,6 +122,15 @@
               <img src="{{asset('assets/xd/users.svg')}}">
             المستخدمين
             </a>
+          </li>
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;"> 
+            <button class="mr-2 btn btn-danger font-weight-bold bx-0 mx-0" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                {{ __('تسجيل خروج') }}
+</button>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
           </li>
         </ul>
       </div>

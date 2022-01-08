@@ -77,7 +77,7 @@
             </div>
             @foreach($requests as $request)
             <div class="row bg-white mb-3 rounded-lg pb-0 pl-0 pr-3">
-            <div class="col-md-2 text-center py-3"><img  style="width: 70px;" src="{{asset('storage/'.$request->buyer->company_logo)}}" alt=""></div>
+            <div class="col-md-2 text-center py-3"><img  style="width: 70px;" src="{{asset($request->buyer->company_logo)}}" alt=""></div>
             <div class="col-md-8 pr-0">
               <h6 class="py-1 font-weight-bold">
                 {{$request->buyer->company_name}}              
@@ -85,7 +85,7 @@
               <p style="line-height: 1rem;font-size: 10px;">{{$request->description}}</p>
               <div class="row mt-3">
                 <div class="col-md-4 media mb-3">
-                  <img style="width:15px;height:15px" class="ml-2 rounded-lg" src="{{asset('storage/'.$request->buyer->user->photo)}}" alt="">
+                  <img style="width:15px;height:15px" class="ml-2 rounded-lg" src="{{asset($request->buyer->user->photo)}}" alt="">
                   <h6 style="font-size: 10px;" class="font-weight-bold">{{$request->buyer->user->name}}</h6>
                 </div>
                 <div class="col-md-3 media mb-3">
