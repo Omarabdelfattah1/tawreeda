@@ -98,7 +98,7 @@ class RegisterSupplier extends Component
             }
             $user = $userable->user()->create([
                 'name' => $data['name'],
-                'email' => $data['email'],
+                'email' => empty($data['email']) ? null:$data['email'],
                 'mobile' => $data['mobile'],
                 'password' => Hash::make($data['password']),
             ]);

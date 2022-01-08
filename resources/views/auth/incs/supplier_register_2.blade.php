@@ -48,6 +48,12 @@
     </div>
     </div>
 </div>
+<div class="text-right">
+        
+    @if ($feilds['photo'])
+        <img src="{{ $feilds['photo']->temporaryUrl() }}" style="width:100px;height:100px;" alt="">
+    @endif
+    </div>
 @error('feilds.photo')
     <span class="text-danger">
         <strong>{{ $message }}</strong>

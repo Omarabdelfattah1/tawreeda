@@ -87,8 +87,7 @@
     <div class="text-right">
         
     @if ($feilds['cataloge'])
-        عرض الكاتالوج:
-        <a target="_blank" href="{{ $feilds['cataloge']->temporaryUrl() }}">عرض الملف</a>
+        <img src="{{ $feilds['cataloge']->temporaryUrl() }}" style="width:100px;height:100px;" alt="">
     @endif
     </div>
     @error('feilds.cataloge')
