@@ -9,7 +9,7 @@
     @if($requests->count())
       @foreach($requests as $request)
       <div class="col-12 row m-3 bg-white">
-        <div class="col-md-2 tex2-center py-3"><img  style="width: 100px;" src="{{asset('storage/'.$request->buyer->company_logo)}}" alt=""></div>
+        <div class="col-md-2 tex2-center py-3"><img  style="width: 100px;" src="{{asset($request->buyer->company_logo)}}" alt=""></div>
         <div class="col-md-8">
           <h6 class="py-1 font-weight-bold">
             {{$request->buyer->company_name}}              
@@ -17,7 +17,7 @@
           <p style="line-height: 1rem;font-size: 12px;">{{$request->description}}</p>
           <div class="row mt-3">
             <div class="col-md-4 media mb-3">
-              <img style="width:20px;" class="ml-2" src="{{asset('storage/'.$request->buyer->user->photo)}}" alt="">
+              <img style="width:20px;" class="ml-2" src="{{asset($request->buyer->user->photo)}}" alt="">
               <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->buyer->user->name}}</h6>
             </div>
             <div class="col-md-3 media mb-3">

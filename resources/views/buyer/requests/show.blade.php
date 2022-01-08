@@ -45,7 +45,7 @@
   <div class="pt-3">
     <div class="row flex-warp m-3 border-bottom" >
       <div class="col-md-9 media">
-        <img class="m-3" style="width: 70px;" src="{{asset('storage/'.$request->buyer->company_logo)}}" alt="">
+        <img class="m-3" style="width: 70px;" src="{{asset($request->buyer->company_logo)}}" alt="">
         <div class="">
           <h6 class="py-3 font-weight-bold">
           {{$request->buyer->company_name}}
@@ -53,7 +53,7 @@
           </h6>
           <div class="row mr-1  mt-3">
             <div class="media ml-3 mb-3">
-              <img style="width: 20px;" class="ml-2" src="{{asset('storage/'.$request->buyer->user->photo)}}" alt="">
+              <img style="width: 20px;" class="ml-2" src="{{asset($request->buyer->user->photo)}}" alt="">
               <div>
                 <h6 style="font-size: 12px;" class="font-weight-bold mb-1">{{$request->buyer->user->name}}</h6>
                 <p style="font-size: 10px;" >{{$request->buyer->user->summary}}</p>
@@ -74,7 +74,7 @@
         </div>
         <div class="media">
           <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/cup.png')}}" alt="">
-          <h6 style="font-size: 12px;" class="font-weight-bold"> أكواب ورقية . أطباق بلاستيك </h6>
+          <h6 style="font-size: 12px;" class="font-weight-bold"> {{$request->tagproducts()->first()->name}} </h6>
         </div>
       </div>
     </div>
@@ -94,10 +94,10 @@
               <img src="{{asset('assets/xd/attachment-pdf.svg')}}" style="width: 40px;" class="ml-2" alt="">
               <div>
                 <h6 class="mb-3">Document File</h6>
-                <p style="font-size: xx-samall;">{{size('storage/'.$file->path)}}</p>
+                <p style="font-size: xx-samall;">{{size($file->path)}}</p>
               </div>
           </div>
-          <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
+          <a href="{{asset($file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
             
             <i class="fa fa-download text-primary" ></i>
           </a>                    
@@ -125,7 +125,7 @@
             @foreach($request->offers as $offer)
             <div class="col-md-6 row mb-4 " style="background-color: #FAFAFA;">
               <div class="col-md-3 px-0">
-                <img class="my-6" src="{{asset('storage/'.$offer->supplier->company_logo)}}" style="width: 130px;" alt="">
+                <img class="my-6" src="{{asset($offer->supplier->company_logo)}}" style="width: 130px;" alt="">
               </div>
               <div class="col-md-7 py-5">
                 <h6 class="font-weight-bold mb-5">{{$offer->supplier->company_name}}</h6>
@@ -166,7 +166,7 @@
             @foreach($request->offers as $offer)
             <div class="col-md-6 row mb-4 " style="background-color: #FAFAFA;">
               <div class="col-md-3 px-0">
-                <img class="my-6" src="{{asset('storage/'.$offer->supplier->company_logo)}}" style="width: 130px;" alt="">
+                <img class="my-6" src="{{asset($offer->supplier->company_logo)}}" style="width: 130px;" alt="">
               </div>
               <div class="col-md-7 py-5">
                 <h6 class="font-weight-bold mb-5">{{$offer->supplier->company_name}}</h6>

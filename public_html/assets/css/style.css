@@ -308,3 +308,14 @@ input[type='radio']:checked:before {
 .card {
   border-radius: 0.75rem !important;
 }
+
+.select2Container{
+  height: 50px !important;
+  color: #FF6A00 !important;
+}
+
+.select2Option{
+  color: #FF6A00 !important;
+  border: #FF6A00 1px solid !important;
+  background-color: white !important;
+}

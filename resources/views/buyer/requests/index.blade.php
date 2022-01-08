@@ -13,25 +13,25 @@
     @if(count($requests))
     @foreach($requests as $request)
     <div class="row m-3" style="background-color: #FAFAFA">
-      <div class="col-md-2 p-2 text-center"><img class="mr-3" style="width: 100px;" src="{{asset('storage/'.$request->buyer->company_logo)}}" alt=""></div>
+      <div class="col-md-2 p-2 text-center"><img class="mr-3" style="width: 100px;" src="{{asset($request->buyer->company_logo)}}" alt=""></div>
       <div class="col-md-8">
-        <h6 class="py-3 font-weight-bold">
+        <h6 class="py-3 font-weight-bold text-right">
           {{$request->buyer->company_name}}
         </h6>
-        <p style="line-height: 1rem;font-size: 12px;">{{$request->description}}</p>
+        <p class="text-right" style="line-height: 1rem;font-size: 12px;">{{$request->description}}</p>
         <div class="row mt-3">
           <div class="col-md-4 media mb-3">
-            <img style="width:20px;" class="ml-2" src="{{asset('storage/'.$request->buyer->user->photo)}}">
+            <img style="width:20px;" class="ml-2" src="{{asset($request->buyer->user->photo)}}">
             <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->buyer->user->name}}</h6>
           </div>
           <div class="col-md-3 media mb-3">
-            <img style="width:20px;" class="ml-2" src="../assets/xd/clock.svg" alt="">
+            <img style="width:20px;" class="ml-2" src="/assets/xd/clock.svg" alt="">
               
             <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->created_at->diffForHumans()}}</h6>
           </div>
           <div class="col-md-5 media mb-3">
-            <img style="width:20px;" class="ml-2" src="../assets/xd/cup.png" alt="">
-            <h6 style="font-size: 12px;" class="font-weight-bold"> أكواب ورقية . أطباق بلاستيك </h6>
+            <img style="width:20px;" class="ml-2" src="/assets/xd/cup.png" alt="">
+            <h6 style="font-size: 12px;" class="font-weight-bold"> {{$request->tagproducts()->first()->name}} </h6>
           </div>
         </div>
       </div>

@@ -42,7 +42,7 @@
             <label class="mb-3">شعار الشركة:</label>
             <div class="d-flex">
               <div>
-                <img style="width: 50px;height:50px;" src="{{asset('storage/'.$supplier->company_logo)}}" alt="">
+                <img style="width: 50px;height:50px;" src="{{asset($supplier->company_logo)}}" alt="">
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
@@ -117,7 +117,7 @@
             <label class="mb-3"> صورة فريق العمل:</label>
             <div class="d-flex">
               <div>
-                <img style="width: 50px;height:50px;" src="{{asset('storage/'.$supplier->team_photo)}}" alt="">
+                <img style="width: 50px;height:50px;" src="{{asset($supplier->team_photo)}}" alt="">
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 

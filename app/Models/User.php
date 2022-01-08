@@ -57,6 +57,10 @@ class User extends Authenticatable
              // do the rest of the cleanup...
         });
     }
+
+    public function getPhotoAttribute(){
+        return $this->getAttributes()['photo'] ? 'storage/'. $this->getAttributes()['photo'] : 'my-profile.png'; 
+    }
     public function userable()
     {
         return $this->morphTo();

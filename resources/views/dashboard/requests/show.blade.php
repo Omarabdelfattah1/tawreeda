@@ -11,7 +11,7 @@
           <div class="text-right bg-white">
             <div class="row flex-warp m-3 border-bottom" >
               <div class="col-md-9 media">
-                <img class="m-3" style="width: 70px;" src="{{asset('storage/'.$request->buyer->company_logo)}}" alt="">
+                <img class="m-3" style="width: 70px;" src="{{asset($request->buyer->company_logo)}}" alt="">
                 <div class="">
                   <h6 class="py-3 font-weight-bold">
                     {{$request->buyer->company_name}}
@@ -19,10 +19,10 @@
                   </h6>
                   <div class="row mr-1  mt-3">
                     <div class="media ml-3 mb-3">
-                      <img style="width: 20px;" class="ml-2" src="{{asset('storage/'.$request->buyer->user->photo)}}" alt="">
+                      <img style="width: 20px;" class="ml-2" src="{{asset($request->buyer->user->photo)}}" alt="">
                       <div>
-                        <h6 style="font-size: 12px;" class="font-weight-bold mb-1">مهندس/ أحمد الشامي</h6>
-                        <p style="font-size: 10px;" >صاحب الشركة و المدير التنفيذي</p>
+                        <h6 style="font-size: 12px;" class="font-weight-bold mb-1">{{$request->buyer->user->name}}</h6>
+                        <p style="font-size: 10px;" >$request->buyer->user->name</p>
                       </div>
                     </div>
                     <div class="media">
@@ -104,7 +104,7 @@
                   @foreach($request->offers as $offer)
                   <div class="col-md-6 row mb-4 " style="background-color: #FAFAFA;">
                     <div class="col-md-3 px-0">
-                      <img class="my-6" src="{{asset('storage/'.$offer->supplier->company_logo)}}" style="width: 130px;" alt="">
+                      <img class="my-6" src="{{asset($offer->supplier->company_logo)}}" style="width: 130px;" alt="">
                     </div>
                     <div class="col-md-7 py-5">
                       <h6 class="font-weight-bold mb-5">{{$offer->supplier->company_name}}</h6>
@@ -142,7 +142,7 @@
                   @foreach($request->offers as $offer)
                   <div class="col-md-6 row mb-4 " style="background-color: #FAFAFA;">
                     <div class="col-md-3 px-0">
-                      <img class="my-6" src="{{asset('storage/'.$offer->supplier->company_logo)}}" style="width: 130px;" alt="">
+                      <img class="my-6" src="{{asset($offer->supplier->company_logo)}}" style="width: 130px;" alt="">
                     </div>
                     <div class="col-md-7 py-5">
                       <h6 class="font-weight-bold mb-5">{{$offer->supplier->company_name}}</h6>

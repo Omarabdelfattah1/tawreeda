@@ -23,6 +23,10 @@ class Buyer extends Model
             $buyer->requests()->delete();
         });
     }
+
+    public function getCompanyLogoAttribute(){
+        return $this->getAttributes()['company_logo'] ? 'storage/'. $this->getAttributes()['company_logo'] : 'my-profile.png'; 
+    }
     public function user()
     {
         return $this->morphOne(User::class,'userable');

@@ -41,7 +41,7 @@
           <div class="pt-6">
             @foreach($buyer->requests as $request)
             <div class="row m-3" style="background-color: #FAFAFA">
-              <div class="col-md-2 p-2 text-center"><img class="mr-3" style="width: 100px;" src="{{asset('storage/'.$buyer->company_logo)}}" alt=""></div>
+              <div class="col-md-2 p-2 text-center"><img class="mr-3" style="width: 100px;" src="{{asset($buyer->company_logo)}}" alt=""></div>
               <div class="col-md-8">
                 <h6 class="py-1 font-weight-bold">
                   {{$buyer->company_name}}
@@ -103,7 +103,7 @@
               
               <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                 <div class="media">
-                  <img src="{{asset('storage/'.$call->supplier->company_logo)}}" alt="" style="width: 30px;">
+                  <img src="{{asset($call->supplier->company_logo)}}" alt="" style="width: 30px;">
                   <div class="mr-2">
                     <h6 class="font-weight-bold mb-2">{{$call->supplier->company_name}}</h6>
                     <p>{{$call->supplier->about}}</p>
@@ -142,7 +142,7 @@
             <div class="d-flex justify-content-between p-3 pl-6 mb-5" >
               <div>
                 <div class="media">
-                  <img style="width: 50px;" src="{{asset('storage/'.$review->supplier->company_logo)}}" alt="">
+                  <img style="width: 50px;" src="{{asset($review->supplier->company_logo)}}" alt="">
                   <div class="mr-2" style="font-size:13px">
                     <div class="d-flex">
                       <h6 class="ml-2">{{$review->supplier->company_name}}</h6>
@@ -180,7 +180,7 @@
                   <label class="mb-3">شعار الشركة:</label>
                   <div class="d-flex">
                     <div>
-                      <img style="width: 50px;" src="{{asset('storage/'.$buyer->company_logo)}}" alt="">
+                      <img style="width: 50px;" src="{{asset($buyer->company_logo)}}" alt="">
                     </div>
                     <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
@@ -238,7 +238,7 @@
                   <label class="mb-3"> صورة المستخدم:</label>
                   <div class="d-flex">
                     <div>
-                      <img style="width: 50px;" src="{{asset('storage/'.$buyer->user->photo)}}" alt="">
+                      <img style="width: 50px;" src="{{asset($buyer->user->photo)}}" alt="">
                     </div>
                     <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 

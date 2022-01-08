@@ -42,7 +42,10 @@ class RequestController extends Controller
                     return redirect()->back()->withErrors($messages)->withInput();
                 } 
             }else if($request->password_register){
-                $request->validate(['mobile' => ['required','string', 'max:255', 'unique:users']]);
+                $request->validate([
+                    'mobile' => ['required','string', 'max:255', 'unique:users',
+                    'password_register' => ['required','min:8','confirmed']
+                    ]]);
 
                 DB::transaction(function() use ($data,&$user,$request){
                     $userable = Buyer::create($request->all());

@@ -11,7 +11,7 @@
   <div class="pt-3">
     <div class="row flex-warp m-3 border-bottom" >
       <div class="col-md-9 media">
-        <img class="m-3" style="width: 70px;" src="{{asset('storage/'.$offer->request->buyer->company_logo)}}" alt="">
+        <img class="m-3" style="width: 70px;" src="{{asset($offer->request->buyer->company_logo)}}" alt="">
         <div class="">
           <h6 class="py-3 font-weight-bold">
             {{$offer->request->buyer->company_name}}
@@ -40,7 +40,7 @@
         </div>
         <div class="media">
           <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/cup.png')}}" alt="">
-          <h6 style="font-size: 12px;" class="font-weight-bold"> أكواب ورقية . أطباق بلاستيك </h6>
+          <h6 style="font-size: 12px;" class="font-weight-bold"> {{$offer->request->tagproducts()->first()->name}} </h6>
         </div>
       </div>
     </div>

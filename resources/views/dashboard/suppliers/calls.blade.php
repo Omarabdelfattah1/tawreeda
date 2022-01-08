@@ -24,7 +24,7 @@
             
             <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
               <div class="media">
-                <img src="{{asset('storage/'.$call->buyer->company_logo)}}" alt="" style="width: 30px;">
+                <img src="{{asset($call->buyer->company_logo)}}" alt="" style="width: 30px;">
                 <div class="mr-2">
                   <h6 class="font-weight-bold mb-2">{{$call->buyer->company_name}}</h6>
                   <p>{{$call->buyer->about}}</p>

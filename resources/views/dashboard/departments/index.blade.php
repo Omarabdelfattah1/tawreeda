@@ -57,7 +57,7 @@
                 
                 <div style="padding:6px;"  class=" sm-tbl-cell-header text-primary">
                   <div class="media">
-                    <img src="{{asset('storage/'.$department->img)}}" alt="" style="width: 40px;">
+                    <img src="{{asset($department->img)}}" alt="" style="width: 40px;">
                     
                   </div>
                 </div>

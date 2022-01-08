@@ -3,7 +3,7 @@
           <div class="pt-6">
             @foreach($supplier->offers as $offer)
             <div class="row m-3" style="background-color: #FAFAFA">
-              <div class="col-md-2 p-2 text-center"><img class="mr-3" style="width: 100px;" src="{{asset('storage/'.$supplier->company_logo)}}" alt=""></div>
+              <div class="col-md-2 p-2 text-center"><img class="mr-3" style="width: 100px;" src="{{asset($supplier->company_logo)}}" alt=""></div>
               <div class="col-md-8">
                 <h6 class="py-1 font-weight-bold">
                   {{$supplier->company_name}}

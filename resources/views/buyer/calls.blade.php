@@ -34,7 +34,7 @@
             
             <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
               <div class="media">
-                <img src="{{asset('storage/'.$call->supplier->company_logo)}}" alt="" style="width: 30px;">
+                <img src="{{asset($call->supplier->company_logo)}}" alt="" style="width: 30px;">
                 <div class="mr-2">
                   <h6 class="font-weight-bold mb-2">{{$call->supplier->company_name}}</h6>
                   <p>{{$call->supplier->about}}</p>

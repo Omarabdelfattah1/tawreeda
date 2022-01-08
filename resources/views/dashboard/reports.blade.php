@@ -23,7 +23,7 @@
                 
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   <div class="media">
-                    <img src="{{asset('storage/'.$report->user->photo)}}" alt="" style="width: 30px;height: 30px;">
+                    <img src="{{asset($report->user->photo)}}" alt="" style="width: 30px;height: 30px;">
                     <div class="mr-2">
                       <a href="{{$report->user->userable instanceof \App\Models\Buyer ?route('dashboard.buyers.edit',$report->user->userable):route('dashboard.suppliers.edit',$report->user->userable)}}" class="font-weight-bold">{{$report->user->name}}</a>
                     </div>

@@ -33,7 +33,6 @@
             @enderror
           </div>
           <div class="form-group ">
-            <p class="small mt-3 opacity-70  text-right"><a  href="{{ route('password.request') }}"  data-toggle="modal" data-target="#recover"> نسيت كلمة المرور؟</a></p>
             <button type="submit"  class="btn rounded-lg btn-xl btn-primary d-block ml-auto mt-5"> سجل دخول</button>
             <p class="small mt-3 opacity-70  text-right mt-5">معندكش حساب؟ <a  href="{{ route('register') }}">أنشئ دلوقتي </a></p>
           </div>

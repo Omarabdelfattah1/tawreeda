@@ -26,7 +26,7 @@
     <div class="row mt-6 py-2 shadow-lg bg-white rounded-lg mx-4 w-100 mx-auto">
       <div class="col-lg-9 col-md-12 row pl-0"  id="media1">
         <div class="col-lg-3 col-md-5 col-sm-5 col-xs-8 text-center py-2">
-          <img src="{{asset('storage/'.$supplier->company_logo)}}" alt="" class="w-80">
+          <img src="{{asset($supplier->company_logo)}}" alt="" class="w-80">
 
         </div>
         <div class="col-lg-9 col-md-7 col-sm-7  col-xs-8 text-right">
@@ -46,9 +46,13 @@
             
           </div>
           <div>
-            <div class="pt-1 pb-2 px-2 rounded d-inline-block mb-1" style="background-color: #cc0000;color: white;font-size:12px;">{{$supplier->departments->first()->name}}</div>
-            <div class="pt-1 pb-2 px-2 rounded d-inline-block mb-1" style="background-color: #1a1a1a;color: white;font-size:12px;">{{$supplier->state}}</div>
-            <div class="pt-1 pb-2 px-2 rounded d-inline-block mb-1 btn-secondary" style="font-size:12px;">أكواب ورقية و بلاستيك</div>
+             @if($supplier->type)
+            <div class="btn btn-xs mx-auto" style="color:white;background-color: #FF3737;">{{$supplier->type}}</div>
+            @endif
+            <div class="btn btn-xs mx-auto" style="color:white;background-color: #44485C;">{{$supplier->state}}</div>
+            @if($supplier->tagproducts()->first())
+            <div class="btn btn-xs btn-secondary text-default mx-auto" >{{$supplier->tagproducts()->first()->name}}</div>
+            @endif 
           </div>
         </div>
       </div>
@@ -62,7 +66,7 @@
           @endif
         </p>
 
-        <p class="mb-1 text-sm" style="vertical-align: middle;"> <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/phone.svg')}}" alt="">{{$supplier->phones}}</p>
+        <p class="mb-1 text-sm" style="vertical-align: middle;"> <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/phone.svg')}}" alt="">{{$supplier->user->mobile}}</p>
         @if($supplier->email)
         <p class="mb-1 text-sm" style="vertical-align: middle;"> <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/mail.svg')}}" alt="">{{$supplier->email}}</p>
         @endif
@@ -123,7 +127,7 @@
           <div class="row">
             <div class="col-lg-6 row mb-6">
               <div class="col-3">
-                <img src="{{asset('storage/'.$supplier->user->photo)}}" alt="">
+                <img src="{{asset($supplier->user->photo)}}" alt="">
               </div>
               <div class="col-9 text-right" style="line-height: 25px;">
                 <h5>{{$supplier->user->name}}</h5>
@@ -149,7 +153,7 @@
             @foreach($supplier->products as $p)
             <div class="col-lg-4 col-md-6 col-12">
               <div class="mx-2 my-3 rounded-lg border border-secondary media">
-                <img class="p-3" width="100px" src="{{asset('storage/'.$p->img)}}" alt="">
+                <img class="p-3" width="100px" src="{{asset($p->img)}}" alt="">
                 <div class="my-6 pr-3">{{$p->name}}</div>
               </div>
               

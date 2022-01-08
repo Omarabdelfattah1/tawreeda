@@ -12,7 +12,7 @@
         <div class="d-flex justify-content-between p-3 pl-6 mb-5" >
           <div>
             <div class="media">
-              <img style="width: 50px;" src="{{asset('storage/'.$review->supplier->company_logo)}}" alt="">
+              <img style="width: 50px;" src="{{asset($review->supplier->company_logo)}}" alt="">
               <div class="mr-2" style="font-size:13px">
                 <div class="d-flex">
                   <h6 class="ml-2">{{$review->supplier->company_name}}</h6>

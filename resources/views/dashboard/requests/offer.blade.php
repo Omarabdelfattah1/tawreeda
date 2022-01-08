@@ -9,7 +9,7 @@
   <div class="mt-6 card mx-4 px-5 col-12">
     <div class="row flex-warp m-3 border-bottom" >
       <div class="col-md-9 media">
-        <img class="m-3" style="width: 70px;" src="{{asset('storage/'.$offer->request->buyer->company_logo)}}" alt="">
+        <img class="m-3" style="width: 70px;" src="{{asset($offer->request->buyer->company_logo)}}" alt="">
         <div class="">
           <h6 class="py-3 font-weight-bold">
             {{$offer->request->buyer->company_name}}

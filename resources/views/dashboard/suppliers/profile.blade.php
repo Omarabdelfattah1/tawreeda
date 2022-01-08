@@ -30,7 +30,7 @@
                 <label class="mb-3"> صورة المستخدم:</label>
                 <div class="d-flex">
                   <div>
-                    <img class="rounded-circle" style="width: 50px;height:50px;" src="{{asset('storage/'.$supplier->user->photo)}}" alt="">
+                    <img class="rounded-circle" style="width: 50px;height:50px;" src="{{asset($supplier->user->photo)}}" alt="">
                   </div>
                   <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
