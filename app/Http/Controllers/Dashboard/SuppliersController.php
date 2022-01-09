@@ -143,6 +143,12 @@ class SuppliersController extends Controller
                 ];
                 }
             }
+            
+            if($request->file('company_logo')){
+                $path = $request->company_logo->store('public/logos');
+                $supplier->company_logo = str_replace('public/','',$path);
+                $supplier->save();
+            }
             // dd($files);
             if(count($files))
             {
@@ -151,6 +157,12 @@ class SuppliersController extends Controller
         }else{
             // dd('hello');
             $supplier->user()->update(array_filter($request->except(['_token','_method','profile'])));
+            if($request->file('photo')){
+                $path = $request->photo->store('public/users/photos');
+                $supplier->user()->update([
+                    'photo' => str_replace('public/','',$path)
+                ]);
+            }
             if($request->locked){
                 $supplier->user()->update([
                     'locked'=>1
@@ -161,9 +173,8 @@ class SuppliersController extends Controller
                 ]);
             }
         }
-        return response()->json([
-            'success'=> 'updated successfully'
-        ]);
+        session()->flash('message','تم التعديل بنجاح');
+        return redirect()->back();
     }
 
     /**

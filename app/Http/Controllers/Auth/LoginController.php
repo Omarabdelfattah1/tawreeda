@@ -52,7 +52,8 @@ class LoginController extends Controller
     {
         // Check validation
         $this->validate($request, [
-            'mobile' => 'required',            
+            'mobile' => 'required',
+            'password' => 'required'            
         ]);
 
         // Get user record
@@ -61,14 +62,20 @@ class LoginController extends Controller
         // Check Condition Mobile No. Found or Not
         if(is_null($user) || !Hash::check($request->get('password'),$user->password)) {
             $messages = [];
-            $messages[]=['message'=>'البيانات غير متطابقة']; // Add the message
-            // dd($messages);
+            $messages[]=['password'=>'البيانات غير متطابقة']; // Add the message
             return redirect()->back()->withErrors($messages)->withInput();
         }   
         if($user->locked){
             session()->flash('message' ,'تم إيقاف حسابك');
             return redirect()->back();
-        }    
+        }
+        
+        if($user->userable instanceof (\App\Models\Supplier::class)){
+            if(!$user->userable->verified){
+                session()->flash('message','لم يتم تفعيل حسابك بعد');
+                return redirect()->back();
+            }
+        }
         
         // Set Auth Details
         \Auth::login($user);

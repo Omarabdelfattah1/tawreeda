@@ -5,7 +5,12 @@
     <div class="container">
       <div class="row">
         <header class="section-header col-md-4 col-xl-4 mx-auto mb-5">
-          <h2 class="lead-7 text-primary float-right"><strong>تسجيل الدخول</strong></h2>
+          <h2 class="lead-7 text-primary"><strong>تسجيل الدخول</strong></h2>
+          @if($errors->any())
+          @foreach($errors->all() as $error)
+              <h6 class="text-danger">{{$error}}</h6>
+              @endforeach
+          @endif
         </header>
       </div>
 

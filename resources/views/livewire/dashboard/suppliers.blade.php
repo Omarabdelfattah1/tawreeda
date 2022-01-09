@@ -33,7 +33,7 @@
       <div class="col-lg-3 col-md-3">
         <div class="card py-2 px-1 mx-auto my-3">
           <a href="{{route('dashboard.suppliers.edit',$supplier)}}">
-            <img src="{{asset('storage/'.$supplier->user->photo)}}" style="width:130px;height:130px;" alt="" class="mx-auto d-block">
+            <img src="{{asset($supplier->user->photo)}}" style="width:130px;height:130px;" alt="" class="mx-auto d-block">
           </a>
           <div class="text-center mt-3">
             <h5 class="font-weight-bold text-center" style="color: #1E3A56;">{{$supplier->user->name}}</h5>

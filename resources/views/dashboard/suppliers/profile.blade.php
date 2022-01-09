@@ -1,6 +1,6 @@
 <div class="tab-pane  fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab" style="border-right:0px !important;color: #6F6F6F !important;background: none !important;">
         <div class="pt-6 p-4">
-          <form action="{{route('dashboard.suppliers.update',$supplier)}}" method="post">
+          <form action="{{route('dashboard.suppliers.update',$supplier)}}" method="post" enctype="multipart/form-data">
             @csrf 
             @method('put')
             <input type="hidden" name="profile" value="profile" id="">
