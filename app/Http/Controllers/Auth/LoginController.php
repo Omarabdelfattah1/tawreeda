@@ -70,7 +70,7 @@ class LoginController extends Controller
             return redirect()->back();
         }
         
-        if($user->userable instanceof (\App\Models\Supplier::class)){
+        if($user->userable instanceof \App\Models\Supplier::class){
             if(!$user->userable->verified){
                 session()->flash('message','لم يتم تفعيل حسابك بعد');
                 return redirect()->back();
