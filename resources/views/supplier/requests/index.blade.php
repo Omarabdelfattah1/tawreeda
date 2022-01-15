@@ -27,12 +27,12 @@
             <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->buyer->user->name}}</h6>
           </div>
           <div class="col-md-3 media mb-3">
-            <img style="width:20px;" class="ml-2" src="../assets/xd/clock.svg" alt="">
+            <img style="width:20px;" class="ml-2" src="/assets/xd/clock.svg" alt="">
 
             <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->created_at->diffForHumans()}}</h6>
           </div>
           <div class="col-md-5 media mb-3">
-            <img style="width:20px;" class="ml-2" src="../assets/xd/cup.png" alt="">
+            <img style="width:20px;" class="ml-2" src="/assets/xd/cup.png" alt="">
             <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->tagproducts()->first()->name}} </h6>
           </div>
         </div>

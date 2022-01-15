@@ -36,11 +36,11 @@
               <div class="p-2 col-md-3 text-left">
                 <div class="media mb-6">
                   <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/clock.svg')}}" alt="">
-                  <h6 style="font-size: 12px;" class="font-weight-bold">منذ 24 دقيقة</h6>
+                  <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->created_at->diffForHumans()}}</h6>
                 </div>
                 <div class="media">
                   <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/box.svg')}}" alt="">
-                  <h6 style="font-size: 12px;" class="font-weight-bold"> أكواب ورقية . أطباق بلاستيك </h6>
+                  <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->tagproducts()->first()->name}}</h6>
                 </div>
               </div>
             </div>
