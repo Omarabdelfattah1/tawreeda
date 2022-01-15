@@ -12,7 +12,7 @@
         <div class="col-md-2 tex2-center py-3"><img  style="width: 100px;" src="{{asset($request->buyer->company_logo)}}" alt=""></div>
         <div class="col-md-8">
           <h6 class="py-1 font-weight-bold">
-            {{$request->buyer->company_name}}              
+            {{$request->buyer->company_name}}
           </h6>
           <p style="line-height: 1rem;font-size: 12px;">{{$request->description}}</p>
           <div class="row mt-3">
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-5 media mb-3">
               <img style="width:20px;" class="ml-2" src="{{asset('assets/xd/box.svg')}}" alt="">
-              <h6 style="font-size: 12px;" class="font-weight-bold"> أكواب ورقية . أطباق بلاستيك </h6>
+              <h6 style="font-size: 12px;" class="font-weight-bold"> {{$request->tagproducts()->first()->name}} </h6>
             </div>
           </div>
         </div>

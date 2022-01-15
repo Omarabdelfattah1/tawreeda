@@ -4,3 +4,4 @@ function show(shown, hidden) {
   document.getElementById(hidden).classList.add("d-none");
   document.getElementById(hidden).classList.remove("d-block");
 }
+

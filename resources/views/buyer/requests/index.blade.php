@@ -3,9 +3,6 @@
 <div class="d-flex">
     <a href="price-offers.html" class="rounded-top py-3 px-6 font-weight-bold  text-default ml-3" style="background-color:white;height: 45px;">
       المستقبلة
-      <span class="rounded-circle d-inline-block text-center" style="background-color: #ff2156;color: white;font-size:xx-small;height: 12px;width:12px;">3</span>
-
-
     </a>
   </div>
   <div class="bg-white">
@@ -26,7 +23,7 @@
           </div>
           <div class="col-md-3 media mb-3">
             <img style="width:20px;" class="ml-2" src="/assets/xd/clock.svg" alt="">
-              
+
             <h6 style="font-size: 12px;" class="font-weight-bold">{{$request->created_at->diffForHumans()}}</h6>
           </div>
           <div class="col-md-5 media mb-3">
@@ -43,12 +40,12 @@
     @endforeach
     @else
     <div class="row m-3" style="background-color: #FAFAFA">
-    
+
       لا يوجد طلبات أسعار
     </div>
     @endif
     </div>
   </div>
-  
+
 
 @endsection

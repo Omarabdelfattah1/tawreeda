@@ -8,41 +8,55 @@
         <li class="nav-item my-5 d-flex pr-3">
           <img src="{{asset('assets/xd/price-request.svg')}}" alt="" class="ml-4" style="width:25px">
           <a class="nav-link text-default active" href="{{route('buyer.requests.index')}}">طلبات أسعار</a>
-          <div class="mr-2  py-1">
-          <span class="rounded-circle d-inline-block " style="background-color: #ff2156;color: white;font-size:xx-small;height: 12px;width:12px;padding-right: 4px;">3</span>
-
-          </div>
           <i class="fa fa-angle-left pr-3 mr-auto ml-3"></i>
         </li>
         <li class="nav-item my-5  d-flex pr-3">
           <img src="{{asset('assets/xd/contact-request.svg')}}" alt="" class="ml-4" style="width:25px">
           <a class="nav-link text-default active" href="{{route('buyer.calls')}}">طلبات الإتصال</a>
-          
+
           <i class="fa fa-angle-left ml-4 mr-auto"></i>
         </li>
         <li class="nav-item my-5  d-flex pr-3">
           <img src="{{asset('assets/xd/reviews.svg')}}" alt="" class="ml-4" style="width:25px">
           <a class="nav-link text-default active" href="{{route('buyer.reviews')}}"> التقييمات المرسلة</a>
-          
+
           <i class="fa fa-angle-left ml-4 mr-auto"></i>
         </li>
         <li class="nav-item my-5  d-flex pr-3">
           <img src="{{asset('assets/xd/settings.svg')}}" alt="" class="ml-4" style="width:25px">
           <a class="nav-link text-default active" href="{{route('buyer.settings')}}"> الإعدادات</a>
-          
+
           <i class="fa fa-angle-left ml-4 mr-auto"></i>
         </li>
         <li class="nav-item my-5  d-flex pr-3">
           <img src="{{asset('assets/xd/profile.svg')}}" alt="" class="ml-4" style="width:25px">
           <a class="nav-link text-default active " href="{{route('buyer.profile')}}"> الملف الشخصي</a>
-          
+
           <i class="fa fa-angle-left ml-4 mr-auto"></i>
         </li>
       </ul>
     </div>
     <div class="px-1 w-100" id="content">
+        <div class="d-flex">
+            <button style="height: 50px;" id="side-btn" class="btn rounded-lg btn-sm btn-secondary py-1"><i class=" fa fa-bars"></i></button>
+        </div>
       @yield('dash-content')
     </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+    <script>
+
+        $('#side-btn').on('click',function(){
+            event.stopPropagation();
+            $('#sidebare').toggleClass('sidebare-active');
+        })
+
+        window.addEventListener('click', function(e){
+            if (!document.getElementById('sidebare').contains(e.target)){
+                $('#sidebare').removeClass('sidebare-active');
+            }
+        });
+    </script>
 @endsection

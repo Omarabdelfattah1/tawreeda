@@ -15,13 +15,18 @@
                 <p>
                 <button class="btn btn-none" wire:click='markAsRead("{{$notification->id}}")'>
                 <i class="fa fa-check"></i>
-                    
+
                 </button>
 
                 </p>
             </div>
             @endforeach
         </div>
+    @else
+        <div class="dropdown-menu dropdown-menu-left text-right" aria-labelledby="notifications" id="push-notification">
+            لا يوجد إشعارات
+        </div>
+
     @endif
 
 </div>

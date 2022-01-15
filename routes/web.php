@@ -78,8 +78,8 @@ Route::get('/telegram/connect',[
     'as' => 'telegram.connect'
 ]);
 
-Route::get('departments/{id}/categories','DepartmentController@get_categories')->name('single_dept_categories'); 
-Route::get('categories/{id}/tagproducts','DepartmentController@get_tagproducts'); 
+Route::get('departments/{id}/categories','DepartmentController@get_categories')->name('single_dept_categories');
+Route::get('categories/{id}/tagproducts','DepartmentController@get_tagproducts');
 
 Route::post('/request','RequestController@store')->name('request');
 Auth::routes();
@@ -93,7 +93,7 @@ Route::name('register.')->group(function(){
 });
 
 Route::group(['as'=>'supplier.','middleware'=>['auth','supplier'],'prefix'=>'/supplier'],function(){
-    
+
     Route::get('/requests','Supplier\RequestController@index')->name('requests.index');
     Route::get('/requests/{request}','Supplier\RequestController@show')->name('requests.show');
 
@@ -115,7 +115,7 @@ Route::group(['as'=>'supplier.','middleware'=>['auth','supplier'],'prefix'=>'/su
     Route::put('/factories','SupplierController@updatefactories')->name('factories');
 });
 Route::group(['as'=>'buyer.','middleware'=>['auth','buyer'],'prefix'=>'/buyer'],function(){
-    
+
     Route::get('/requests','Buyer\RequestController@index')->name('requests.index');
     Route::get('/requests/{request}','Buyer\RequestController@show')->name('requests.show');
 
@@ -134,9 +134,9 @@ Route::group(['as'=>'buyer.','middleware'=>['auth','buyer'],'prefix'=>'/buyer'],
     Route::put('/settings','BuyerController@updateSettings')->name('settings');
 });
 Route::group(['as'=>'dashboard.','middleware'=>['auth','admin'],'prefix'=>'/dashboard'],function(){
-    
+
     Route::get('/','Dashboard\DashboardController@index')->name('home');
-    
+
     Route::resource('/users','Dashboard\UsersController');
     Route::resource('/departments','Dashboard\DepartmentsController');
     Route::resource('/categories','Dashboard\CategoriesController');
@@ -151,14 +151,14 @@ Route::group(['as'=>'dashboard.','middleware'=>['auth','admin'],'prefix'=>'/dash
     Route::get('/requests','Dashboard\RequestsController@index')->name('requests.index');
     Route::get('/requests/{request}','Dashboard\RequestsController@show')->name('requests.show');
     Route::get('/offers/{offer}','Dashboard\RequestsController@offer')->name('offers.show');
-    
+
     // Route::get('/category/{category}','Dashboard\DepartmentsController@category')->name('category.show');
     // Route::delete('/category/{category}','Dashboard\DepartmentsController@category_destroy')->name('category.destroy');
     // Route::put('/category/{category}','Dashboard\DepartmentsController@category_update')->name('category.update');
 
 });
 
-
+Route::get('/register-supplier-ajax',['uses'=> 'RegisterSupplier@index']);
 Route::get('/request','RequestController@create')->name('request');
 Route::get('/departments','DepartmentController@departments')->name('departments');
 Route::get('/{department}/categories','DepartmentController@categories')->name('categories');

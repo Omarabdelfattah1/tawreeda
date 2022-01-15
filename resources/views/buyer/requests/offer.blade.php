@@ -3,8 +3,6 @@
 <div class="d-flex ">
   <a href="{{route('buyer.requests.index')}}" class="rounded-top py-3 px-6 font-weight-bold  text-primary ml-3" style="background-color:white;height: 45px;">
     المستقبلة
-    <span class="rounded-circle d-inline-block text-center" style="background-color: #ff2156;color: white;font-size:xx-small;height: 12px;width:12px;">3</span>
-  
   </a>
 </div>
 <div class="bg-white">
@@ -15,7 +13,7 @@
         <div class="">
           <h6 class="py-3 font-weight-bold">
             {{$offer->request->buyer->company_name}}
-          
+
           </h6>
           <div class="row mr-1  mt-3">
             <div class="media ml-3 mb-3">
@@ -63,9 +61,9 @@
               </div>
           </div>
           <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
-            
+
             <i class="fa fa-download text-primary" ></i>
-          </a>                    
+          </a>
         </div>
         @endforeach
       </div>
@@ -127,7 +125,7 @@
         <p  style="line-height: 30px;" class="mr-2">  عرض السعر ساري لمدة  <span class="font-weight-bold">{{$offer->available_for}}</span> يوم من إرساله</p>
 
     </div>
-    
+
     <div class="row m-3 justify-content-between border-bottom pb-3">
       <div class="col-md-6">
         <h6 class="mb-6">ملاحظات:</h6>
@@ -147,9 +145,9 @@
               </div>
           </div>
           <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
-            
+
             <i class="fa fa-download text-primary" ></i>
-          </a>                    
+          </a>
         </div>
         @endforeach
       </div>

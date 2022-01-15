@@ -4,8 +4,6 @@
 <div class="d-flex text-right">
   <a href="{{route('supplier.requests.index')}}" class="rounded-top py-3 px-6 font-weight-bold  text-primary ml-3" style="background-color:white;height: 45px;">
     المستقبلة
-    <span class="rounded-circle d-inline-block text-center" style="background-color: #ff2156;color: white;font-size:xx-small;height: 12px;width:12px;">3</span>
-  
   </a>
   <a href="{{route('supplier.offers.index')}}" class="d-flex lead-1 rounded-top py-3 px-6 font-weight-bold text-default " style="background-color:  gainsboro;width: 110px;">
     المرسلة
@@ -20,7 +18,7 @@
           <h6 class="py-3 font-weight-bold">
           {{$request->buyer->company_name}}
 
-          
+
           </h6>
           <div class="row mr-1  mt-3">
             <div class="media ml-3 mb-3">
@@ -45,7 +43,7 @@
         </div>
         <div class="media">
           <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/cup.png')}}" alt="">
-          <h6 style="font-size: 12px;" class="font-weight-bold"> أكواب ورقية . أطباق بلاستيك </h6>
+          <h6 style="font-size: 12px;" class="font-weight-bold"> {{$request->tagproducts()->first()->name}} </h6>
         </div>
       </div>
     </div>
@@ -69,9 +67,9 @@
               </div>
           </div>
           <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
-            
+
             <i class="fa fa-download text-primary" ></i>
-          </a>                    
+          </a>
         </div>
         @endforeach
       </div>
@@ -120,11 +118,11 @@
             </div>
           </div>
         </div>
-        
+
       </div>
       <p class="text-primary font-weight-bold" id="addRow">
           <span class="fa fa-plus-circle text-primary p-2" ></span>
-            إضافة   
+            إضافة
         </p>
     </div>
 
@@ -184,7 +182,7 @@
       <input type="number" name="available-for" id="" style="width: 70px;height: 50px;" class="rounded border mx-3" required>
       يوم
     </div>
-    
+
     <div class="p-5">
       <h6> ملاحظات: </h6>
       <textarea name="notes" id="" class="form-control mt-5 rounded-lg" rows="5" required></textarea>
@@ -209,7 +207,7 @@
       <div class="d-flex">
         <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-          <div class="py-2 mx-autos"> 
+          <div class="py-2 mx-autos">
             <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
           </div>
           <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -229,7 +227,7 @@
 
 $(document).ready(function(){
 
-    var count = 1    
+    var count = 1
     $('#addRow').on('click',function()
     {
       var html = `
@@ -265,9 +263,9 @@ $(document).ready(function(){
       `;
       $('#tbl').append(html);
       count++;
-      
+
     });
-  
+
     $(document).on('click', '.remove', function(){
       $(this).parents().eq(2).remove();
     });

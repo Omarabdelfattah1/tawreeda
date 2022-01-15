@@ -10,7 +10,7 @@
     #myTab .active{
       border-top:0 ;
       color: #FF6A00;
-      border-bottom:2px solid #FF6A00; 
+      border-bottom:2px solid #FF6A00;
     }
     @media(max-width:515px)
     {
@@ -27,8 +27,8 @@
       #categories{
         display: none !important;
       }
-      
-      
+
+
     }
 </style>
 @endsection
@@ -37,8 +37,6 @@
 <div class="d-flex text-right">
   <a href="{{route('buyer.requests.index')}}" class="rounded-top py-3 px-6 font-weight-bold  text-primary ml-3" style="background-color:white;height: 45px;">
     المستقبلة
-    <span class="rounded-circle d-inline-block text-center" style="background-color: #ff2156;color: white;font-size:xx-small;height: 12px;width:12px;">3</span>
-  
   </a>
 </div>
 <div class="bg-white text-right">
@@ -49,7 +47,7 @@
         <div class="">
           <h6 class="py-3 font-weight-bold">
           {{$request->buyer->company_name}}
-          
+
           </h6>
           <div class="row mr-1  mt-3">
             <div class="media ml-3 mb-3">
@@ -87,20 +85,20 @@
       </div>
       <div class="col-md-5 " style="background-color: #FAFAFA">
         <h6 >المرفقات:</h6>
-        
+
         @foreach($request->files as $file)
         <div  class="d-flex mt-6 justify-content-between rounded-lg p-4" style="border: 2px solid #C39B324F !important">
           <div class="media">
               <img src="{{asset('assets/xd/attachment-pdf.svg')}}" style="width: 40px;" class="ml-2" alt="">
               <div>
                 <h6 class="mb-3">Document File</h6>
-                <p style="font-size: xx-samall;">{{size($file->path)}}</p>
+                <p style="font-size: xx-small;">{{size($file->path)}}</p>
               </div>
           </div>
           <a href="{{asset($file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
-            
+
             <i class="fa fa-download text-primary" ></i>
-          </a>                    
+          </a>
         </div>
         @endforeach
       </div>
@@ -139,21 +137,21 @@
                     <img class="my-2 ml-1" style="width: 13px;" src="{{asset('assets/xd/clock.svg')}}" alt="">
                     <p class="my-2 ml-1" style="font-size: 13px;">{{$offer->created_at->diffForHumans()}}</p>
                   </div>
-                  
+
                   <div class="media">
                     <img class="my-2 ml-1" style="width: 13px;" src="{{asset('assets/xd/box.svg')}}" alt="">
-                    <p class="my-2 ml-1" style="font-size: 13px;"> 
+                    <p class="my-2 ml-1" style="font-size: 13px;">
                       الإجمالي
                       <span class="text-primary">{{$offer->items->sum('total')}} ج.م</span>
                     </p>
                   </div>
-                  
+
                 </div>
               </div>
               <div class="col-md-2 py-5 px-0">
                 <a href="{{route('buyer.offers.show',$offer)}}" class="btn btn-sm rounded-lg text-primary my-6" style="background-color: #FFF4EC;" >التفاصيل</a>
               </div>
-          
+
             </div>
             @endforeach
             @else
@@ -180,28 +178,28 @@
                     <img class="my-2 ml-1" style="width: 13px;" src="{{asset('assets/xd/clock.svg')}}" alt="">
                     <p class="my-2 ml-1" style="font-size: 13px;">{{$offer->created_at->diffForHumans()}}</p>
                   </div>
-                  
+
                   <div class="media">
                     <img class="my-2 ml-1" style="width: 13px;" src="{{asset('assets/xd/box.svg')}}" alt="">
-                    <p class="my-2 ml-1" style="font-size: 13px;"> 
+                    <p class="my-2 ml-1" style="font-size: 13px;">
                       الإجمالي
                       <span class="text-primary">{{$offer->items->sum('total')}} ج.م</span>
                     </p>
                   </div>
-                  
+
                 </div>
               </div>
               <div class="col-md-2 py-5 px-0">
                 <a href="{{route('buyer.offers.show',$offer)}}" class="btn btn-sm rounded-lg text-primary my-6" style="background-color: #FFF4EC;" >التفاصيل</a>
               </div>
-          
+
             </div>
             @endforeach
           </div>
         </div>
       </div>
     </div>
-                
+
   </div>
 </div>
 @endsection
@@ -214,12 +212,12 @@
       $('#sidebare').toggleClass('sidebare-active');
     })
 
-  window.addEventListener('click', function(e){   
+  window.addEventListener('click', function(e){
     if (!document.getElementById('sidebare').contains(e.target)){
       $('#sidebare').removeClass('sidebare-active');
     }
   });
-  
+
   </script>
 
 @endsection
