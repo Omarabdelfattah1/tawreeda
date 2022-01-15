@@ -28,7 +28,7 @@
                     <div class="media">
                       <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/phone.svg')}}" alt="">
                       <h6 style="font-size: 12px;" class="ml-2">{{$request->buyer->user->mobile}}</h6>
-                      <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/whatstapp.svg')}}" alt="">
+                      <img class="ml-2" style="width: 20px;" src="{{asset('assets/xd/whatsapp.svg')}}" alt="">
                     </div>
                   </div>
                 </div>
