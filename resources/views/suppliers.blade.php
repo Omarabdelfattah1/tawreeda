@@ -15,7 +15,7 @@
 
 @media(max-width:575px)
 {
-  
+
   .card{
     width:80%
   }
@@ -26,7 +26,7 @@
 
 
 <nav id="sub-nav" class="border-bottom d-flex justify-content-between" style="height: 50px;border-color: #535669;">
-      
+
   <a class="nav-item nav-link dropdown-toggle text-primary border-left bg-secondary text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 150px;">
         جميع الفئات
     </a>
@@ -40,13 +40,13 @@
     <a href="{{route('suppliers',$category)}}" class="mr-6 {{$category->id == explode('/',app('request')->url())[3] ?'text-primary border-bottom border-primary':'text-default'}} py-3" href="">{{$category->name}}</a>
     @endforeach
   </div>
-  
+
 </nav>
 <div class="container">
   <div class="mt-5 d-flex  flex-warp" style="position:relative;" id="main">
-    
     @livewire('filtersuppliers',[
-      'category'=> $category])
+      'category'=> $category_id
+      ])
   </div>
 </div>
 @endsection
@@ -55,7 +55,7 @@
   // $(document).ready(function(){
 
   //   $(document).on('click', 'a.paginate', function(event){
-  //   event.preventDefault(); 
+  //   event.preventDefault();
   //   var page = $(this).attr('href');
   //   fetch_data(page);
   //   });
@@ -82,7 +82,7 @@
       $('#sidebare').toggleClass('sidebare-active');
     })
 
-  window.addEventListener('click', function(e){   
+  window.addEventListener('click', function(e){
     if (!document.getElementById('sidebare').contains(e.target)){
       $('#sidebare').removeClass('sidebare-active');
     }

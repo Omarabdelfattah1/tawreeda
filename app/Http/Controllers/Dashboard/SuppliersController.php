@@ -43,7 +43,7 @@ class SuppliersController extends Controller
         $data = $request->all();
         DB::transaction(function() use ($data,&$user){
             $userable;
-            
+
             if($data['user_type'] == 'supplier'){
                 $userable = $this->storeSupplier($data);
                 $userable->departments()->attach($data['department']);
@@ -67,13 +67,13 @@ class SuppliersController extends Controller
                 $user->photo = str_replace('public/','',$path);
                 $user->save();
             }
-            
-            
+
+
 
         });
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -115,7 +115,7 @@ class SuppliersController extends Controller
             // departments , tags and categories
             $supplier->departments()->sync($request->departments);
             $supplier->categories()->sync($request->categories);
-            $supplier->tagproducts()->sync($request->categories);
+            $supplier->tagproducts()->sync($request->tagproducts);
 
             if($request->file('quality_files'))
             {
@@ -143,7 +143,7 @@ class SuppliersController extends Controller
                 ];
                 }
             }
-            
+
             if($request->file('company_logo')){
                 $path = $request->company_logo->store('public/logos');
                 $supplier->company_logo = str_replace('public/','',$path);

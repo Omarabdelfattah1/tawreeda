@@ -17,19 +17,19 @@ class DepartmentController extends Controller
     {
         return view('categories')->with('categories',$department->categories);
     }
-    
+
     public function get_categories($id)
     {
         $department = Department::find($id);
         return response()->json($department->categories->toArray());
     }
-    
+
     public function get_multi_categories($ids)
     {
         $categories = Category::whereIn('department_id',$ids)->get();
         return response()->json($categories->toArray());
     }
-    
+
     public function get_tagproducts($id)
     {
         $category = Category::find($id);
@@ -39,13 +39,13 @@ class DepartmentController extends Controller
     public function suppliers(Category $category,Request $request)
     {
         return view('suppliers')
-            ->with('category',$category->id)
+            ->with('category_id',$category->id)
             ->with('categories',$category->department->categories);
     }
-    
+
     public function supplier(Supplier $supplier)
     {
-       
+
         return view('supplier')
         ->with('supplier' , $supplier);
     }

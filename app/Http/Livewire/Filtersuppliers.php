@@ -15,11 +15,9 @@ class Filtersuppliers extends Component
     public $review;
     public $type;
     public $verified;
-    // public function mount(Category $category){
-    //     $this->category = Category::find($category);
-    //     $this->suppliers = $category->suppliers;
-    //     $this->categories = $category->department->categories;
-    // }
+     public function mount($category){
+         $this->category = $category;
+     }
     public function updatingSearch()
     {
         $this->resetPage();
@@ -33,19 +31,18 @@ class Filtersuppliers extends Component
 
     public function render()
     {
-        // dd($this->suppliers);
-        $suppliers = Category::find($this->category->id)->suppliers()->with('reviews');
-        // dd($suppliers);
+
+        $suppliers = Category::find($this->category)->suppliers()->with('reviews');
         return view('livewire.filtersuppliers')
         ->with('suppliers',$suppliers->when($this->states,function($query,$states){
-            return $query->whereIn('state',$states);
-        })->when($this->type,function($query,$type){
-            return $query->where('type',$type);
-        })->when($this->verified,function($query,$verified){
-            return $query->where('verified',$verified);
-        })->when($this->review,function($query){
-            return $query->join('reviews', 'suppliers.id', '=', 'reviews.supplier_id')
-            ->groupBy('suppliers.id')->havingRaw('AVG(reviews.stars) >= ?', [$this->review]);
-        })->paginate(9));
+                return $query->whereIn('state',$states);
+            })->when($this->type,function($query,$type){
+                return $query->where('type',$type);
+            })->when($this->verified,function($query,$verified){
+                return $query->where('verified',$verified);
+            })->when($this->review,function($query){
+                return $query->join('reviews', 'suppliers.id', '=', 'reviews.supplier_id')
+                ->groupBy('suppliers.id')->havingRaw('AVG(reviews.stars) >= ?', [$this->review]);
+            })->paginate(9));
     }
 }

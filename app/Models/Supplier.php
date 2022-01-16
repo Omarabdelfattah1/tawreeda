@@ -9,7 +9,7 @@ class Supplier extends Model
 {
     use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
     use HasFactory;
-    
+
     protected $fillable = [
         'email',
         'phones',
@@ -38,9 +38,9 @@ class Supplier extends Model
         });
     }
 
-    
+
     public function getCompanyLogoAttribute(){
-        return $this->getAttributes()['company_logo'] ? 'storage/'. $this->getAttributes()['company_logo'] : 'my-profile.png'; 
+        return $this->getAttributes()['company_logo'] ? 'storage/'. $this->getAttributes()['company_logo'] : 'my-profile.png';
     }
     public function user()
     {
@@ -89,13 +89,13 @@ class Supplier extends Model
     {
         return $this->files()->where('type','production')->get();
     }
-    
+
     public function products(){
         return $this->hasMany(Product::class);
     }
 
     public function requests(){
-        
+
         return $this->hasManyDeep('App\Models\Request',['supplier_tagproduct','App\Models\Tagproduct','request_tagproduct']);
     }
 }

@@ -8,7 +8,7 @@
         @foreach($categories as $category)
         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
           <div class="card border border-secondary hover-shadow-12 mb-6 w-90 mx-auto rounded-lg p-0">
-            <a href="{{route('suppliers',$category)}}" wire:click="$emit('selectSuppliers',$category)">
+            <a href="{{route('suppliers',$category)}}">
               <img style="height:130px;width:100%;" class="card-img-top" src="{{asset('storage/'.$category->img)}}" alt="Card image cap">
             </a>
             <div class="py-3 text-center">
@@ -20,7 +20,7 @@
         </div>
         @endforeach
       </div>
-    </div> 
-      
+    </div>
+
   </header>
 @endsection
