@@ -32,7 +32,7 @@ class RegisterSupplier extends Component
             'mobile' => '',
             'password' => ''
         ];
-    public $pages = 2;  
+    public $pages = 2;
     private $validationRules = [
         1 => [
             'feilds.company_name' => ['required', 'min:3'],
@@ -53,10 +53,10 @@ class RegisterSupplier extends Component
         'string' => 'يجب أن يكون نصاً',
         'required' => 'هذا الحقل مطلوب',
         'unique' => 'هناك حساب أخر لديه هذه البيانات',
-        'min'=> 'يجب أن يكون هذا الحقل :min أحرف أو أكثر',    
+        'min'=> 'يجب أن يكون هذا الحقل :min أحرف أو أكثر',
         'confirmed' => 'كلمتي السر غير متطابقتين',
     ];
-    
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
@@ -64,7 +64,7 @@ class RegisterSupplier extends Component
 
     public function goToNextPage()
     {
-        
+
         $this->validate($this->validationRules[1]);
         $this->currentPage++;
     }
@@ -101,8 +101,8 @@ class RegisterSupplier extends Component
                 'email' => empty($data['email']) ? null:$data['email'],
                 'mobile' => $data['mobile'],
                 'password' => Hash::make($data['password']),
+                'locked' => true,
             ]);
-            // dd($user , $userable);
             if($data['photo']){
                 $path = $data['photo']->store('public/users/photos');
                 $user->photo = str_replace('public/','',$path);
@@ -111,7 +111,7 @@ class RegisterSupplier extends Component
         });
         session()->flash('message','
         <h5 class="modal-title text-primary mx-auto">شكراً لإنضمامك لأسرة موردينا</h5>
-        
+
         <div class="modal-body bg-primary rounded-lg">
         هنتواصل معاك في أقرب وقت لتأكيد تسجيلك <br>
         إستنا مننا رسالة على whatsapp

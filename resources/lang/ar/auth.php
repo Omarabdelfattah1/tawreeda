@@ -1,20 +1,32 @@
 <?php
-
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'Old Password does not match' => 'كلمة المرور القديمة القديمة غير صحيحة',
+    'Old Password' => 'كلمة المرور القديمة',
+    'Change Password' => 'تغيير كلمة المرور',
+    'Confirm New Password' => 'تأكيد كلمة المرور',
+    'Enter your email to reset you password.' => 'قم بإدخال البريد الإلكتروني لتتمكن من إعادة تعيين كلمة المرور',
+    "Agree All" => "أوفق على جميع",
+    "Account" => "الحساب",
+    "Account Setting" => "اعدادات الحساب",
+    "Already have an account" => "هل لديك حساب؟",
+    "Create A Account" => "انشاء حساب",
+    "Email" => "البريد الإلكتروني",
+    "Forgot password ?" => "هل نسيت كلمة المرور؟",
+    "New Customer" => "عميل جديد؟",
+    "Personal Details" => "المعلومات الشخصية ",
+    "Register" => "تسجيل",
+    "Remember me" => "تذكرني",
+    "Sign up for a free account" => "قم بإنشاء حساب جديد للإستفادة من جميع المميزات على موقعنا.",
+    "create Account" => "إنشاء حساب",
+    "failed" => "بيانات الاعتماد هذه غير متطابقة مع البيانات المسجلة لدينا.",
+    "first name" => "الاسم الاول",
+    "last name" => "الاسم الاخير",
+    "login" => " دخول",
+    "login_to_your_account" => 'قم بتسجيل الدخول للتتمكن من الوصل لجميع المحتوى على Study Track',
+    "logout" => "الخروج",
+    "name" => "اسم",
+    "password" => "كلمه السر",
+    "setting" => "الاعدادات",
+    "sign up" => "إنشاء حساب",
+    "throttle" => "عدد كبير جدا من محاولات الدخول. يرجى المحاولة مرة أخرى بعد :seconds ثانية."
 ];

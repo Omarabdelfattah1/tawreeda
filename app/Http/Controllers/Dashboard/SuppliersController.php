@@ -9,6 +9,8 @@ use App\Models\Department;
 use App\Models\Tagproduct;
 use App\Models\Category;
 use App\Models\File;
+use Illuminate\Support\Facades\Hash;
+
 class SuppliersController extends Controller
 {
     /**
@@ -155,28 +157,36 @@ class SuppliersController extends Controller
                 File::insert($files);
             }
         }else{
-            // dd('hello');
-            $supplier->user()->update(array_filter($request->except(['_token','_method','profile'])));
-            if($request->file('photo')){
-                $path = $request->photo->store('public/users/photos');
-                $supplier->user()->update([
-                    'photo' => str_replace('public/','',$path)
-                ]);
-            }
-            if($request->locked){
-                $supplier->user()->update([
-                    'locked'=>1
-                ]);
-            }else{
-                $supplier->user()->update([
-                    'locked'=>0
-                ]);
-            }
+            $status = $this->updateProfile($supplier->user(),$request);
+            dd($status);
         }
         session()->flash('message','تم التعديل بنجاح');
         return redirect()->back();
     }
 
+    public function updateProfile($user,$request){
+        $updates = $request->except(['_token','_method','profile','password','password_confirmation']);
+        if($request->file('photo'))
+        {
+            Storage::delete('public/'.$user->photo);
+            $path = str_replace('public/','',$request->file('photo')->store('public/users/photos'));
+            $updates['photo'] = $path;
+        }
+        if (!empty($request->password && $request->password_confirmation)){
+            if($request->password != $request->password_confirmation){
+                return redirect()->back()->withErrors(['password'=>'كلمتي المرور غير متطابقتين']);
+            }else{
+                $updates['password'] = Hash::make($request->password);
+            }
+
+        }
+        if($request->locked){
+            $updates['locked']= true;
+        }else{
+            $updates['locked']= true;
+        }
+         return $user->update(array_filter($updates));
+    }
     /**
      * Remove the specified resource from storage.
      *

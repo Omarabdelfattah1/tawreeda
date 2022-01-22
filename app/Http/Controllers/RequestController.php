@@ -26,8 +26,7 @@ class RequestController extends Controller
 
         $user = new User;
         $data = $request->validate([
-            'department_id' => 'required',
-            'category_id'=>'required',
+            'tagproducts'=>'required|array',
             'description' =>'required'
         ]);
         if(!auth()->check()){
@@ -40,7 +39,7 @@ class RequestController extends Controller
                     $messages[]=['message'=>'البيانات غير متطابقة']; // Add the message
                     // dd($messages);
                     return redirect()->back()->withErrors($messages)->withInput();
-                } 
+                }
             }else if($request->password_register){
                 $request->validate([
                     'mobile' => ['required','string', 'max:255', 'unique:users',
@@ -49,13 +48,13 @@ class RequestController extends Controller
 
                 DB::transaction(function() use ($data,&$user,$request){
                     $userable = Buyer::create($request->all());
-                    
+
                     $user = $userable->user()->create([
                         'name' => $request->name,
                         'mobile' => $request->mobile,
                         'password' => Hash::make($request->password_register),
                     ]);
-        
+
                 });
             }
             \Auth::login($user);
@@ -69,7 +68,7 @@ class RequestController extends Controller
             $user = auth()->user();
         }
         $files =[];
-        $data = array_merge($data,['buyer_id'=>$user->userable->id]);
+        $data = array_merge($data,['buyer_id' => $user->userable->id]);
         $p_request = PRequest::create($data);
         $p_request->tagproducts()->sync($request->tagproducts);
         if($request->hasfile('files'))

@@ -16,25 +16,25 @@
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="name"> رقم الموبيل:</label>
-            <input type="text" name="" name="mobile" value="{{auth()->user()->mobile}}" id="name" placeholder="" class="form-control rounded-lg">
+            <input type="text" name="mobile" value="{{auth()->user()->mobile}}" id="name" placeholder="" class="form-control rounded-lg">
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="name">  عنوان البريد الإلكتروني:</label>
-            <input type="text" name="" name="email" value="{{auth()->user()->email}}" id="name" placeholder="" class="form-control rounded-lg">
+            <input type="text" name="email" value="{{auth()->user()->email}}" id="name" placeholder="" class="form-control rounded-lg">
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="name">  اللقب:</label>
             <input type="text" name="title" value="{{auth()->user()->title}}" id="name" placeholder="مثال: مهندس " class="form-control rounded-lg">
-              
+
           </div>
           @if(empty(auth()->user()->telegram_id))
           <div class="form-group col-md-6">
             <label class="mb-3" for="name">  تفعيل إشعارات تيليجرام:</label>
-            
-            <script async 
+
+            <script async
               src="https://telegram.org/js/telegram-widget.js?15"
-              data-telegram-login="TawreedaBot" 
-              data-size="medium" data-userpic="false" 
+              data-telegram-login="TawreedaBot"
+              data-size="medium" data-userpic="false"
               data-request-access="write"
               data-auth-url="{{route('telegram.connect')}}"
               >
@@ -53,7 +53,7 @@
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات

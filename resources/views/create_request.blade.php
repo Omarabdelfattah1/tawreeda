@@ -6,7 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function(){
-  
+
   $('#tagproduct').select2({
     placeholder: {
       text: 'من فضلك إختر المنتجات ثالثاً',
@@ -17,7 +17,7 @@ $(document).ready(function(){
   $('#dept').on('change',function(){
     var id = this.value;
     $.get("/departments/"+id+"/categories", function(data, status){
-      
+
       data.forEach(function(item){
         $('#category').append(`<option value="${item.id}">${item.name}</select>`);
       });
@@ -28,7 +28,7 @@ $(document).ready(function(){
   $('#category').on('change',function(){
     var id = this.value;
     $.get("/categories/"+id+"/tagproducts", function(data, status){
-      
+
       data.forEach(function(item){
         $('#tagproduct').append(`<option value="${item.id}">${item.name}</select>`);
       });
@@ -37,8 +37,32 @@ $(document).ready(function(){
     });
   })
 
+    $(function() {
+        // Multiple images preview in browser
+        var imagesPreview = function(input, placeToInsertImagePreview) {
 
-})
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        var file = ``
+                        $($.parseHTML(`<img class="mr-2" style="width:100px !important;height:100px !important;">`)).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#files').on('change', function() {
+            imagesPreview(this, $('#filesUploaded'));
+        });
+    });
+    });
 
 
 </script>
@@ -59,11 +83,11 @@ $(document).ready(function(){
       </div>
 
       <div class="row">
-      
+
         <!-- start-form  -->
         <form action="{{route('request')}}" method="post" class="col-md-8 mx-auto input-border" enctype="multipart/form-data">
           @csrf
-          @guest 
+          @guest
           <div class="form-group">
             <label for="name" class="float-right mb-5">الإسم</label>
             <input id="name" name="name" value="{{old('name')}}" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="أكتب إسم المستخدم">
@@ -82,10 +106,10 @@ $(document).ready(function(){
                 <label class="radio-inline ">
                   <input type="radio" class="ml-2" style="transform: scale(2);" name="optradio"> مستهلك نهائي
                 </label>
-                
+
               </div>
             </div>
-            
+
           </div>
           <div class="form-group clearfix">
             <label for="phone" class="float-right mb-5">رقم الموبيل</label>
@@ -95,33 +119,45 @@ $(document).ready(function(){
           <div class="form-group clearfix">
             <label for="dept" class="float-right mb-5">القسم</label>
             <select id="dept" name="department_id" class="select form-control form-control-lg bg-white rounded-lg border" data-style="">
-            <option disabled selected>--من فضلك إختر القسم أولاً--</option>  
+            <option disabled selected>--من فضلك إختر القسم أولاً--</option>
             @foreach($departments as $d)
-              <option value="{{$d->id}}" {{old('department_id')==$d->id?'selected':''}}>{{$d->name}}</option>
+              <option value="{{$d->id}}" {{old('department_id')== $d->id?'selected':''}}>{{$d->name}}</option>
               @endforeach
             </select>
-
+            @error('department_id') <span class="text-danger">{{$message}}</span>@enderror
           </div>
           <div class="form-group clearfix">
             <label for="category" class="float-right mb-5">الفئة</label>
             <select id="category" name="category_id" class="select form-control form-control-lg bg-white rounded-lg border">
-            <option disabled selected>--من فضلك إختر الفئة ثانياً--</option>  
-              
+            <option disabled selected>--من فضلك إختر الفئة ثانياً--</option>
+                @if(old('department_id'))
+                    @foreach(\App\Models\Category::where('department_id',old('department_id'))->get() as $tag)
+                        <option {{old('category_id') == $tag->id ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->name}}}</option>
+                    @endforeach
+                @endif
             </select>
+              @error('category_id') <span class="text-danger">{{$message}}</span> @enderror
 
           </div>
           <div class="form-group clearfix">
             <label for="tagproduct" class="float-right mb-5">المنتجات</label>
             <select id="tagproduct" name="tagproducts[]" class="form-control form-control-lg bg-white rounded-lg border" multiple>
-            
-              
-            </select>
+
+                    @if(old('category_id'))
+
+                        @foreach(\App\Models\Tagproduct::where('category_id',old('category_id'))->get() as $tag)
+                            <option {{collect(old('tagproducts'))->contains($tag->id) ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->name}}}</option>
+                        @endforeach
+                    @endif
+                  </select>
+              @error('tagproducts') <span class="text-danger">{{$message}}</span>@enderror
 
           </div>
-          
+
           <div class="form-group clearfix">
             <label for="details" class="float-right mb-5">: تفاصيل المنتج و الكميات</label>
-            <textarea class="form-control rounded-lg border border-secondary" name="description" id="details"rows="5" placeholder="برجاء ذكر كميات المواد المطلوبة و أي تفاصيل أخرى">{{old('description')}}</textarea>
+            <textarea class="form-control rounded-lg border border-secondary" name="description" id="details" rows="5" placeholder="برجاء ذكر كميات المواد المطلوبة و أي تفاصيل أخرى">{{old('description')}}</textarea>
+              @error('description') <span class="text-danger">{{$message}}</span>@enderror
 
           </div>
           <div class="form-group my-6">
@@ -134,25 +170,27 @@ $(document).ready(function(){
                 <label class="radio-inline ">
                   <input type="radio" class="ml-2" style="transform: scale(2);" name="optradio1">  لا
                 </label>
-                
+
               </div>
             </div>
-            
+
           </div>
-          
+
           <div class="form-group my-6 row" style="clear: right;">
             <div class="d-flex">
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-                <div class="py-2 mx-autos"> 
+                <div class="py-2 mx-autos">
                   <img class="w-30 float-right" src="assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="files[]" multiple>
+                  <input id="files" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 w-100 h-100"  name="files[]" multiple>
                 </div>
               </div>
             </div>
           </div>
+            <div class="d-flex " id="filesUploaded">
+            </div>
           <div class="form-group text-right">
             @auth
             <button class="btn rounded-lg btn-xl btn-primary ml-auto mt-5" type="submit"> إرسال</button>
@@ -170,12 +208,12 @@ $(document).ready(function(){
                 <div class="modal-body rounded-lg">
                   <!-- form  -->
                   <div class="mx-auto input-border">
-        
+
                     <div class="form-group clear-both">
                       <label for="phone-email" class="float-right mb-5">رقم الموبيل</label>
                       <input id="phone-email" name="mobile_login" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="رقم الموبيل">
                     </div>
-          
+
                     <div class="form-group">
                       <label for="password" class="float-right mb-5">الرقم السري</label>
                       <input id="password" type="password" name="password_login" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="كلمة المرور">
@@ -185,7 +223,7 @@ $(document).ready(function(){
                       <p class="small mt-3 opacity-70  text-right mt-5">معندكش حساب؟ <a class="btn btn-none text-primary" onclick="show('page2','page1')">أنشئ دلوقتي </a></p>
                     </div>
                     <p  class="text-default mt-6" style="font-size: 10px;">من خلال التسجيل فأنت توافق على <a class="text-primary" href="">شروط الإستخدام</a>&nbsp; و &nbsp;<a class="text-primary" href="">سياسة الخصوصية</a> </p>
-          
+
                   </div>
                   <!-- end-form -->
                 </div>
@@ -197,12 +235,12 @@ $(document).ready(function(){
                 <div class="modal-body rounded-lg">
                   <!-- form  -->
                   <div class="mx-auto input-border">
-        
+
                     <div class="form-group">
                       <label for="password" class="float-right mb-5">الرقم السري</label>
                       <input id="password" type="password" name="password_register" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="كلمة المرور">
                     </div>
-        
+
                     <div class="form-group">
                       <label for="password" class="float-right mb-5">تأكيد الرقم السري</label>
                       <input id="password" type="password" name="password_register_confirmation" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="كلمة المرور">
@@ -213,7 +251,7 @@ $(document).ready(function(){
                       <p class="small mt-3 opacity-70  text-right mt-5">عندك حساب؟ <a class="btn btn-none text-primary" onclick="show('page1','page2')">دخول </a></p>
                     </div>
                     <p  class="text-default mt-6" style="font-size: 10px;">من خلال التسجيل فأنت توافق على <a class="text-primary" href="">شروط الإستخدام</a>&nbsp; و &nbsp;<a class="text-primary" href="">سياسة الخصوصية</a> </p>
-          
+
                   </div>
                   <!-- end-form -->
                 </div>
@@ -222,7 +260,9 @@ $(document).ready(function(){
           </div>
           @endguest
         </form>
-        
+
+      </div>
     </div>
   </header>
 @endsection
+

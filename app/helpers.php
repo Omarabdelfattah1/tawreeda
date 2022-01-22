@@ -1,7 +1,8 @@
 <?php
 
 function size($path){
-  $size =filesize($path);
+
+  $size = Storage::size('public/'.$path);
   if ($size >= 1073741824) {
     $fileSize = round($size / 1024 / 1024 / 1024,1) . 'GB';
   } elseif ($size >= 1048576) {

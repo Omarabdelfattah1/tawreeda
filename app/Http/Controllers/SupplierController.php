@@ -10,10 +10,11 @@ use App\Models\Department;
 use App\Models\File;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Storage;
 class SupplierController extends Controller
 {
-   
+
     public function calls(){
       return view('supplier.calls');
     }
@@ -47,7 +48,7 @@ class SupplierController extends Controller
       // dd($request->tagproduct);
       $supplier = auth()->user()->userable;
       $supplier->tagproducts()->sync($request->tagproduct);
-     
+
       return redirect()->route('supplier.products');
     }
     public function factories(){
@@ -139,6 +140,14 @@ class SupplierController extends Controller
         $path = str_replace('public/','',$request->file('photo')->store('public/users/photos'));
         $updates['photo'] = $path;
       }
+        if (!empty($request->password && $request->password_confirmation)){
+            if($request->password != $request->password_confirmation){
+                return redirect()->back()->withErrors(['password'=>'كلمتي المرور غير متطابقتين']);
+            }else{
+                $updates['password'] = Hash::make($request->user['password']);
+            }
+
+        }
       $user->update(array_filter($updates));
       return redirect()->back();
     }

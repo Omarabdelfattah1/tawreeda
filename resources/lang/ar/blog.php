@@ -1,0 +1,27 @@
+<?php
+return [
+    "Show More Comments" => "المزيد من التعليقات",
+    "previous comments" => "التعليقات السابقة",
+    "Comments" => "التعليقات",
+    "Follow us" => "تابعنا",
+    "Leave A Comment" => "اترك تعليق",
+    "Please Select" => "اختر من فضلك",
+    "Posted By" => "منشور بواسطة",
+    "Recent Posts" => "آخر المنشورات",
+    "Search" => "البحث",
+    "Search Here" => "ابحث هنا",
+    "Your Comment" => "تعليقك",
+    "all articles" => "كل المقالات",
+    "all news" => "كل الأخبار",
+    "articles" => "مقالات",
+    "blog" => "المدونة",
+    "categories" => "الأقسام",
+    "comment email" => "الايميل",
+    "comment name" => "الاسم",
+    "conferences" => "مؤتمرات",
+    "next" => " المقال التالي",
+    "previous" => " المقال السابق",
+    "read_more" => "عرض المزيد",
+    "share" => "مشاركة",
+    "sort by" => "فرز بواسطة"
+];

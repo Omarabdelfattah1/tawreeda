@@ -8,12 +8,14 @@ use App\Models\Supplier;
 use App\Models\Buyer;
 use App\Models\Review;
 use App\Notifications\Call;
+use Illuminate\Support\Facades\Hash;
+
 class BuyerController extends Controller
 {
   public function requests(){
     return view('buyer.requests.index')->with('requests' ,auth()->user()->userable->requests);
   }
-  
+
   public function calls(){
     return view('buyer.calls');
   }
@@ -27,7 +29,7 @@ class BuyerController extends Controller
       'from_time' => $request->from_time,
       'to_time' => $request->to_time,
       'way' => $request->way,
-      
+
     ]);
     $supplier->user->notify(new Call($call->id));
     return redirect()->route('buyer.calls');
@@ -84,6 +86,14 @@ class BuyerController extends Controller
       $path = str_replace('public/','',$request->file('photo')->store('public/users/photos'));
       $updates['photo'] = $path;
     }
+  if (!empty($request->password && $request->password_confirmation)){
+      if($request->password != $request->password_confirmation){
+          return redirect()->back()->withErrors(['password'=>'كلمتي المرور غير متطابقتين']);
+      }else{
+          $updates['password'] = Hash::make($request->password);
+      }
+
+  }
     $user->update(array_filter($updates));
     return redirect()->back();
   }

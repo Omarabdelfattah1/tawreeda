@@ -1,0 +1,122 @@
+<?php
+return [
+    'dashboard'=>[
+        'dashboard' => 'لوحة التحكم',
+        'view dashboard' => 'عرض لوحة التحكم',
+    ],
+
+    "aboutUs"      => [
+        "aboutUs"        => "عن الشركة",
+        "create aboutUs" => "إنشاء aboutUs",
+        "delete aboutUs" => "حذف aboutUs",
+        "update aboutUs" => "تحديث aboutUs",
+        "view aboutUs"   => "عرض aboutUs",
+    ],
+    "applications" => [
+        "view application" => "عرض الطلبات",
+        "applications"     => "الطلبات",
+    ],
+    "comments"     => [
+        "comments"       => "تعليقات العملاء",
+        "create comment" => "إنشاء تعليق",
+        "delete comment" => "حذف تعليق",
+        "update comment" => "تحديث التعليق",
+        "view comment"   => "عرض التعليق",
+    ],
+    "contents"     => [
+        "contents"       => "المحتوى",
+        "create content" => "إنشاء المحتوى",
+        "delete content" => "حذف المحتوى",
+        "update content" => "تحديث المحتوى",
+        "view content"   => "عرض المحتوى",
+    ],
+    "countries"    => [
+        "countries"      => "البلاد",
+        "create country" => "خلق البلد",
+        "delete country" => "حذف البلد",
+        "update country" => "تحديث الدولة",
+        "view country"   => "عرض البلد",
+    ],
+    "counts"       => [
+        "counts"       => "الأعداد",
+        "create count" => "إنشاء الأعداد",
+        "delete count" => "حذف الأعداد",
+        "update count" => "تحديث الأعداد",
+        "view count"   => "عرض الأعداد",
+    ],
+    "faqs"         => [
+        "faqs"       => "الأسئلة الشائعة",
+        "create faq" => "إنشاء الأسئلة",
+        "delete faq" => "حذف الأسئلة",
+        "update faq" => "تحديث الأسئلة",
+        "view faq"   => "عرض الأسئلة",
+    ],
+    "footer"       => [
+        "footer"        => "التذييل",
+        "create footer" => "إنشاء تذييل",
+        "delete footer" => "حذف التذييل",
+        "update footer" => "تحديث التذييل",
+        "view footer"   => "عرض التذييل",
+    ],
+    "galleries"    => [
+        "galleries"      => "معرض الصور",
+        "create gallery" => "إنشاء معرض",
+        "delete gallery" => "حذف المعرض",
+        "update gallery" => "تحديث معرض",
+        "view gallery"   => "عرض المعرض",
+    ],
+    "inbox"        => [
+        "view inbox" => "عرض البريد الوارد",
+        "inbox"      => " البريد الوارد",
+    ],
+    "news_letter"  => [
+        "news_letter"        => "النشرة الإخبارية",
+        "create news_letter" => "إنشاء النشرة الإخبارية",
+        "delete news_letter" => "حذف النشرة الإخبارية",
+        "update news_letter" => "تحديث النشرة الإخبارية",
+        "view news_letter"   => "عرض النشرة الإخبارية",
+    ],
+    "policies"     => [
+        "policies"      => "سياسات الموقع",
+        "update policy" => " تحديث سياسة",
+        "view policy"   => "عرض السياسة",
+    ],
+    "roles"        => [
+        "roles"       => "أدوار المستخدمين",
+        "create role" => "خلق دور",
+        "delete role" => "حذف الدور",
+        "update role" => "تحديث الدور",
+        "view role"   => "عرض الدور",
+    ],
+    "services"     => [
+        "services"        => " الخدمات",
+        "create services" => "إنشاء الخدمات",
+        "delete services" => "حذف الخدمات",
+        "update services" => "خدمات التحديث",
+        "view services"   => "عرض الخدمات",
+    ],
+    "settings"     => [
+        "settings"       => "الاعدادات",
+        "update setting" => "إعداد التحديث",
+        "view setting"   => "عرض الإعداد",
+    ],
+    "translation"  => [
+        "translation"        => " الترجمة",
+        "update translation" => "تحديث الترجمة",
+        "view translation"   => "عرض الترجمة",
+    ],
+    "universities" => [
+        "universities"      => "الجامعات",
+        "create university" => "انشاء جامعة",
+        "delete university" => "حذف الجامعة",
+        "update university" => "تحديث الجامعة",
+        "view university"   => "عرض الجامعة",
+    ],
+    "users"        => [
+        "users"       => "المستخدمين",
+        "create user" => "خلق المستخدم",
+        "delete user" => "مسح المستخدم",
+        "update user" => "تحديث المستخدم",
+        "view user"   => "عرض المستخدم",
+    ],
+];
