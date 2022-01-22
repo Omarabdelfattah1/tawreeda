@@ -1,5 +1,6 @@
 @extends('layouts.app-test')
 @section('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .tab {
             display: none;
@@ -18,6 +19,18 @@
         .step.finish {
             background-color: #04AA6D;
         }
+        input.invalid {
+            background-color: #ffdddd;
+        }
+        /* Mark the active step: */
+        .step.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid: */
+        .step.finish {
+            background-color: #04AA6D;
+        }
     </style>
 @endsection
 @section('test')
@@ -27,7 +40,7 @@
         <span class="step"></span>
         <span class="step"></span>
     </div>
-    <form class="col-md-8 mx-auto"  enctype="multipart/form-data">
+    <form id="formRegister" class="col-md-8 mx-auto" action="{{route('supplier.test.register')}}" method="post"  enctype="multipart/form-data">
         @csrf
         <div class="tab">
             <div class="form-group">
@@ -41,8 +54,8 @@
             </div>
             <div class="form-group" >
                 <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
-                <select  name="state" id="govern" class="form-control form-control-lg rounded-lg border border-secondary">
-                    <option value="" selected>--إختر المحافظة--</option>
+                <select style="width: 100%;" name="state" id="govern" class="select form-control form-control-lg rounded-lg border border-secondary">
+                    <option value="" disabled selected>--إختر المحافظة--</option>
                     @foreach(config('states') as $state)
                         <option class="text-right" value="{{$state}}">
                             {{$state}}
@@ -114,14 +127,13 @@
                             <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> تحميل الكاتالوج
-                            <input type="file" value="{{old('cataloge')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 w-100 h-100" name="cataloge">
+                            <input type="file" id="catalogImage" value="{{old('cataloge')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="form-control ml-2 w-100 h-100" name="cataloge">
                         </div>
                     </div>
 
                 </div>
-                <div class="text-right">
+                <div id="catalogPreview" class="text-right">
 
-                    <img src="" style="width:100px;height:100px;" alt="">
                 </div>
                 @error('cataloge')
                 <span class="text-danger">
@@ -131,8 +143,8 @@
             </div>
             <div class="form-group clearfix">
                 <label for="dept" class="float-right mb-5">القسم</label>
-                <select id="dept" name="department_id" class="select form-control form-control-lg bg-white rounded-lg border" data-style="">
-                    <option disabled selected>--من فضلك إختر القسم أولاً--</option>
+                <select style="width: 100%" id="dept" name="department_id" class="select form-control form-control-lg bg-white rounded-lg border" multiple>
+                    <option disabled>--من فضلك إختر القسم أولاً--</option>
                     @foreach($departments as $d)
                         <option value="{{$d->id}}" {{old('department_id')==$d->id?'selected':''}}>{{$d->name}}</option>
                     @endforeach
@@ -141,17 +153,20 @@
             </div>
             <div class="form-group clearfix">
                 <label for="category" class="float-right mb-5">الفئة</label>
-                <select id="category" name="category_id" class="select form-control form-control-lg bg-white rounded-lg border">
-                    <option disabled selected>--من فضلك إختر الفئة ثانياً--</option>
-
+                <select style="width: 100%" id="category" name="category_id" class="select form-control form-control-lg bg-white rounded-lg border" multiple>
+                    <option disabled >--من فضلك إختر الفئة ثانياً--</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
                 </select>
 
             </div>
             <div class="form-group clearfix">
                 <label for="tagproduct" class="float-right mb-5">المنتجات</label>
-                <select id="tagproduct" name="tagproducts[]" class="form-control form-control-lg bg-white rounded-lg border" multiple>
-
-
+                <select style="width: 100%" id="tagproduct" name="tagproducts[]" class="select form-control form-control-lg bg-white rounded-lg border" multiple>
+                    @foreach($tagproducts as $tag)
+                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
                 </select>
 
             </div>
@@ -195,12 +210,12 @@
                             <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                            <input  type="file" value="{{old('photo')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="photo">
+                            <input id="photoFile" type="file" value="{{old('photo')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="form-control ml-2" name="photo">
                         </div>
                     </div>
                 </div>
-                <div class="text-right">
-                    <img src="" style="width:100px;height:100px;" alt="">
+                <div id="photoPreview" class="text-right">
+
                 </div>
                 @error('photo')
                 <span class="text-danger">
@@ -252,7 +267,14 @@
 
 @endsection
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
+        $('.select').select2({
+            placeholder: '--إختر--',
+            selectionCssClass: "form-control form-control-lg rounded-lg border border-secondary h-10 w-100",
+            // dropdownCssClass: "select2Option",
+        });
+
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
 
@@ -267,9 +289,9 @@
                 document.getElementById("prevBtn").style.display = "inline";
             }
             if (n == (x.length - 1)) {
-                document.getElementById("nextBtn").innerHTML = "Submit";
+                document.getElementById("nextBtn").innerHTML = "سجل";
             } else {
-                document.getElementById("nextBtn").innerHTML = "Next";
+                document.getElementById("nextBtn").innerHTML = "التالي";
             }
             // ... and run a function that displays the correct step indicator:
             fixStepIndicator(n)
@@ -287,7 +309,7 @@
             // if you have reached the end of the form... :
             if (currentTab >= x.length) {
                 //...the form gets submitted:
-                document.getElementById("regForm").submit();
+                document.getElementById('formRegister').submit();
                 return false;
             }
             // Otherwise, display the correct tab:
@@ -298,21 +320,18 @@
             // This function deals with validation of the form fields
             var x, y, i, valid = true;
             x = document.getElementsByClassName("tab");
-            y = x[currentTab].getElementsByTagName("input");
+            y = x[currentTab].getElementsByClassName("form-group");
             // A loop that checks every input field in the current tab:
             for (i = 0; i < y.length; i++) {
-                // If a field is empty...
-                if (y[i].value == "") {
-                    // add an "invalid" class to the field:
-                    y[i].className += " invalid";
+
+                if (y[i].getElementsByClassName('form-control')[0].value == "") {
+                    var validat = "<span class='text-danger'>هذا الحقل مطلوب</span>";
+                    y[i].insertAdjacentHTML("afterend",validat);
                     // and set the current valid status to false:
                     valid = false;
                 }
             }
-            // If the valid status is true, mark the step as finished and valid:
-            if (valid) {
-                document.getElementsByClassName("step")[currentTab].className += " finish";
-            }
+
             return valid; // return the valid status
         }
 
@@ -322,8 +341,36 @@
             for (i = 0; i < x.length; i++) {
                 x[i].className = x[i].className.replace(" active", "");
             }
-            //... and adds the "active" class to the current step:
-            x[n].className += " active";
         }
+
+        $(function() {
+            // Multiple images preview in browser
+            var imagesPreview = function(input, placeToInsertImagePreview) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            var file = ``
+                            $($.parseHTML(`<img class="mr-2" style="width:100px !important;height:100px !important;">`)).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#catalogImage').on('change', function() {
+                imagesPreview(this, $('#catalogPreview'));
+            });
+            $('#photoFile').on('change', function() {
+                imagesPreview(this, $('#photoPreview'));
+            });
+
+        });
     </script>
 @endsection

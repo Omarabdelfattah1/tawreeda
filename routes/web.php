@@ -159,6 +159,7 @@ Route::group(['as'=>'dashboard.','middleware'=>['auth','admin'],'prefix'=>'/dash
 });
 
 Route::get('/register-supplier-ajax',['uses'=> 'RegisterSupplier@index']);
+Route::post('/register-supplier-ajax',['uses'=> 'RegisterSupplier@submit','as' => 'supplier.test.register']);
 Route::get('/request','RequestController@create')->name('request');
 Route::get('/departments','DepartmentController@departments')->name('departments');
 Route::get('/{department}/categories','DepartmentController@categories')->name('categories');
