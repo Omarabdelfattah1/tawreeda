@@ -63,7 +63,7 @@
             <div class="form-group" >
                 <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
                 <select style="width: 100%;" name="state" id="govern" class="select required form-control form-control-lg rounded-lg border border-secondary">
-                    <option value="" disabled>--إختر المحافظة--</option>
+                    <option value="" disabled selected>--إختر المحافظة--</option>
                     @foreach(config('states') as $state)
                         <option class="text-right" value="{{$state}}" {{old('state') == $state ? 'selected':''}}>
                             {{$state}}
