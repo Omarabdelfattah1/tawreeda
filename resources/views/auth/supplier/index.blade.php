@@ -40,12 +40,20 @@
         <span class="step"></span>
         <span class="step"></span>
     </div>
+
     <form id="formRegister" class="col-md-8 mx-auto" action="{{route('supplier.test.register')}}" method="post"  enctype="multipart/form-data">
         @csrf
+        <div style="width: 200px !important;" class="text-center mx-auto">
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <div class="text-danger">{{$error}}</div><br>
+                @endforeach
+            @endif
+        </div>
         <div class="tab">
             <div class="form-group">
                 <label for="company-name" class="float-right mb-5">إسم الشركة <span class="text-danger" style="font-size:20px;">*</span> </label>
-                <input id="company-name"  value="{{old('company_name')}}" name="company_name" class="form-control form-control-lg rounded-lg border border-secondary">
+                <input id="company-name"  value="{{old('company_name')}}" name="company_name" class="required form-control form-control-lg rounded-lg border border-secondary">
                 @error('company_name')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -54,10 +62,10 @@
             </div>
             <div class="form-group" >
                 <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
-                <select style="width: 100%;" name="state" id="govern" class="select form-control form-control-lg rounded-lg border border-secondary">
-                    <option value="" disabled selected>--إختر المحافظة--</option>
+                <select style="width: 100%;" name="state" id="govern" class="select required form-control form-control-lg rounded-lg border border-secondary">
+                    <option value="" disabled>--إختر المحافظة--</option>
                     @foreach(config('states') as $state)
-                        <option class="text-right" value="{{$state}}">
+                        <option class="text-right" value="{{$state}}" {{old('state') == $state ? 'selected':''}}>
                             {{$state}}
                         </option>
                     @endforeach
@@ -70,7 +78,7 @@
             </div>
             <div class="form-group">
                 <label for="company-address" class="float-right mb-5">عنوان الشركة <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input  id="company-address" value="{{old('company_address')}}" name="company_address" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="أكتب العنوان كاملاً">
+                <input  id="company-address" value="{{old('company_address')}}" name="company_address" class="required form-control form-control-lg rounded-lg border border-secondary" placeholder="أكتب العنوان كاملاً">
                 @error('company_address')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -79,7 +87,7 @@
             </div>
             <div class="form-group">
                 <label for="details" class="float-right mb-5">:   نبذة عن الشركة  <span class="text-danger" style="font-size:20px;">*</span></label>
-                <textarea  name="about" class="form-control rounded-lg border border-secondary" id="details"rows="5" placeholder="أكتب نبذة عن الشركة">{{old('about')}}</textarea>
+                <textarea  name="about" class="required form-control rounded-lg border border-secondary" id="details"rows="5" placeholder="أكتب نبذة عن الشركة">{{old('about')}}</textarea>
                 @error('about')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -109,7 +117,7 @@
             </div>
             <div class="form-group">
                 <label for="emp" class="float-right mb-5"> عدد الموظفين <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input  id="emp" name="employees_number" value="{{old('employees_number')}}" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : 7">
+                <input  id="emp" name="employees_number" value="{{old('employees_number')}}" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="مثال : 7">
                 @error('employees_number')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -174,7 +182,7 @@
         <div class="tab">
             <div class="form-group clearfix">
                 <label for="name" class="float-right mb-5">إسم المستخدم <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input  id="name" name="name" value="{{old('name')}}" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="الإسم">
+                <input  id="name" name="name" value="{{old('name')}}" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="الإسم">
 
                 @error('name')
                 <span class="text-danger">
@@ -194,7 +202,7 @@
             </div>
             <div class="form-group clearfix">
                 <label for="summary" class="float-right mb-5">  نبذة عن صفة المستخدم  <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input  id="summary" value="{{old('summary')}}" name="summary" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : صاحب الشركة و مدير تنفيذي">
+                <input  id="summary" value="{{old('summary')}}" name="summary" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="مثال : صاحب الشركة و مدير تنفيذي">
 
                 @error('summary')
                 <span class="text-danger">
@@ -227,7 +235,7 @@
         <div class="tab">
             <div class="form-group clearfix">
                 <label for="user-phone" class="float-right mb-5">رقم الموبيل  <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input type="number"  id="user-phone" value="{{old('mobile')}}" name="mobile" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="رقم الموبيل">
+                <input type="number"  id="user-phone" value="{{old('mobile')}}" name="mobile" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="رقم الموبيل">
                 @error('mobile')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -236,7 +244,7 @@
             </div>
             <div class="form-group">
                 <label for="password" class="float-right mb-5">  كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input  id="password" name="password" class="form-control form-control-lg rounded-lg border border-secondary" type="password">
+                <input  id="password" name="password" class="form-control form-control-lg required rounded-lg border border-secondary" type="password">
                 @error('password')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -245,7 +253,7 @@
             </div>
             <div class="form-group">
                 <label for="password-confirm" class="float-right mb-5">  تأكيد كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input  id="password-confirm" name="password_confirmation" class="form-control form-control-lg rounded-lg border border-secondary" type="password">
+                <input  id="password-confirm" name="password_confirmation" class="form-control required form-control-lg rounded-lg border border-secondary" type="password">
                 @error('password_confirmation')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -254,9 +262,9 @@
             </div>
         </div>
         <div class="form-group text-center">
-            <button type="button" id="nextBtn" onclick="nextPrev(1)"  class="btn rounded-lg  btn-primary p-3  w-10 mt-5"> التالي</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1,event)"  class="btn rounded-lg btn-xl btn-primary mt-5"> التالي</button>
 
-            <button id="prevBtn" onclick="nextPrev(-1)" class="btn rounded-lg btn-xl btn-secondary ml-auto mt-5">
+            <button id="prevBtn" onclick="nextPrev(-1,event)" class="btn rounded-lg btn-xl btn-secondary ml-auto mt-5">
                 السابق
             </button>
         </div>
@@ -280,30 +288,32 @@
 
         function showTab(n) {
             // This function will display the specified tab of the form ...
-            var x = document.getElementsByClassName("tab");
-            x[n].style.display = "block";
+            var x = $(".tab");
+            console.log(x[n]);
+            $(x[n]).show();
             // ... and fix the Previous/Next buttons:
             if (n == 0) {
-                document.getElementById("prevBtn").style.display = "none";
+                $("#prevBtn").hide();
             } else {
-                document.getElementById("prevBtn").style.display = "inline";
+                $("#prevBtn").show();
             }
             if (n == (x.length - 1)) {
-                document.getElementById("nextBtn").innerHTML = "سجل";
+                $("#nextBtn").html("سجل");
             } else {
-                document.getElementById("nextBtn").innerHTML = "التالي";
+                $("#nextBtn").html("التالي");
             }
             // ... and run a function that displays the correct step indicator:
             fixStepIndicator(n)
         }
 
-        function nextPrev(n) {
+        function nextPrev(n,e) {
             // This function will figure out which tab to display
-            var x = document.getElementsByClassName("tab");
+            e.preventDefault();
+            var x = $(".tab");
             // Exit the function if any field in the current tab is invalid:
             if (n == 1 && !validateForm()) return false;
             // Hide the current tab:
-            x[currentTab].style.display = "none";
+            $(x[currentTab]).hide();
             // Increase or decrease the current tab by 1:
             currentTab = currentTab + n;
             // if you have reached the end of the form... :
@@ -319,14 +329,16 @@
         function validateForm() {
             // This function deals with validation of the form fields
             var x, y, i, valid = true;
-            x = document.getElementsByClassName("tab");
-            y = x[currentTab].getElementsByClassName("form-group");
+            x = $(".tab");
+            console.log(x);
+            y = $(x[currentTab]).find(".required");
+            console.log(y);
             // A loop that checks every input field in the current tab:
             for (i = 0; i < y.length; i++) {
 
-                if (y[i].getElementsByClassName('form-control')[0].value == "") {
+                if ($(y[i]).val() == "") {
                     var validat = "<span class='text-danger'>هذا الحقل مطلوب</span>";
-                    y[i].insertAdjacentHTML("afterend",validat);
+                    $(y[i]).after(validat);
                     // and set the current valid status to false:
                     valid = false;
                 }
@@ -337,9 +349,9 @@
 
         function fixStepIndicator(n) {
             // This function removes the "active" class of all steps...
-            var i, x = document.getElementsByClassName("step");
+            var i, x = $(".step");
             for (i = 0; i < x.length; i++) {
-                x[i].className = x[i].className.replace(" active", "");
+                $(x[i]).addClass("active");
             }
         }
 

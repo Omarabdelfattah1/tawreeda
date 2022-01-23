@@ -26,14 +26,13 @@ class RegisterSupplier extends Controller
             $userable = Supplier::create([
                 'company_name' => $data['company_name'],
                 'state' =>  $data['state'],
-                'company_address' =>  $data['company_address'],
-                'about' =>  $data['about'],
-                'company_CRN' =>  $data['company_CRN'],
-                'employees_number' => 1,
-                'company_TXCard' =>  $data['company_TXCard'],
-                'cataloge' =>  $data['cataloge'],
+                'company_address' =>  $data['company_address']?? null,
+                'about' =>  $data['about']??null,
+                'company_CRN' =>  $data['company_CRN']?? null,
+                'employees_number' => $data['employees_number']?? null,
+                'company_TXCard' =>  $data['company_TXCard']??null,
             ]);
-            if($data['cataloge']){
+            if(isset($data['cataloge'])){
                 $path = $data['cataloge']->store('public/cataloge');
                 $userable->company_cataloge = str_replace('public/','',$path);
                 $userable->save();
@@ -45,7 +44,7 @@ class RegisterSupplier extends Controller
                 'password' => Hash::make($data['password']),
                 'locked' => true,
             ]);
-            if($data['photo']){
+            if(isset($data['photo'])){
                 $path = $data['photo']->store('public/users/photos');
                 $user->photo = str_replace('public/','',$path);
                 $user->save();
