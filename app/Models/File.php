@@ -26,4 +26,8 @@ class File extends Model
     {
         return $this->morphTo();
     }
+
+    public function getPathAttribute(){
+        return 'storage/'. $this->getAttributes()['path'];
+    }
 }
