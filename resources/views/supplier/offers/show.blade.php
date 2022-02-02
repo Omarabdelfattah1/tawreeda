@@ -12,7 +12,7 @@
   <div class="pt-3">
     <div class="row flex-warp m-3 border-bottom" >
       <div class="col-md-9 media">
-        <img class="m-3" style="width: 70px;" src="{{asset('storage/'.$offer->request->buyer->company_logo)}}" alt="">
+        <img class="m-3" style="width: 70px;" src="{{asset($offer->request->buyer->company_logo)}}" alt="">
         <div class="">
           <h6 class="py-3 font-weight-bold">
             {{$offer->request->buyer->company_name}}
@@ -60,10 +60,10 @@
               <img src="{{asset('assets/xd/attachment-pdf.svg')}}" style="width: 40px;" class="ml-2" alt="">
               <div>
                 <h6 class="mb-3">Document File</h6>
-                <p style="font-size: xx-samall;">{{size('storage/'.$file->path)}}</p>
+                <p style="font-size: xx-samall;">{{size($file->path)}}</p>
               </div>
           </div>
-          <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
+          <a href="{{asset($file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
 
             <i class="fa fa-download text-primary" ></i>
           </a>
@@ -144,10 +144,10 @@
               <img src="{{asset('assets/xd/attachment-pdf.svg')}}" style="width: 40px;" class="ml-2" alt="">
               <div>
                 <h6 class="mb-3">Document File</h6>
-                <p style="font-size: xx-samall;">{{size('storage/'.$file->path)}}</p>
+                <p style="font-size: xx-samall;">{{size($file->path)}}</p>
               </div>
           </div>
-          <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
+          <a href="{{asset($file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
 
             <i class="fa fa-download text-primary" ></i>
           </a>

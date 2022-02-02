@@ -13,7 +13,7 @@
         <div class="">
           <h6 class="py-3 font-weight-bold">
             {{$offer->request->buyer->company_name}}
-          
+
           </h6>
           <div class="row mr-1  mt-3">
             <div class="media ml-3 mb-3">
@@ -57,13 +57,13 @@
               <img src="{{asset('assets/xd/attachment-pdf.svg')}}" style="width: 40px;" class="ml-2" alt="">
               <div>
                 <h6 class="mb-3">Document File</h6>
-                <p style="font-size: xx-samall;">{{size('storage/'.$file->path)}}</p>
+                <p style="font-size: xx-samall;">{{size($file->path)}}</p>
               </div>
           </div>
-          <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
-            
+          <a href="{{asset($file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
+
             <i class="fa fa-download text-primary" ></i>
-          </a>                    
+          </a>
         </div>
         @endforeach
       </div>
@@ -125,7 +125,7 @@
         <p  style="line-height: 30px;" class="mr-2">  عرض السعر ساري لمدة  <span class="font-weight-bold">{{$offer->available_for}}</span> يوم من إرساله</p>
 
     </div>
-    
+
     <div class="row m-3 justify-content-between border-bottom pb-3">
       <div class="col-md-6">
         <h6 class="mb-6">ملاحظات:</h6>
@@ -141,13 +141,13 @@
               <img src="{{asset('assets/xd/attachment-pdf.svg')}}" style="width: 40px;" class="ml-2" alt="">
               <div>
                 <h6 class="mb-3">Document File</h6>
-                <p style="font-size: xx-samall;">{{size('storage/'.$file->path)}}</p>
+                <p style="font-size: xx-samall;">{{size($file->path)}}</p>
               </div>
           </div>
-          <a href="{{asset('storage/'.$file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
-            
+          <a href="{{asset($file->path)}}" target="_blank" class="btn btn-default" style="padding: 0;font-size: 20px;" download>
+
             <i class="fa fa-download text-primary" ></i>
-          </a>                    
+          </a>
         </div>
         @endforeach
       </div>

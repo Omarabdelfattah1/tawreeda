@@ -6,7 +6,7 @@
             الفئات
           </div>
           <div>
-          
+
           <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary rounded">إضافة فئة</button>
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -26,7 +26,7 @@
                     <div class="d-flex">
                       <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                        <div class="py-2 mx-auto"> 
+                        <div class="py-2 mx-auto">
                           <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -56,37 +56,37 @@
               <div  class="py-3" style="display:table-cell;padding:6px;">المنتجات  </div>
               <div  class="py-3" style="display:table-cell;padding:6px;">التعديل</div>
             </div>
-            
+
             @foreach($categories as $category)
             <div style="display:table-row;font-size:12px;width: auto;clear: both;border-bottom: 4px solid #F4F4F4 !important;" class="sm-tbl-row bg-white">
-              
+
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">الصورة</div>
-                
+
                 <div style="padding:6px;"  class=" sm-tbl-cell-header text-primary">
                   <div class="media">
-                    <img src="{{asset('storage/'.$category->img)}}" alt="" style="width: 40px;">
-                    
+                    <img src="{{asset($category->img)}}" alt="" style="width: 40px;">
+
                   </div>
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">الإسم</div>
-                
+
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   {{$category->name}}
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">عدد المنتجات</div>
-                
+
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   {{$category->tagproducts_count}}
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">المنتجات</div>
-                
+
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   <a href="{{route('dashboard.categories.show',$category)}}">عرض المنتجات</a>
                 </div>
@@ -99,7 +99,7 @@
               تعديل
             </button>
 
-            
+
               <button class="ml-2 btn btn-none p-0" type="submit">
                 <span >
                 <i class="fa fa-trash text-danger" alt=""></i>
@@ -125,7 +125,7 @@
                     <div class="d-flex">
                       <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                        <div class="py-2 mx-auto"> 
+                        <div class="py-2 mx-auto">
                           <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -142,7 +142,7 @@
               </div>
             </div>
             @endforeach
-            
+
           </div>
         </div>
       @endsection

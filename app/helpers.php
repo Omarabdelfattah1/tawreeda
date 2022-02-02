@@ -1,7 +1,7 @@
 <?php
 
 function size($path){
-
+    $path = str_replace('storage/','',$path);
   $size = Storage::size('public/'.$path);
   if ($size >= 1073741824) {
     $fileSize = round($size / 1024 / 1024 / 1024,1) . 'GB';
