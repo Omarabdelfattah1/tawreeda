@@ -40,6 +40,10 @@ class RequestController extends Controller
                     // dd($messages);
                     return redirect()->back()->withErrors($messages)->withInput();
                 }
+                if(!($user->userable instanceof (Buyer::class))){
+                    session()->flash('message','هذا الحساب غير مسجل كبائع');
+                    return redirect()->route('home');
+                }
             }else if($request->password_register){
                 $request->validate([
                     'mobile' => ['required','string', 'max:255', 'unique:users',
@@ -67,6 +71,9 @@ class RequestController extends Controller
             }
             $user = auth()->user();
         }
+
+
+
         $files =[];
         $data = array_merge($data,['buyer_id' => $user->userable->id]);
         $p_request = PRequest::create($data);
