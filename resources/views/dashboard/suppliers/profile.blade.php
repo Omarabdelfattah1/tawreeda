@@ -69,8 +69,8 @@
                   @enderror
               </div>
               <div class="form-group col-md-6">
-                <label class="mb-3" for="password"> إيقاف الحساب:</label>
-                <input type="checkbox" name="locked" {{$supplier->locked ? 'checked':''}} id="name" placeholder="" class="form-control rounded-lg">
+                <label class="mb-3"> إيقاف الحساب:</label>
+                <input type="checkbox" name="locked" {{$supplier->locked ? 'checked':''}} >
 
               </div>
             </div>
