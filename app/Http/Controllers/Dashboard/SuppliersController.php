@@ -180,9 +180,9 @@ class SuppliersController extends Controller
 
         }
         if($request->locked){
-            $updates['locked']= false;
-        }else{
             $updates['locked']= true;
+        }else{
+            $updates['locked']= false;
         }
          return $user->update(array_filter($updates));
     }
