@@ -27,7 +27,5 @@ class Category extends Model
     {
         return $this->hasMany(Tagproduct::class);
     }
-    public function getImgAttribute(){
-        return $this->getAttributes()['img'] ? 'storage/'. $this->getAttributes()['img'] : 'my-profile.png';
-    }
+
 }
