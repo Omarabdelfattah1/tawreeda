@@ -179,12 +179,14 @@ class SuppliersController extends Controller
             }
 
         }
+        $user = $user->update(array_filter($updates));
         if($request->locked){
-            $updates['locked']= true;
+            $user->locked = true;
         }else{
-            $updates['locked']= false;
+            $user->locked = false;
         }
-         return $user->update(array_filter($updates));
+        $user->save();
+         return $user;
     }
     /**
      * Remove the specified resource from storage.
