@@ -40,7 +40,7 @@ class RequestController extends Controller
                     // dd($messages);
                     return redirect()->back()->withErrors($messages)->withInput();
                 }
-                if(!($user->userable instanceof (Buyer::class))){
+                if(!($user->userable instanceof \App\Models\Buyer)){
                     session()->flash('message','هذا الحساب غير مسجل كبائع');
                     return redirect()->route('home');
                 }
