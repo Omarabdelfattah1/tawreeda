@@ -17,4 +17,8 @@ class Department extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+    public function getImgAttribute(){
+        return $this->getAttributes()['img'] ? 'storage/'. $this->getAttributes()['img'] : 'my-profile.png';
+    }
 }

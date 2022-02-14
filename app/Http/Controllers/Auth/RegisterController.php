@@ -54,14 +54,14 @@ class RegisterController extends Controller
         return view('auth.supplier_register')
         ->with('tagproducts',Tagproduct::all())
         ->with('categories',Category::all())
-        ->with('department',Department::all());
-        
+        ->with('departments',Department::all());
+
     }
     public function showSupplierRegisteration(){
         return view('auth.test_register_supplier');
-        
+
     }
-    
+
     public function storeBuyer(array $data){
         return Buyer::create($data);
     }
@@ -93,7 +93,7 @@ class RegisterController extends Controller
             'mobile' => ['required','string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
-        
+
         $rules = array_merge($to_merge,$rules);
         return Validator::make($data, $rules);
     }
@@ -118,7 +118,7 @@ class RegisterController extends Controller
                     $userable->save();
                 }
             }
-            
+
             if($data['user_type'] == 'supplier'){
                 $userable = $this->storeSupplier($data);
                 $userable->departments()->attach($data['department']);
@@ -142,8 +142,8 @@ class RegisterController extends Controller
                 $user->photo = str_replace('public/','',$path);
                 $user->save();
             }
-            
-            
+
+
 
         });
 

@@ -34,7 +34,9 @@ class Filtersuppliers extends Component
 
         $suppliers = Category::find($this->category)->suppliers()->with('reviews');
         return view('livewire.filtersuppliers')
-        ->with('suppliers',$suppliers->when($this->states,function($query,$states){
+        ->with('suppliers',$suppliers->whereHas('user',function ($q){
+            return $q->where('verified',true);
+        })->when($this->states,function($query,$states){
                 return $query->whereIn('state',$states);
             })->when($this->type,function($query,$type){
                 return $query->where('type',$type);
