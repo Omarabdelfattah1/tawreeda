@@ -158,7 +158,6 @@ class SuppliersController extends Controller
             }
         }else{
             $status = $this->updateProfile($supplier->user(),$request);
-            dd($status);
         }
         session()->flash('message','تم التعديل بنجاح');
         return redirect()->back();
