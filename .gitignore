@@ -2,7 +2,7 @@
 /public/hot
 /public/assets/images
 /public/ckeditor
-/public/storage
+/public_html/storage
 /storage/*.key
 /vendor
 .env
@@ -25,7 +25,7 @@ bootstrap/compiled.php
 app/storage/
 
 # Laravel 5 & Lumen specific
-public/storage
+public_html/storage
 public/hot
 storage/*.key
 .idea/

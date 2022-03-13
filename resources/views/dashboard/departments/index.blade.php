@@ -23,7 +23,7 @@
                     <div class="d-flex">
                       <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                        <div class="py-2 mx-auto"> 
+                        <div class="py-2 mx-auto">
                           <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -48,37 +48,37 @@
               <div  class="py-3" style="display:table-cell;padding:6px;">الفئات  </div>
               <div  class="py-3" style="display:table-cell;padding:6px;">التعديل</div>
             </div>
-            
+
             @foreach($departments as $department)
             <div style="display:table-row;font-size:12px;width: auto;clear: both;border-bottom: 4px solid #F4F4F4 !important;" class="sm-tbl-row bg-white">
-              
+
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">الصورة</div>
-                
+
                 <div style="padding:6px;"  class=" sm-tbl-cell-header text-primary">
                   <div class="media">
-                    <img src="{{asset($department->img)}}" alt="" style="width: 40px;">
-                    
+                    <img src="{{asset('storage/'.$department->img)}}" alt="" style="width: 40px;">
+
                   </div>
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">الإسم</div>
-                
+
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   {{$department->name}}
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">عدد الفئات</div>
-                
+
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   {{$department->categories_count}}
                 </div>
               </div>
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">الفئات</div>
-                
+
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   <a href="{{route('dashboard.departments.show',$department)}}">عرض الفئات</a>
                 </div>
@@ -91,7 +91,7 @@
                     تعديل
                   </button>
 
-                  
+
                     <form action="{{route('dashboard.departments.destroy',$department)}}" method="post">
 
                       @csrf
@@ -122,7 +122,7 @@
                           <div class="d-flex">
                             <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                              <div class="py-2 mx-auto"> 
+                              <div class="py-2 mx-auto">
                                 <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                               </div>
                               <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -131,7 +131,7 @@
                             </div>
                           </div>
                         </div>
-                        
+
                         <button type="submit" class="btn btn-primary rounded-lg">تعديل</button>
                       </form>
                     </div>
@@ -140,7 +140,7 @@
               </div>
             </div>
             @endforeach
-            
+
           </div>
         </div>
       @endsection

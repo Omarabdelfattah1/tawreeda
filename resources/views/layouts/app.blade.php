@@ -4,8 +4,8 @@
 <!-- Navbar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow-sm" style="font-weight: 100px;position:fixed;height:70px;top: 0;background-color: #ffffffb3;">
   <div class="container">
-  
-  
+
+
 
   <section class="navbar-mobile">
       <nav class="nav nav-navbar ml-auto">
@@ -16,15 +16,15 @@
       <a style="" class="nav-link" href="{{route('request')}}">أطلب عرض أسعار</a>
       <a style="" class="nav-link active" href="{{route('login')}}">تسجيل دخول</a>
       <a style="" class="nav-link" href="{{route('register')}}" >
-          <button class="btn btn-lg rounded btn-primary m-auto" style="">إنضم إلينا</button> 
-      </a>                
+          <button class="btn btn-lg rounded btn-primary m-auto" style="">إنضم إلينا</button>
+      </a>
       @else
         @if(auth()->user()->userable instanceof App\Models\Buyer)
         <a style="" class="nav-link" href="/why-us-buyer">ليه توريدة؟</a>
         <a style="" class="nav-link" href="{{route('departments')}}">الموردين</a>
         <a style="" class="nav-link" href="{{route('request')}}">أطلب عرض أسعار</a>
         @elseif(auth()->user()->userable instanceof App\Models\supplier)
-        
+
         <a style="" class="nav-link" href="/{{auth()->user()->userable->id}}">صفحة الشركة</a>
         <a style="" class="nav-link" href="/why-us-supplier">ليه توريدة؟</a>
 
@@ -57,7 +57,7 @@
           </div>
         </div>
         @livewire('notifications')
-      
+
       @endguest
 
       </nav>
@@ -95,12 +95,11 @@
 
         <div class="col-xl-4 col-lg-4 col-md-12 text-right">
           <div class="social">
-            <a class="social-facebook" href="https://www.facebook.com/thethemeio"><i class="fa fa-facebook"></i></a>
-            <a class="social-twitter" href="https://twitter.com/thethemeio"><i class="fa fa-twitter"></i></a>
-            <a class="social-instagram" href="https://www.instagram.com/thethemeio/"><i class="fa fa-instagram"></i></a>
-            <a class="social-dribbble" href="https://dribbble.com/thethemeio"><i class="fa fa-dribbble"></i></a>
+            <a class="social-facebook" href="{{$storage['facebook']?? 'https://www.facebook.com'}}"><i class="fa fa-facebook"></i></a>
+            <a class="social-twitter" href="{{$storage['twitter']?? 'https://www.twitter.com'}}"><i class="fa fa-twitter"></i></a>
+            <a class="social-instagram" href="{{$storage['instagram']?? 'https://www.instagram.com'}}"><i class="fa fa-instagram"></i></a>
           </div>
-        </div>        
+        </div>
       </div>
     </div>
   </footer>

@@ -65,65 +65,71 @@
 
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow-sm" style="font-weight: 100px;position:fixed;height:70px;top: 0;background-color: #fff;">
-   
-      
+
+
     <div class="navbar-left">
         <button style="height: 50px;" id="side-btn" class="btn rounded-lg btn-sm btn-secondary py-1 fa fa-bars"></button>
 
           <a style="" class="navbar-brand mr-auto" href="/">
             <img class="logo-dark" src="{{asset('assets/xd/logo1.svg')}}" alt="logo" style="height:56px;">
           </a>
-          
+
         </div>
   </nav>
 
     <div  style="position:relative;padding-top:70px !important;margin-right: 0px;" class="container text-right d-flex  flex-warp" id="main">
       <div class="text-right ml-5" id="sidebare" style="background-color:white;margin-right: 0;">
-        
+
         <ul class="list-group pr-0">
-          <li class="list-group-item border-0" style="font-size: 13px;"> 
+          <li class="list-group-item border-0" style="font-size: 13px;">
             <a class="nav-link font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.home')) active @endif" aria-current="page" href="{{route('dashboard.home')}}">
               <img src="{{asset('assets/xd/speedometer.svg')}}">
               لوحة التحكم
             </a>
           </li>
-          <li class="list-group-item border-0 mt-3 font-weight-bold text-primary" style="font-size: 13px;"> 
+          <li class="list-group-item border-0 mt-3 font-weight-bold text-primary" style="font-size: 13px;">
             <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.requests.*') || Route::is('dashboard.offers.*'))  active @endif" aria-current="page" href="{{route('dashboard.requests.index')}}">
               <img src="{{asset('assets/xd/outline.svg')}}">
             طلبات الأسعار
             </a>
           </li>
-          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;"> 
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;">
             <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.suppliers.*')) active @endif" aria-current="page" href="{{route('dashboard.suppliers.index')}}">
               <img src="{{asset('assets/xd/supplier.svg')}}">
             الموردين
             </a>
           </li>
-          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;"> 
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;">
             <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.buyers.*')) active @endif" aria-current="page" href="{{route('dashboard.buyers.index')}}">
               <img src="{{asset('assets/xd/investor.svg')}}">
             المشترين
             </a>
           </li>
-          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;"> 
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;">
             <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.reports.*')) active @endif" aria-current="page" href="{{route('dashboard.reports.index')}}">
               <img src="{{asset('assets/xd/alert.svg')}}">
             البلاغات
             </a>
           </li>
-          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;"> 
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;">
             <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.departments.*') || Route::is('dashboard.categories.*')) active @endif" aria-current="page" href="{{route('dashboard.departments.index')}}">
               <img src="{{asset('assets/xd/menu.svg')}}">
             الأقسام و الفئات
             </a>
           </li>
-          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;"> 
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;">
             <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.users.*')) active @endif" aria-current="page" href="{{route('dashboard.users.index')}}">
               <img src="{{asset('assets/xd/users.svg')}}">
             المستخدمين
             </a>
           </li>
-          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;"> 
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;">
+            <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.settings.*')) active @endif" aria-current="page" href="{{route('dashboard.settings.edit')}}">
+              <img src="{{asset('assets/xd/users.svg')}}">
+            الإعدادات
+            </a>
+          </li>
+          <li class="list-group-item border-0 mt-3 font-weight-bold" style="font-size: 13px;">
             <button class="mr-2 btn btn-danger font-weight-bold bx-0 mx-0" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                 {{ __('تسجيل خروج') }}
@@ -134,8 +140,8 @@
           </li>
         </ul>
       </div>
-      <div class="pt-6 w-100 pb-6" id="content">    
-        
+      <div class="pt-6 w-100 pb-6" id="content">
+
           @yield('content')
       </div>
 
@@ -155,7 +161,7 @@
       $('#sidebare').toggleClass('sidebare-active');
     })
 
-  window.addEventListener('click', function(e){   
+  window.addEventListener('click', function(e){
     if (!document.getElementById('sidebare').contains(e.target)){
       $('#sidebare').removeClass('sidebare-active');
     }

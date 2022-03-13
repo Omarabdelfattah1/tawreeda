@@ -137,6 +137,8 @@ Route::group(['as'=>'dashboard.','middleware'=>['auth','admin'],'prefix'=>'/dash
 
     Route::get('/','Dashboard\DashboardController@index')->name('home');
 
+    Route::get('settings','Dashboard\SettingsController@edit')->name('settings.edit');
+    Route::post('settings','Dashboard\SettingsController@update')->name('settings.update');
     Route::resource('/users','Dashboard\UsersController');
     Route::resource('/departments','Dashboard\DepartmentsController');
     Route::resource('/categories','Dashboard\CategoriesController');

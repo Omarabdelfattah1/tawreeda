@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**
@@ -23,6 +24,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $settings = Setting::all()->mapWithKeys(function ($item, $key) {
+                return [$item['key'] => $item['value']];
+            })->toArray();
+
+        view()->share([
+            'settings' => $settings
+        ]);
         Schema::defaultStringLength(191);
     }
 }
