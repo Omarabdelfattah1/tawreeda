@@ -30,8 +30,8 @@
                         <div class="form-group col-md-6" style="clear: right;">
                             <label class="mb-3">شعار الموقع:</label>
                             <div class="d-flex">
-                                <div>
-                                    <img style="width: 50px;height:50px;" src='{{$settings['logo']?asset('storage/'.$settings['logo']):''}}' alt="">
+                                <div >
+                                    <img id="logoPreview" style="width: 50px;height:50px;" src='{{isset($settings['logo'])?asset('storage/'.$settings['logo']):''}}' alt="">
                                 </div>
                                 <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
@@ -39,7 +39,7 @@
                                         <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
                                     </div>
                                     <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                                        <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="logo">
+                                        <input id="logoInput" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="logo">
                                     </div>
                                 </div>
                             </div>
@@ -52,4 +52,11 @@
         </div>
 
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('#logoInput').on('change', function() {
+            readURL(this, '#logoPreview');
+        });
+    </script>
 @endsection

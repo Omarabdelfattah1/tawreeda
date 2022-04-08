@@ -1,20 +1,23 @@
 @extends('layouts.dashboard')
 @section('styles')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 @section('scripts')
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
-
-<script>
-  $('.select').selectpicker({
-    noneSelectedText:''
-  });
-</script>
-<script>
+    <script>
+        $(document).ready(function (){
+            $('.select2').select2();
+            $('#companyImgUpload').on('change', function() {
+                readURL(this, '#companyImg');
+            });
+            $('#teamImgUpload').on('change', function() {
+                readURL(this, '#teamImg');
+            });
+            $('#qualityImgsUpload').on('change', function() {
+                imagesPreview(this, '#qualityImgs');
+            });
+        })
 function delete_img(id){
     $('#img'+id).remove();
 

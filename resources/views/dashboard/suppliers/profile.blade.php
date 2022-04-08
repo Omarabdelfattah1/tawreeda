@@ -35,18 +35,19 @@
               </div>
               <div class="form-group col-md-6" style="clear: right;">
                 <label class="mb-3"> صورة المستخدم:</label>
-                <div class="d-flex">
-                  <div>
-                    <img class="rounded-circle" style="width: 50px;height:50px;" src="{{asset($supplier->user->photo)}}" alt="">
-                  </div>
-                  <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
+                  <div class="d-flex">
+                      <div>
+                          <img id="profileImg" class="rounded-circle" style="width: 50px;height:50px;" src="{{asset(auth()->user()->photo)}}" alt="">
+                      </div>
+                      <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-                    <div class="py-2 mx-auto">
-                      <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
-                    </div>
-                    <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                      <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="photo">
-                    </div>
+                          <div class="py-2 mx-auto">
+                              <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
+                          </div>
+                          <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
+                              <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" data-imgid="#profileImg" name="photo">
+                          </div>
+                      </div>
                   </div>
                 </div>
                   @error('photo')

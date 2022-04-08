@@ -2,7 +2,7 @@
   <div class="bg-white">
     <div class="pt-6 p-4">
       <form action="{{route('dashboard.suppliers.update',$supplier)}}" method="post" enctype="multipart/form-data">
-        @csrf 
+        @csrf
         @method('put')
         <input type="hidden" name="settings" value="settings" id="">
         <div class="row">
@@ -16,7 +16,7 @@
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="name">نوع الشركة:</label>
-            <select type="text" name="type" id="name" placeholder="" class="form-control rounded-lg">
+            <select name="type" id="name" placeholder="" class="form-control rounded-lg">
               <option value="مصنع" {{$supplier->type == 'مصنع'?'selected':''}}>
                 مصنع
               </option>
@@ -29,22 +29,22 @@
             <label class="mb-3">شعار الشركة:</label>
             <div class="d-flex">
               <div>
-                <img style="width: 50px;height:50px;" src="{{asset($supplier->company_logo)}}" alt="">
+                <img id="companyImg" style="width: 50px;height:50px;" src="{{asset($supplier->company_logo)}}" alt="">
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="company_logo">
+                  <input  id="companyImgUpload" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="company_logo">
                 </div>
               </div>
             </div>
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="type"> القسم</label>
-            <select id="dept" type="text" name="departments[]" id="type" placeholder="" class="select form-control rounded-lg border" multiple>
+            <select id="dept" type="text" name="departments[]" id="type" placeholder="" class="form-control rounded-lg border select2" multiple>
               @foreach($departments as $d)
               <option value="{{$d->id}}" {{$supplier->departments->contains($d->id)?'selected':''}}>{{$d->name}}</option>
               @endforeach
@@ -52,7 +52,7 @@
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="type"> الفئة</label>
-            <select id="category" type="text" name="categories[]" id="type" placeholder="" class="select form-control rounded-lg border" multiple>
+            <select id="category" type="text" name="categories[]" id="type" placeholder="" class="form-control rounded-lg border select2" multiple>
               @foreach($categories as $c)
               <option value="{{$c->id}}" {{$supplier->categories->contains($c->id)?'selected':''}}>{{$c->name}}</option>
               @endforeach
@@ -60,7 +60,7 @@
           </div>
           <div class="form-group col-12">
             <label class="mb-3" for="name">تصنيفات المنتج:</label>
-            <select type="text" name="tagproduct[]" value="{{$supplier->company_name}}" id="name" placeholder="" class="select form-control rounded-lg border" multiple>
+            <select name="tagproduct[]" value="{{$supplier->company_name}}" id="name" placeholder="" class="form-control rounded-lg border select2" multiple>
               @foreach($tagproducts as $tag)
               <option value="{{$tag->id}}" {{$supplier->tagproducts->contains($tag->id)?'selected':''}}>{{$tag->name}}</option>
               @endforeach
@@ -68,7 +68,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
-            <select name="state" id="govern" class="form-control form-control-lg rounded-lg border border-secondary">
+            <select name="state" id="govern" class="form-control form-control-lg rounded-lg border border-secondary select2">
               @foreach(config('states') as $state)
               <option value="{{$state}}" {{$supplier->state == $state ?'selected':''}}>{{$state}}</option>
               @endforeach
@@ -77,27 +77,27 @@
           <div class="form-group col-md-6">
             <label class="mb-3" for="address"> عنوان الشركة</label>
             <input type="text" name="company_address" value="{{$supplier->company_address}}" id="address" placeholder="" class="form-control rounded-lg">
-              
+
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="number">  أرقام التواصل</label>
             <input type="text" name="phones" value="{{$supplier->phones}}" id="number" placeholder="" class="form-control rounded-lg">
-              
+
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="email">  البريد الإلكتروني</label>
             <input type="text" name="email" value="{{$supplier->email}}" id="email" placeholder="" class="form-control rounded-lg">
-              
+
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="tax-card">   البطاقة الضريبية</label>
             <input type="text" name="company_TXCard" value="{{$supplier->company_TXCard}}" id="tax-card" placeholder="" class="form-control rounded-lg">
-              
+
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="trad-number">    رقم السجل التجاري</label>
             <input type="text" name="company_CRN" value="{{$supplier->company_CRN}}" id="trad-number" placeholder="" class="form-control rounded-lg">
-              
+
           </div>
           <div class="form-group col-12">
             <label class="mb-3" for="summary">   نبذة عن الشركة</label>
@@ -106,21 +106,21 @@
           <div class="form-group col-md-6">
             <label class="mb-3" for="emp-number"> عدد موظفين الشركة</label>
             <input type="text" name="employees_number" value="{{$supplier->employees_number}}" id="emp-number" placeholder="" class="form-control rounded-lg">
-              
+
           </div>
           <div class="form-group col-md-6" style="clear: right;">
             <label class="mb-3"> صورة فريق العمل:</label>
             <div class="d-flex">
               <div>
-                <img style="width: 50px;height:50px;" src="{{asset('storage/'.$supplier->team_photo)}}" alt="">
+                <img id="teamImg" style="width: 50px;height:50px;" src="{{asset('storage/'.$supplier->team_photo)}}" alt="">
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="team_photo">
+                  <input id="teamImgUpload" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="team_photo">
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@
           <div class="form-group col-12">
             <label class="mb-3" for="team_description">   وصف فريق العمل</label>
             <textarea type="text" name="team_description" id="team_description" placeholder="" class="form-control rounded-lg" rows="3">{{$supplier->team_description}}</textarea>
-              
+
           </div>
 
         </div>
@@ -141,7 +141,7 @@
           <div class="form-group col-md-6" style="clear: right;">
             <label class="mb-3"> صور الجودة و مطابقة المواصفات:</label>
             <div class="d-flex">
-              <div>
+              <div id="qualityImgs">
                 @foreach($supplier->quality_files() as $file)
                 <div style="position:relative;display:inline-block" id="img{{$file->id}}">
                   <img class="rounded-circle"  style="width: 50px;height:50px;" src="{{asset('storage/'.$file->path)}}" alt="">
@@ -152,11 +152,11 @@
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="quality_files[]" multiple>
+                  <input id="qualityImgsUpload" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="quality_files[]" multiple>
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -201,7 +201,7 @@
               <img class="p-3" width="100px" src="{{asset('storage/'.$p->img)}}" alt="">
               <div class="my-6 pr-3">{{$p->name}}</div>
             </div>
-            
+
           </div>
           @endforeach
         </div>

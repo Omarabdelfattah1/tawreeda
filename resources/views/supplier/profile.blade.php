@@ -49,7 +49,7 @@
             <label class="mb-3"> صورة المستخدم:</label>
             <div class="d-flex">
               <div>
-                <img class="rounded-circle" style="width: 50px;height:50px;" src="{{asset(auth()->user()->photo)}}" alt="">
+                <img id="profileImg" class="rounded-circle" style="width: 50px;height:50px;" src="{{asset(auth()->user()->photo)}}" alt="">
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
@@ -57,7 +57,7 @@
                   <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="photo">
+                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" data-imgId="#profileImg" name="photo">
                 </div>
               </div>
             </div>
