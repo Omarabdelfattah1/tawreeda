@@ -50,6 +50,9 @@
                 width:80%
             }
         }
+        .select2 {
+            width: 100% !important;
+        }
     </style>
     {{--  <!--  Open Graph Tags -->--}}
     {{--  <meta property="og:title" content="TheSaaS">--}}

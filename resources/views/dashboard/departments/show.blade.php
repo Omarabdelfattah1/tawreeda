@@ -19,7 +19,7 @@
                   <input type="hidden" name="department_id" value="{{$department->id}}" id="">
                   <div class="form-group row">
                     <label class="col-4">إسم الفئة</label>
-                    <input name="name" type="text" class="form-control col-8 rounded-lg" id="">
+                    <input name="name" value="{{old('name')}}" type="text" class="form-control col-8 rounded-lg" id="">
                   </div>
                   <div class="form-group col-md-6" style="clear: right;">
                     <label class="mb-3">قم بإضافة صورة</label>
@@ -27,10 +27,10 @@
                       <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
                         <div class="py-2 mx-auto">
-                          <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
+                          <img class="w-30 float-right" id="previewCategory" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                          <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="dep_img">
+                          <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" data-imgid="#previewCategory" name="dep_img">
                         </div>
                       </div>
                     </div>

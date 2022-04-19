@@ -6,7 +6,7 @@
             المنتجات
           </div>
           <div>
-          
+
           <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary rounded">إضافة منتج</button>
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -19,7 +19,7 @@
                   <input type="hidden" name="category_id" value="{{$category->id}}" id="">
                   <div class="form-group row">
                     <label class="col-4">إسم المنتج</label>
-                    <input name="name" type="text" class="form-control col-8 rounded-lg" id="">
+                    <input name="name" value="{{old('name')}}" type="text" class="form-control col-8 rounded-lg" id="">
                   </div>
                   <button class="btn btn-primary rounded-lg">إضافة</button>
                 </form>
@@ -38,13 +38,13 @@
             <div id="tbl-header" style="font-size: 14px;display:table-row;" class="text-primary font-weight-bold">
               <div  class="py-3" style="display:table-cell;padding:6px;">الإسم  </div>
             </div>
-            
+
             @foreach($category->tagproducts as $product)
             <div style="display:table-row;font-size:12px;width: auto;clear: both;border-bottom: 4px solid #F4F4F4 !important;" class="sm-tbl-row bg-white">
-              
+
               <div style="display:table-cell" class="sm-tbl-cell">
                 <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header text-primary">الإسم</div>
-                
+
                 <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                   {{$product->name}}
                 </div>
@@ -57,7 +57,7 @@
               تعديل
             </button>
 
-            
+
               <button class="ml-2 btn btn-none p-0" type="submit">
               <span >
             <i class="fa fa-trash text-danger" alt=""></i>
@@ -86,7 +86,7 @@
               </div>
             </div>
             @endforeach
-            
+
           </div>
         </div>
       @endsection

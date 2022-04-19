@@ -16,7 +16,7 @@
         <img src="{{asset('assets/xd/add-supplier.svg')}}" style="width:130px" alt="" class="mx-auto d-block">
         <div class="text-center mt-3">
           <h5 class="font-weight-bold text-center" style="color: #1E3A56;">إضافة مورد جديد</h5>
-          
+
           <p class="mt-3 text-center" style="font-size: 12px;line-height: 20px;color: #B0CAD1;">
             قم بإضافة مورد جديد حتى يتمكن من طلب و إستقبال عروض
           </p>
@@ -33,12 +33,12 @@
       <div class="col-lg-3 col-md-3">
         <div class="card py-2 px-1 mx-auto my-3">
           <a href="{{route('dashboard.suppliers.edit',$supplier)}}">
-            <img src="{{asset($supplier->user->photo)}}" style="width:130px;height:130px;" alt="" class="mx-auto d-block">
+            <img src="{{asset($supplier->company_logo)}}" style="width:130px;height:130px;" alt="" class="mx-auto d-block">
           </a>
           <div class="text-center mt-3">
-            <h5 class="font-weight-bold text-center" style="color: #1E3A56;">{{$supplier->user->name}}</h5>
+            <h5 class="font-weight-bold text-center" style="color: #1E3A56;">{{$supplier->company_name}}</h5>
             <p class="mt-3 text-center text-primary" style="font-size: 12px;">
-              {{$supplier->company_name}}
+              {{$supplier->user->name}}
             </p>
             <p class="mt-3 text-center" style="font-size: 12px;">{{$supplier->user->summary}}</p>
             <div class="my-5 text-center">
