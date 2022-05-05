@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-12 row mt-6 ">
-          
+
           <div class="col-lg-5">
             <div class="font-weight-bold row">
               إحصائيات
@@ -33,7 +33,7 @@
               </div>
               <div class="col-6 my-1 ">
                 <div class="media bg-white py-4 px-3 text-center rounded-lg mb-1">
-                  <img class="ml-2 my-2" src="{{asset('assets/xd/outline.svg')}}" style="width:30px;" alt="">
+                  <img class="ml-2 my-2" src="{{asset('assets/xd/utline.svg')}}" style="width:30px;" alt="">
                   <div>
                     <p style="font-size: 20px;color: #6257F7;" class="font-weight-bold mb-0">{{$requests_count}}</p>
                     <p class="font-weight-bold mb-1" style="font-size: 13px;">عدد طلبات الأسعار</p>
@@ -80,7 +80,7 @@
             <div class="col-md-2 text-center py-3"><img  style="width: 70px;" src="{{asset($request->buyer->company_logo)}}" alt=""></div>
             <div class="col-md-8 pr-0">
               <h6 class="py-1 font-weight-bold">
-                {{$request->buyer->company_name}}              
+                {{$request->buyer->company_name}}
               </h6>
               <p style="line-height: 1rem;font-size: 10px;">{{$request->description}}</p>
               <div class="row mt-3">
@@ -114,5 +114,5 @@
             @endif
           </div>
         </div>
-      
+
       @endsection
