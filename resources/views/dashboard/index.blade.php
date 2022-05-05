@@ -33,7 +33,7 @@
               </div>
               <div class="col-6 my-1 ">
                 <div class="media bg-white py-4 px-3 text-center rounded-lg mb-1">
-                  <img class="ml-2 my-2" src="{{asset('assets/xd/utline.svg')}}" style="width:30px;" alt="">
+                  <img class="ml-2 my-2" src="{{asset('assets/xd/outline.svg')}}" style="width:30px;" alt="">
                   <div>
                     <p style="font-size: 20px;color: #6257F7;" class="font-weight-bold mb-0">{{$requests_count}}</p>
                     <p class="font-weight-bold mb-1" style="font-size: 13px;">عدد طلبات الأسعار</p>

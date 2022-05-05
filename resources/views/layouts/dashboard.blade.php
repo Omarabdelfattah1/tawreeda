@@ -93,7 +93,7 @@
             </li>
             <li class="list-group-item border-0 mt-3 font-weight-bold text-primary" style="font-size: 13px;">
                 <a class="nav-link  font-weight-bold bx-0 mx-0 @if(Route::is('dashboard.requests.*') || Route::is('dashboard.offers.*'))  active @endif" aria-current="page" href="{{route('dashboard.requests.index')}}">
-                    <img src="{{asset('assets/xd/utline.svg')}}">
+                    <img src="{{asset('assets/xd/outline.svg')}}">
                     طلبات الأسعار
                 </a>
             </li>
