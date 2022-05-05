@@ -56,9 +56,9 @@ function delete_img(id){
 
   <div class="mt-6 card mx-4 px-5 pt-3 w-100">
     <div class="row">
-      @livewire('register-supplier')
+      @include('')
     </div>
-  
+
   </div>
 </div>
 @endsection

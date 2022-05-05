@@ -53,7 +53,7 @@ class Supplier extends Model
 
     public function tagproducts()
     {
-        return $this->belongsToMany(Tagproduct::class);
+        return $this->belongsToMany(Tagproduct::class,'supplier_tagproduct');
     }
 
     public function departments()
@@ -97,5 +97,9 @@ class Supplier extends Model
     public function requests(){
 
         return $this->hasManyDeep('App\Models\Request',['supplier_tagproduct','App\Models\Tagproduct','request_tagproduct']);
+    }
+
+    public function getTeamPhotoAttribute(){
+        return $this->attributes['team_photo'] ? $this->attributes['team_photo'] :  '/assets/team.png';
     }
 }

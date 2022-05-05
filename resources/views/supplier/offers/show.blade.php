@@ -1,7 +1,7 @@
 @extends('supplier.index')
 @section('dash-content')
 <div class="d-flex ">
-  <a href="{{route('supplier.requests.index')}}" class="rounded-top py-3 px-6 font-weight-bold  text-default ml-3" style="background-color:gainsboro;height: 45px;">
+  <a href="{{route('supplier.requests.index')}}" class="rounded-top py-3 px-6 font-weight-bold  text-default ml-3" style="background-color:gainsboro;">
     المستقبلة
   </a>
   <a href="{{route('supplier.offers.index')}}" class="d-flex lead-1 rounded-top py-3 px-6 font-weight-bold text-primary " style="background-color:  white;width: 110px;">

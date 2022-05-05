@@ -100,12 +100,17 @@
             </button>
 
 
-              <button class="ml-2 btn btn-none p-0" type="submit">
+            <form action="{{route('dashboard.categories.destroy',$category)}}" method="post">
+
+                @csrf
+                @method('delete')
+                <button class="ml-2 btn btn-none p-0" type="submit">
                 <span >
                 <i class="fa fa-trash text-danger" alt=""></i>
                   مسح
                 </span>
-              </button>
+                </button>
+            </form>
           </div>
           <div class="modal fade" id="edit{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

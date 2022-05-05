@@ -111,6 +111,9 @@ Route::group(['as'=>'supplier.','middleware'=>['auth','supplier'],'prefix'=>'/su
     Route::get('/products','SupplierController@products')->name('products');
     Route::put('/products','SupplierController@updateproducts')->name('products');
     Route::post('/products','SupplierController@store')->name('products.store');
+    Route::put('/products/{product}/edit-product','SupplierController@edit_product')->name('edit_product');
+    Route::post('/products/{product}/delete-product','SupplierController@delete_product')->name('delete_product');
+
     Route::get('/factories','SupplierController@factories')->name('factories');
     Route::put('/factories','SupplierController@updatefactories')->name('factories');
 });
@@ -143,6 +146,9 @@ Route::group(['as'=>'dashboard.','middleware'=>['auth','admin'],'prefix'=>'/dash
     Route::resource('/departments','Dashboard\DepartmentsController');
     Route::resource('/categories','Dashboard\CategoriesController');
     Route::resource('/products','Dashboard\ProductsController');
+    Route::post('/suppliers/{supplier}/add-products','Dashboard\SuppliersController@add_product')->name('suppliers.add_product');
+    Route::put('/suppliers/{product}/edit-product','Dashboard\SuppliersController@edit_product')->name('suppliers.edit_product');
+    Route::post('/suppliers/{product}/delete-product','Dashboard\SuppliersController@delete_product')->name('suppliers.delete_product');
     Route::resource('/buyers','Dashboard\BuyersController');
     Route::resource('/suppliers','Dashboard\SuppliersController');
     Route::resource('/reports','Dashboard\ReportsController');

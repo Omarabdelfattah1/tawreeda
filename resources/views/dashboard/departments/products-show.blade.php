@@ -58,12 +58,17 @@
             </button>
 
 
-              <button class="ml-2 btn btn-none p-0" type="submit">
-              <span >
-            <i class="fa fa-trash text-danger" alt=""></i>
-              مسح
-            </span>
-              </button>
+            <form action="{{route('dashboard.products.destroy',$product)}}" method="post">
+
+                @csrf
+                @method('delete')
+                <button class="ml-2 btn btn-none p-0" type="submit">
+                    <span >
+                    <i class="fa fa-trash text-danger" alt=""></i>
+                      مسح
+                    </span>
+                </button>
+            </form>
           </div>
           <div class="modal fade" id="edit{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

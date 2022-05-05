@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 use App\Models\Department;
@@ -85,6 +86,7 @@ class SuppliersController extends Controller
      */
     public function edit(Supplier $supplier)
     {
+//        dd($supplier->tagproducts->toArray());
         return view('dashboard.suppliers.edit')
         ->with('supplier',$supplier)
         ->with('departments',Department::all())
@@ -102,64 +104,61 @@ class SuppliersController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
-        // dd($request->all());
-        if($request->settings){
-            $files = [];
+//         dd($request->all());
+        $files = [];
 
-            $supplier->update($request->except(['_token','_method','settings']));
-            if($request->verified){
-                $supplier->verified =1;
-                $supplier->save();
-            }else{
-                $supplier->verified =0;
-                $supplier->save();
-            }
-            // departments , tags and categories
-            $supplier->departments()->sync($request->departments);
-            $supplier->categories()->sync($request->categories);
-            $supplier->tagproducts()->sync($request->tagproducts);
+        // departments , tags and categories
+        $supplier->departments()->sync($request->departments);
+        $supplier->categories()->sync($request->categories);
+        $supplier->tagproducts()->sync($request->tagproduct);
+        $supplier->update($request->except(['_token','_method','settings']));
+        if($request->verified){
+            $supplier->verified =1;
+            $supplier->save();
+        }else{
+            $supplier->verified =0;
+            $supplier->save();
+        }
 
-            if($request->file('quality_files'))
-            {
-                // dd($request->file('quality_files'));
-                foreach($request->file('quality_files') as $file){
-                // dd($file);
-                    $path = str_replace('public/','',$file->store('public/quality_files'));
-                    $files[]=[
-                        'type' => 'quality',
-                        'fileable_type' => 'App\Models\Supplier',
-                        'fileable_id' => $supplier->id,
-                        'path' => $path
-                    ];
-                }
-            }
-            if($request->file('production_files'))
-            {
-                foreach($request->file('production_files') as $file){
-                $path = str_replace('public/','',$file->store('public/production_files'));
+
+        if($request->file('quality_files'))
+        {
+            // dd($request->file('quality_files'));
+            foreach($request->file('quality_files') as $file){
+            // dd($file);
+                $path = str_replace('public/','',$file->store('public/quality_files'));
                 $files[]=[
-                    'type' => 'production',
+                    'type' => 'quality',
                     'fileable_type' => 'App\Models\Supplier',
                     'fileable_id' => $supplier->id,
                     'path' => $path
                 ];
-                }
             }
-
-            if($request->file('company_logo')){
-                $path = $request->company_logo->store('public/logos');
-                $supplier->company_logo = str_replace('public/','',$path);
-                $supplier->save();
-            }
-            // dd($files);
-            if(count($files))
-            {
-                File::insert($files);
-            }
-        }else{
-            $status = $this->updateProfile($supplier->user(),$request);
         }
-        session()->flash('message','تم التعديل بنجاح');
+        if($request->file('production_files'))
+        {
+            foreach($request->file('production_files') as $file){
+            $path = str_replace('public/','',$file->store('public/production_files'));
+            $files[]=[
+                'type' => 'production',
+                'fileable_type' => 'App\Models\Supplier',
+                'fileable_id' => $supplier->id,
+                'path' => $path
+            ];
+            }
+        }
+
+        if($request->file('company_logo')){
+            $path = $request->company_logo->store('public/logos');
+            $supplier->company_logo = str_replace('public/','',$path);
+            $supplier->save();
+        }
+        // dd($files);
+        if(count($files))
+        {
+            File::insert($files);
+        }
+        session()->flash('success','تم التعديل بنجاح');
         return redirect()->back();
     }
 
@@ -185,7 +184,9 @@ class SuppliersController extends Controller
             $updates['locked']= false;
         }
 //        dd($updates);
-         return $user->update($updates);
+        session()->flash('success','تم تعديل المورد بنجاح');
+
+        return $user->update($updates);
     }
     /**
      * Remove the specified resource from storage.
@@ -198,6 +199,52 @@ class SuppliersController extends Controller
         $supplier->user()->delete();
         $supplier->offers()->delete();
         $supplier->delete();
+        session()->flash('success','تم حذف المورد بنجاح');
+        return redirect()->back();
+    }
+
+    public function add_product(Request $request,Supplier $supplier){
+        $request->validate([
+            'img'=>'required|image',
+            'name' => 'required|string'
+        ]);
+        $data = [];
+        if($request->file('img'))
+        {
+            $path = str_replace('public/','',$request->file('img')->store('public/imgs'));
+            $data = [
+                'name' => $request->name,
+                'img' =>$path
+            ];
+        }
+
+        $supplier->products()->save(new Product($data));
+        session()->flash('success','تم إضافة المنتج بنجاح');
+        return redirect()->back();
+    }
+
+    public function edit_product(Request $request,Product $product){
+        $request->validate([
+            'img'=>'nullable|image',
+            'name' => 'required|string'
+        ]);
+        $data = [
+            'name' => $request->name,
+        ];
+//        dd($request->all());
+        if($request->file('img'))
+        {
+            $path = str_replace('public/','',$request->file('img')->store('public/imgs'));
+            $data['img'] = $path;
+        }
+
+        $product->update($data);
+        session()->flash('success','تم تعديل المنتج بنجاح');
+        return redirect()->back();
+    }
+    public function delete_product(Request $request,Product $product){
+        $product->delete();
+        session()->flash('success','تم حذف المنتج بنجاح');
         return redirect()->back();
     }
 }

@@ -3,9 +3,9 @@
 
 <div class="text-right">
   <div class="d-flex">
-    <a href="{{route('supplier.settings')}}" class="rounded-top py-3 px-6 font-weight-bold  text-default" style="background-color:gainsboro;height: 45px;">
+    <a href="{{route('supplier.settings')}}" class="rounded-top py-3 px-6 font-weight-bold  text-default" style="background-color:gainsboro;">
       عن الشركة
-     
+
     </a>
     <a href="{{route('supplier.products')}}" class="mr-1 rounded-top py-3 px-6 font-weight-bold text-default " style="background-color:  gainsboro;">
       المنتجات
@@ -39,7 +39,7 @@
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -55,7 +55,7 @@
             <textarea type="text" name="production"  id="name" placeholder="" class="form-control rounded-lg">{{$supplier->production}}</textarea>
           </div>
           <div class="form-group col-md-6" style="clear: right;">
-            <label class="mb-3"> صور الجودة و مطابقة المواصفات:</label>
+            <label class="mb-3"> صور خطوط الإنتاج:</label>
             <div class="d-flex">
               <div>
                 @foreach($supplier->production_files() as $file)
@@ -68,7 +68,7 @@
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات

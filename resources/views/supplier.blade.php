@@ -11,7 +11,7 @@
 
 @media(max-width:575px)
 {
-  
+
   .card{
     width:80%
   }
@@ -43,7 +43,7 @@
             <span class="fa fa-star"></span>
             @endif
           @endfor  | {{$supplier->reviews->count()}} تقييم
-            
+
           </div>
           <div>
              @if($supplier->type)
@@ -52,7 +52,7 @@
             <div class="btn btn-xs mx-auto" style="color:white;background-color: #44485C;">{{$supplier->state}}</div>
             @if($supplier->tagproducts()->first())
             <div class="btn btn-xs btn-secondary text-default mx-auto" >{{$supplier->tagproducts()->first()->name}}</div>
-            @endif 
+            @endif
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
         @if($supplier->email)
         <p class="mb-1 text-sm" style="vertical-align: middle;"> <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/mail.svg')}}" alt="">{{$supplier->email}}</p>
         @endif
-        <p class="mb-1 text-sm" style="vertical-align: middle;"> 
+        <p class="mb-1 text-sm" style="vertical-align: middle;">
         @if($supplier->company_TXCard)
           <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/valid.svg')}}" alt=""> بطاقة الضريبية
           @else
@@ -89,8 +89,8 @@
         </div>
       </div>
     </div>
-  
-  
+
+
     <div class="mt-6 card mx-4 px-5 w-100 mx-auto">
       <ul class="nav nav-tabs px-0 font-weight-bold" id="myTab" role="tablist" style="height: 60px;">
         <li class="nav-item" style="border-left:1px solid #f1f2f3 !important;">
@@ -120,7 +120,7 @@
           {{$supplier->about}}
           </p>
           <hr>
-          <h6 class="mb-6 d-flex"> 
+          <h6 class="mb-6 d-flex">
             <img width="25px" src="{{asset('assets/xd/management.svg')}}" alt="">
             <span class="d-inline-block py-2 mr-2 font-weight-bold">  الإدارة</span>
           </h6>
@@ -136,7 +136,7 @@
             </div>
             <div class="col-lg-6 row">
               <div class="col-4">
-                <img src="{{asset('assets/xd/profile/work-team.png')}}" alt="">
+                <img src="{{asset($supplier->team_photo)}}" alt="">
               </div>
               <div class="col-8 text-right" style="line-height: 25px;">
                 <h5>فريق العمل</h5>
@@ -156,7 +156,7 @@
                 <img class="p-3" width="100px" src="{{asset($p->img)}}" alt="">
                 <div class="my-6 pr-3">{{$p->name}}</div>
               </div>
-              
+
             </div>
             @endforeach
           </div>
@@ -165,7 +165,7 @@
           @if($supplier->quality)
           <div class="row mt-6">
             <div class="col-md-6 mb-3">
-              <h5 class="mb-3 d-flex"> 
+              <h5 class="mb-3 d-flex">
                   <img width="25px" src="{{asset('assets/xd/award.svg')}}" alt="">
                   <span class="d-inline-block py-2 mr-2 font-weight-bold"> الجودة و مطابقة المواصفات</span>
               </h5>
@@ -183,7 +183,7 @@
           @if($supplier->production)
           <div class="row mt-6">
             <div class="col-md-6 mb-3">
-              <h5 class="mb-3 d-flex"> 
+              <h5 class="mb-3 d-flex">
                   <img width="25px" src="{{asset('assets/xd/award.svg')}}" alt="">
                   <span class="d-inline-block py-2 mr-2 font-weight-bold"> الجودة و مطابقة المواصفات</span>
               </h5>
@@ -210,7 +210,7 @@
               @else
               <span class="fa fa-star"></span>
               @endif
-              @endfor                
+              @endfor
             </div>
             <h6 class=" text-center">{{$supplier->reviews->count()}} تقييم</h6>
           </div>
@@ -262,32 +262,32 @@
             </div>
           </div>
         </div>
-        
+
         @foreach($supplier->reviews as $review)
         <div class="d-flex justify-content-between text-sm border-bottom mb-2">
           <div class="mb-2">
             <h6 class="mb-3">
-              <span class="fa fa-star" style="color: gold;"></span> {{$review->stars}} 
+              <span class="fa fa-star" style="color: gold;"></span> {{$review->stars}}
               {{$review->title}}
             </h6>
-            <h6> {{$review->comment}}</h6>              
+            <h6> {{$review->comment}}</h6>
           </div>
           <div>
             <h6 class="mb-1" style="font-size: xx-small;">
-            {{$review->created_at->format('Y-m-d')}} 
+            {{$review->created_at->format('Y-m-d')}}
             <form class="form-inline" action="{{route('report')}}" method="post">
               @csrf
-               <input type="hidden" name="type" value="تقييم" id=""> 
-               <input type="hidden" name="userable_type" value="App\Models\Review" id=""> 
-               <input type="hidden" name="userable_id" value="{{$review->id}}" id=""> 
+               <input type="hidden" name="type" value="تقييم" id="">
+               <input type="hidden" name="userable_type" value="App\Models\Review" id="">
+               <input type="hidden" name="userable_id" value="{{$review->id}}" id="">
               <button class="btn btn-none text-primary p-0" href="" class="text-primary mr-2"><span class="fa fa-flag"></span> تبليغ</button>
             </form>
             </h6>
-            <h6 class="mb-1"> {{$review->buyer->user->name}}</h6>              
+            <h6 class="mb-1"> {{$review->buyer->user->name}}</h6>
           </div>
         </div>
         @endforeach
-          
+
         </div>
       </div>
     </div>
@@ -346,9 +346,9 @@
             <div class="form-group clear-both">
               <label for="title" class="float-right mb-5">العنوان</label>
               <input id="title" name="title" class="form-control form-control-lg rounded-lg border border-secondary">
-              
+
             </div>
-  
+
             <div class="form-group">
               <label for="password" class="float-right mb-5">التقييم</label>
               <div class="stars">
@@ -391,9 +391,9 @@
             <div class="form-group clear-both">
               <label for="date" class="mb-5">التاريخ</label>
               <input id="date" name="date" type="date" class="form-control border border-secondary">
-              
+
             </div>
-  
+
             <div class="form-group">
               <label for="password" class="mb-5">التوقيت المناسب</label>
               <div class="row">
@@ -440,7 +440,7 @@
                 <option value=""></option>
               </select>
             </div>
-  
+
             <div class="form-group">
               <label for="password" class="float-right mb-5">التقييم</label>
               <div class="stars">
@@ -468,6 +468,6 @@
         </div>
       </div>
     </div>
-  </div>    
+  </div>
 @endguest
   @endsection

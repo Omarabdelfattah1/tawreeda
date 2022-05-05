@@ -151,4 +151,50 @@ class SupplierController extends Controller
       $user->update(array_filter($updates));
       return redirect()->back();
     }
+
+
+    public function add_product(Request $request){
+        $request->validate([
+            'img'=>'required|image',
+            'name' => 'required|string'
+        ]);
+        $data = [];
+        if($request->file('img'))
+        {
+            $path = str_replace('public/','',$request->file('img')->store('public/imgs'));
+            $data = [
+                'name' => $request->name,
+                'img' =>$path
+            ];
+        }
+
+        auth()->user()->userable->products()->save(new Product($data));
+        session()->flash('message','تم إضافة المنتج بنجاح');
+        return redirect()->back();
+    }
+
+    public function edit_product(Request $request,Product $product){
+        $request->validate([
+            'img'=>'nullable|image',
+            'name' => 'required|string'
+        ]);
+        $data = [
+            'name' => $request->name,
+        ];
+//        dd($request->all());
+        if($request->file('img'))
+        {
+            $path = str_replace('public/','',$request->file('img')->store('public/imgs'));
+            $data['img'] = $path;
+        }
+
+        $product->update($data);
+        session()->flash('message','تم تعديل المنتج بنجاح');
+        return redirect()->back();
+    }
+    public function delete_product(Request $request,Product $product){
+        $product->delete();
+        session()->flash('message','تم حذف المنتج بنجاح');
+        return redirect()->back();
+    }
 }

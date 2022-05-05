@@ -13,24 +13,24 @@
 
 
 <div class="pt-6 row mx-auto mb-6">
-  <div class="col-lg-3 col-md-3 text-center">
-    <div class="card py-2 px-1 mx-auto my-3">
-      <img src="{{asset('assets/xd/add-supplier.svg')}}" style="width:130px" alt="" class="mx-auto d-block">
-      <div class="text-center mt-3">
-        <h5 class="font-weight-bold text-center" style="color: #1E3A56;">إضافة مشتري جديد</h5>
-        
-        <p class="mt-3 text-center" style="font-size: 12px;line-height: 20px;color: #B0CAD1;">
-          قم بإضافة مشتري جديد حتى يتمكن من طلب و إستقبال عروض
-        </p>
-        <div class="my-5 text-center">
-          <a href="{{route('dashboard.buyers.create')}}" class="btn btn-primary rounded-lg" style="font-size: 12px;letter-spacing: 0px;">
-            إضافة
-          </a>
-        </div>
-      </div>
-    </div>
+{{--  <div class="col-lg-3 col-md-3 text-center">--}}
+{{--    <div class="card py-2 px-1 mx-auto my-3">--}}
+{{--      <img src="{{asset('assets/xd/add-supplier.svg')}}" style="width:130px" alt="" class="mx-auto d-block">--}}
+{{--      <div class="text-center mt-3">--}}
+{{--        <h5 class="font-weight-bold text-center" style="color: #1E3A56;">إضافة مشتري جديد</h5>--}}
+{{--        --}}
+{{--        <p class="mt-3 text-center" style="font-size: 12px;line-height: 20px;color: #B0CAD1;">--}}
+{{--          قم بإضافة مشتري جديد حتى يتمكن من طلب و إستقبال عروض--}}
+{{--        </p>--}}
+{{--        <div class="my-5 text-center">--}}
+{{--          <a href="{{route('dashboard.buyers.create')}}" class="btn btn-primary rounded-lg" style="font-size: 12px;letter-spacing: 0px;">--}}
+{{--            إضافة--}}
+{{--          </a>--}}
+{{--        </div>--}}
+{{--      </div>--}}
+{{--    </div>--}}
 
-  </div>
+{{--  </div>--}}
   @foreach($buyers as $buyer)
     <div class="col-lg-3 col-md-3">
       <div class="card py-2 px-1 mx-auto my-3">

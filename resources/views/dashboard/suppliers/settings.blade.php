@@ -1,7 +1,7 @@
 <div class="tab-pane  fade" id="factories" role="tabpanel" aria-labelledby="factories-tab" style="border-right:0px !important;color: #6F6F6F !important;background: none !important;">
   <div class="bg-white">
     <div class="pt-6 p-4">
-      <form action="{{route('dashboard.suppliers.update',$supplier)}}" method="post" enctype="multipart/form-data">
+      <form id="editSupplier" action="{{route('dashboard.suppliers.update',$supplier)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         <input type="hidden" name="settings" value="settings" id="">
@@ -169,7 +169,7 @@
             <textarea type="text" name="production"  id="name" placeholder="" class="form-control rounded-lg">{{$supplier->production}}</textarea>
           </div>
           <div class="form-group col-md-6" style="clear: right;">
-            <label class="mb-3"> صور الجودة و مطابقة المواصفات:</label>
+            <label class="mb-3"> صور خطوط الإنتاج:</label>
             <div class="d-flex">
               <div>
                 @foreach($supplier->production_files() as $file)
@@ -194,20 +194,101 @@
         </div>
         <hr>
         <div class="row">
-          <div class="col-12">المنتجات</div>
+
+          <div class="col-12 d-flex">
+              <div class="row">
+                  <div class="form-group col-12">
+                      <label class="mb-3" for="name">لمنتجات:</label>
+                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary rounded">إضافة منتج</button>
+                  </div>
+              </div>
+          </div>
           @foreach($supplier->products as $p)
-          <div class="col-lg-4 col-md-6 col-12">
+          <div class="col-lg-4 col-md-6 col-12" id="product{{$p->id}}" data-id="{{$p->id}}">
+
             <div class="mx-2 my-3 rounded-lg border border-secondary media">
               <img class="p-3" width="100px" src="{{asset('storage/'.$p->img)}}" alt="">
-              <div class="my-6 pr-3">{{$p->name}}</div>
+              <div class="my-6 pr-3">
+                  {{$p->name}}
+                  <div>
+                      <span onclick="editProduct('#product'+{{$p->id}},'{{route('dashboard.suppliers.edit_product',$p->id)}}','{{$p->name}}')"><i class="fa fa-edit"></i></span>
+                      <span onclick="productDelete{{$p->id}}.submit(confirm('هل تريد مسح هذا المنتج؟'))"><i class="fa fa-trash text-danger"></i></span>
+                  </div>
+                  <form method="post" class="d-none" action="{{route('dashboard.suppliers.delete_product',$p->id)}}" name="productDelete{{$p->id}}">
+                    @csrf
+                  </form>
+              </div>
             </div>
 
           </div>
           @endforeach
         </div>
         <hr>
-        <button class="btn btn-primary btn-sm rounded px-6">حفظ</button>
+        <button onclick="$('#editSupplier').submit()" class="btn btn-primary btn-sm rounded px-6">حفظ</button>
       </form>
     </div>
   </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">إضافة منتج</h5>
+            </div>
+            <form class="modal-body" action="{{route('dashboard.suppliers.add_product',$supplier)}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label>إسم المنتج</label>
+                    <input name="name" type="text" class="form-control rounded-lg" id="">
+                </div>
+                <div class="form-group" style="clear: right;">
+                    <label class="mb-3">قم بإضافة صورة</label>
+                    <div class="d-flex">
+                        <div class="px-3 py-1 mr-3  d-flex  w-80 border border-primary-dotted rounded-lg">
+
+                            <div class="py-2 mx-2 w-30">
+                                <img id="productId" src="../assets/xd/icons/file.png" alt="">
+                            </div>
+                            <div class="btn btn-sm rounded btn-primary w-70" style="position: relative;overflow: hidden;"> إستعراض الملفات
+                                <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" data-imgid="#productId" class="ml-2 m-0 imgPreviewInputFinal" name="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary rounded-lg">إضافة</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editProduct" tabindex="-1" role="dialog" aria-labelledby="editProductLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="editProductLabel">إضافة منتج</h5>
+            </div>
+            <form class="modal-body" action="_" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('put')
+                <div class="form-group">
+                    <label>إسم المنتج</label>
+                    <input name="name" type="text" class="form-control rounded-lg" id="name">
+                </div>
+                <div class="form-group" style="clear: right;">
+                    <label class="mb-3">قم بإضافة صورة</label>
+                    <div class="d-flex">
+                        <div class="px-3 py-1 mr-3  d-flex  w-80 border border-primary-dotted rounded-lg">
+
+                            <div class="py-2 mx-2 w-30">
+                                <img id="productId" src="../assets/xd/icons/file.png" alt="">
+                            </div>
+                            <div class="btn btn-sm rounded btn-primary w-70" style="position: relative;overflow: hidden;"> إستعراض الملفات
+                                <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" data-imgid="#productId" class="ml-2 m-0 imgPreviewInputFinal" name="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary rounded-lg">إضافة</button>
+            </form>
+        </div>
+    </div>
 </div>

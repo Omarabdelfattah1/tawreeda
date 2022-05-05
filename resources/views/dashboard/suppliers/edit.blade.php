@@ -28,16 +28,28 @@ function delete_img(id){
     },function(data,status){
     });
   }
+
+function editProduct(id,route,product_name){
+    var product_img = $(id + ' img').attr('src');
+    $('#editProduct form').attr('action',route);
+    $('#editProduct form #name').val(product_name);
+    $('#editProduct form img').attr('src',product_img);
+    $('#editProduct').modal('show');
+}
 </script>
 @endsection
 @section('content')
 
-<div class="row" id="content">
-  <div class="col-12 justify-content-between text-right" style="font-size:30px;">
+<div id="content">
+  <div class="text-right" style="font-size:30px;">
     تعديل بائع <span class="text-primary">{{$supplier->user->name}}</span>
   </div>
 
-
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger">{{$error}}</div>
+        @endforeach
+    @endif
   <div class="mt-6 card mx-4 px-5 w-100">
     <ul class="nav nav-tabs px-0 font-weight-bold" id="myTab" role="tablist" style="height: 60px;">
       <li class="nav-item" style="border-left:1px solid #f1f2f3 !important;">
@@ -66,6 +78,7 @@ function delete_img(id){
         </a>
       </li>
     </ul>
+
     <div class="tab-content pt-3 mb-6 text-right" id="myTabContent">
       @include('dashboard.suppliers.requests')
       @include('dashboard.suppliers.calls')

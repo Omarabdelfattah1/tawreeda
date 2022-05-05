@@ -19,7 +19,7 @@
 
 <div class="text-right">
   <div class="d-flex">
-    <a href="{{route('supplier.settings')}}" class="rounded-top py-3 px-6 font-weight-bold  text-primary" style="background-color:white;height: 45px;">
+    <a href="{{route('supplier.settings')}}" class="rounded-top py-3 px-6 font-weight-bold  text-primary" style="background-color:white;">
       عن الشركة
     </a>
     <a href="{{route('supplier.products')}}" class="mr-1 rounded-top py-3 px-6 font-weight-bold text-default " style="background-color:  gainsboro;">

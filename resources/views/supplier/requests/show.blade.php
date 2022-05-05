@@ -2,7 +2,7 @@
 @section('dash-content')
 
 <div class="d-flex text-right">
-  <a href="{{route('supplier.requests.index')}}" class="rounded-top py-3 px-6 font-weight-bold  text-primary ml-3" style="background-color:white;height: 45px;">
+  <a href="{{route('supplier.requests.index')}}" class="rounded-top py-3 px-6 font-weight-bold  text-primary ml-3" style="background-color:white;">
     المستقبلة
   </a>
   <a href="{{route('supplier.offers.index')}}" class="d-flex lead-1 rounded-top py-3 px-6 font-weight-bold text-default " style="background-color:  gainsboro;width: 110px;">
