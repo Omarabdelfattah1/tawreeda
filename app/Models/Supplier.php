@@ -40,7 +40,7 @@ class Supplier extends Model
 
 
     public function getCompanyLogoAttribute(){
-        return $this->getAttributes()['company_logo'] ? 'storage/'. $this->getAttributes()['company_logo'] : 'my-profile.png';
+        return $this->attributes['company_logo'] ? 'storage/'. $this->attributes['company_logo'] : 'my-profile.png';
     }
     public function user()
     {

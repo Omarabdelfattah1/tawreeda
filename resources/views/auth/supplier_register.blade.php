@@ -42,7 +42,7 @@
         <span class="step"></span>
     </div>
 
-    <form id="formRegister" class="col-md-8 mx-auto" action="{{route('supplier.test.register')}}" method="post"  enctype="multipart/form-data">
+    <form id="formRegister" class="col-md-8 mx-auto text-right" action="{{route('supplier.test.register')}}" method="post"  enctype="multipart/form-data">
         @csrf
         <div style="width: 200px !important;" class="text-center mx-auto">
             @if($errors->any())
@@ -53,16 +53,34 @@
         </div>
         <div class="tab">
             <div class="form-group">
-                <label for="company-name" class="float-right mb-5">إسم الشركة <span class="text-danger" style="font-size:20px;">*</span> </label>
+                <label for="company-name" class="mb-5">إسم الشركة <span class="text-danger" style="font-size:20px;">*</span> </label>
                 <input id="company-name"  value="{{old('company_name')}}" name="company_name" class="required form-control form-control-lg rounded-lg border border-secondary">
                 @error('company_name')
                 <span class="text-danger">
-                <strong>{{ $message }}</strong>
-            </span>
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="form-group my-6">
+                <label  class="mb-5">شعار الشركة</label>
+                <div style="width: 240px !important;" class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
+                    <div>
+                        <img id="profileImg" style="width: 50px;height:50px;" src="/assets/xd/icons/file.png" alt="">
+                    </div>
+                    <div class="p-0 ">
+                        <div class="btn btn-sm rounded btn-primary m-0 w-100 h-100 py-3" style="position: relative;overflow: hidden;"> إستعراض الملفات
+                            <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" data-imgid="#profileImg" name="company_logo">
+                        </div>
+                    </div>
+                </div>
+                @error('company_logo')
+                <span class="text-danger">
+                    <strong>{{ $message }}</strong>
+                </span>
                 @enderror
             </div>
             <div class="form-group" >
-                <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
+                <label for="govern" class="mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
                 <select style="width: 100%;" name="state" id="govern" class="select required form-control form-control-lg rounded-lg border border-secondary">
                     <option value="" disabled selected>--إختر المحافظة--</option>
                     @foreach(config('states') as $state)
@@ -78,7 +96,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="company-address" class="float-right mb-5">عنوان الشركة <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="company-address" class="mb-5">عنوان الشركة <span class="text-danger" style="font-size:20px;">*</span></label>
                 <input  id="company-address" value="{{old('company_address')}}" name="company_address" class="required form-control form-control-lg rounded-lg border border-secondary" placeholder="أكتب العنوان كاملاً">
                 @error('company_address')
                 <span class="text-danger">
@@ -87,7 +105,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="details" class="float-right mb-5">:   نبذة عن الشركة  <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="details" class="mb-5">:   نبذة عن الشركة  <span class="text-danger" style="font-size:20px;">*</span></label>
                 <textarea  name="about" class="required form-control rounded-lg border border-secondary" id="details"rows="5" placeholder="أكتب نبذة عن الشركة">{{old('about')}}</textarea>
                 @error('about')
                 <span class="text-danger">
@@ -99,7 +117,7 @@
         <div class="tab">
 
             <div class="form-group">
-                <label for="crn" class="float-right mb-5">رقم السجل التجاري إن وجد</label>
+                <label for="crn" class="mb-5">رقم السجل التجاري إن وجد</label>
                 <input  id="crn" name="company_CRN" value="{{old('company_CRN')}}"  class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : 322787">
                 @error('company_CRN')
                 <span class="text-danger">
@@ -108,7 +126,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="tax" class="float-right mb-5"> البطاقة الضريبية إن وجد</label>
+                <label for="tax" class="mb-5"> البطاقة الضريبية إن وجد</label>
                 <input  id="tax" name="company_TXCard" value="{{old('company_TXCard')}}" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : 322787">
                 @error('company_TXCard')
                 <span class="text-danger">
@@ -117,8 +135,8 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="emp" class="float-right mb-5"> عدد الموظفين <span class="text-danger" style="font-size:20px;">*</span></label>
-                <input  id="emp" name="employees_number" value="{{old('employees_number')}}" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="مثال : 7">
+                <label for="emp" class="mb-5"> عدد الموظفين <span class="text-danger" style="font-size:20px;">*</span></label>
+                <input  id="emp" name="employees_number" value="{{old('employees_number')}}" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : 7">
                 @error('employees_number')
                 <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -128,12 +146,12 @@
         </div>
         <div class="tab">
             <div class="form-group my-6">
-                <label  class="float-right mb-5"> عندك كتالوج؟</label>
+                <label  class="mb-5"> عندك كتالوج؟</label>
                 <div class="d-flex">
                     <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
                         <div class="py-2 mx-autos">
-                            <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
+                            <img class="w-30  src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> تحميل الكاتالوج
                             <input type="file" id="catalogImage" value="{{old('cataloge')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="form-control ml-2 w-100 h-100" name="cataloge">
@@ -150,39 +168,11 @@
                 </span>
                 @enderror
             </div>
-            <div class="form-group clearfix">
-                <label for="dept" class="float-right mb-5">القسم</label>
-                <select style="width: 100%" id="dept" name="department_id" class="select form-control form-control-lg bg-white rounded-lg border" multiple>
-                    <option disabled>--من فضلك إختر القسم أولاً--</option>
-                    @foreach($departments as $d)
-                        <option value="{{$d->id}}" {{old('department_id')==$d->id?'selected':''}}>{{$d->name}}</option>
-                    @endforeach
-                </select>
-
-            </div>
-            <div class="form-group clearfix">
-                <label for="category" class="float-right mb-5">الفئة</label>
-                <select style="width: 100%" id="category" name="category_id" class="select form-control form-control-lg bg-white rounded-lg border" multiple>
-                    <option disabled >--من فضلك إختر الفئة ثانياً--</option>
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-                </select>
-
-            </div>
-            <div class="form-group clearfix">
-                <label for="tagproduct" class="float-right mb-5">المنتجات</label>
-                <select style="width: 100%" id="tagproduct" name="tagproducts[]" class="select form-control form-control-lg bg-white rounded-lg border" multiple>
-                    @foreach($tagproducts as $tag)
-                        <option value="{{$tag->id}}">{{$tag->name}}</option>
-                    @endforeach
-                </select>
-
-            </div>
+            @livewire('department-category-product')
         </div>
         <div class="tab">
             <div class="form-group clearfix">
-                <label for="name" class="float-right mb-5">إسم المستخدم <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="name" class="mb-5">إسم المستخدم <span class="text-danger" style="font-size:20px;">*</span></label>
                 <input  id="name" name="name" value="{{old('name')}}" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="الإسم">
 
                 @error('name')
@@ -192,7 +182,7 @@
                 @enderror
             </div>
             <div class="form-group clearfix">
-                <label for="user-email" class="float-right mb-5"> عنوان البريد الإلكتروني إن وجد</label>
+                <label for="user-email" class="mb-5"> عنوان البريد الإلكتروني إن وجد</label>
                 <input type="email"  id="user-email" value="{{old('email')}}" name="email" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="البريد الإلكتروني">
 
                 @error('email')
@@ -202,7 +192,7 @@
                 @enderror
             </div>
             <div class="form-group clearfix">
-                <label for="summary" class="float-right mb-5">  نبذة عن صفة المستخدم  <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="summary" class="mb-5">  نبذة عن صفة المستخدم  <span class="text-danger" style="font-size:20px;">*</span></label>
                 <input  id="summary" value="{{old('summary')}}" name="summary" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="مثال : صاحب الشركة و مدير تنفيذي">
 
                 @error('summary')
@@ -212,11 +202,11 @@
                 @enderror
             </div>
             <div class="form-group my-6">
-                <label  class="float-right mb-5">  الصورة الشخصية</label>
+                <label  class="mb-5">  الصورة الشخصية</label>
                 <div class="d-flex">
                     <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
                         <div class="py-2 mx-autos">
-                            <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
+                            <img class="w-30  src="{{asset('assets/xd/icons/file.png')}}" alt="">
                         </div>
                         <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
                             <input id="photoFile" type="file" value="{{old('photo')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="form-control ml-2" name="photo">
@@ -235,7 +225,7 @@
         </div>
         <div class="tab">
             <div class="form-group clearfix">
-                <label for="user-phone" class="float-right mb-5">رقم الموبيل  <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="user-phone" class="mb-5">رقم الموبيل  <span class="text-danger" style="font-size:20px;">*</span></label>
                 <input type="number"  id="user-phone" value="{{old('mobile')}}" name="mobile" class="form-control required form-control-lg rounded-lg border border-secondary" placeholder="رقم الموبيل">
                 @error('mobile')
                 <span class="text-danger">
@@ -244,7 +234,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="password" class="float-right mb-5">  كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="password" class="mb-5">  كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
                 <input  id="password" name="password" class="form-control form-control-lg required rounded-lg border border-secondary" type="password">
                 @error('password')
                 <span class="text-danger">
@@ -253,7 +243,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="password-confirm" class="float-right mb-5">  تأكيد كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="password-confirm" class="mb-5">  تأكيد كلمة المرور  <span class="text-danger" style="font-size:20px;">*</span></label>
                 <input  id="password-confirm" name="password_confirmation" class="form-control required form-control-lg rounded-lg border border-secondary" type="password">
                 @error('password_confirmation')
                 <span class="text-danger">

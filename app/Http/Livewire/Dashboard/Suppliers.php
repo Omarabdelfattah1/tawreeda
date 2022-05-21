@@ -10,7 +10,7 @@ class Suppliers extends Component
 {
     use WithPagination;
     public $search;
- 
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -25,6 +25,6 @@ class Suppliers extends Component
                 ->orWhere('email','like','%'.$this->search.'%');
             })->orWhere('company_name','like','%'.$this->search.'%');
         }
-        return view('livewire.dashboard.suppliers')->with('suppliers',$suppliers->paginate(15));
+        return view('livewire.dashboard.suppliers')->with('suppliers',$suppliers->paginate(12));
     }
 }

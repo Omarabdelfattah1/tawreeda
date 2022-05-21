@@ -80,7 +80,8 @@ class RegisterController extends Controller
         if($data['user_type'] == 'supplier'){
             $to_merge = [
                 'about' => ['required'],
-                'department' => ['required'],
+                'departments' => ['required'],
+                'categories' => ['required'],
                 'employees_number' => ['required'],
                 'company_address' => ['required'],
             ];

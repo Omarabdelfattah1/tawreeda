@@ -13,15 +13,12 @@ use DB;
 class RegisterSupplier extends Controller
 {
     public function index(){
-        return view('auth.supplier.index',[
-            'departments' => Department::all(),
-            'categories' => Category::all(),
-            'tagproducts' => Tagproduct::all()
-        ]);
+        return view('auth.supplier.index');
     }
 
     public function submit(RegisterSupplierRequest $request){
         $data = $request->all();
+//        dd($data);
         DB::transaction(function() use ($data,&$user){
             $userable = Supplier::create([
                 'company_name' => $data['company_name'],
@@ -32,9 +29,17 @@ class RegisterSupplier extends Controller
                 'employees_number' => $data['employees_number']?? null,
                 'company_TXCard' =>  $data['company_TXCard']??null,
             ]);
+            $userable->departments()->attach($data['department_id']);
+            $userable->categories()->attach($data['category_id']);
+            $userable->tagproducts()->attach($data['tagproducts']);
             if(isset($data['cataloge'])){
                 $path = $data['cataloge']->store('public/cataloge');
                 $userable->company_cataloge = str_replace('public/','',$path);
+                $userable->save();
+            }
+            if(isset($data['company_logo'])){
+                $path = $data['company_logo']->store('public/logos');
+                $userable->company_logo = str_replace('public/','',$path);
                 $userable->save();
             }
             $user = $userable->user()->create([

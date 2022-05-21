@@ -126,7 +126,7 @@
                     <input name="name" value="{{$category->name}}" type="text" class="form-control col-8 rounded-lg" id="">
                   </div>
                   <div class="form-group col-md-6" style="clear: right;">
-                    <label class="mb-3">قم بإضافة صورة</label>
+                    <label class="mb-3">(175*130)قم بإضافة صورة</label>
                     <div class="d-flex">
                       <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 

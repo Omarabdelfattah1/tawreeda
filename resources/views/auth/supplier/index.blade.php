@@ -60,6 +60,26 @@
             </span>
                 @enderror
             </div>
+            <div class="form-group my-6">
+                <label  class="float-right mb-5">شعار الشركة</label>
+                <div class="d-flex">
+                    <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
+
+                        <div class="py-2 mx-autos">
+                            <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
+                        </div>
+                        <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> تحميل الشعار
+                            <input type="file" id="catalogImage"  style="position: absolute;opacity: 0;top: 0;right: 0;" class="form-control ml-2 w-100 h-100" name="company_logo">
+                        </div>
+                    </div>
+
+                </div>
+                @error('cataloge')
+                <span class="text-danger">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
             <div class="form-group" >
                 <label for="govern" class="float-right mb-5">المحافظة <span class="text-danger" style="font-size:20px;">*</span> </label>
                 <select style="width: 100%;" name="state" id="govern" class="select required form-control form-control-lg rounded-lg border border-secondary">
