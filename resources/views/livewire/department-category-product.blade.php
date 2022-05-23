@@ -19,7 +19,7 @@
     </div>
     <div class="form-group clearfix">
         <label for="tagproduct" class="mb-5">المنتجات</label>
-        <select style="width: 100%" id="tagproduct" name="tagproducts[]" class="select2 form-control form-control-lg bg-white rounded-lg border required" wire:model="tagProductIds" multiple>
+        <select style="width: 100%" id="tagproduct" name="tagproducts[]" class="select2 form-control form-control-lg bg-white rounded-lg border" wire:model="tagProductIds" multiple>
             @foreach($tagproducts as $tag)
                 <option value="{{$tag->id}}">{{$tag->name}}</option>
             @endforeach

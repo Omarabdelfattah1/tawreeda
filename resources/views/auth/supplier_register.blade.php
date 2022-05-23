@@ -135,7 +135,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="emp" class="mb-5"> عدد الموظفين <span class="text-danger" style="font-size:20px;">*</span></label>
+                <label for="emp" class="mb-5"> عدد الموظفين </label>
                 <input  id="emp" name="employees_number" value="{{old('employees_number')}}" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال : 7">
                 @error('employees_number')
                 <span class="text-danger">
