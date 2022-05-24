@@ -29,9 +29,15 @@ class RegisterSupplier extends Controller
                 'employees_number' => $data['employees_number']?? null,
                 'company_TXCard' =>  $data['company_TXCard']??null,
             ]);
-            $userable->departments()->attach($data['department_id']);
-            $userable->categories()->attach($data['category_id']);
-            $userable->tagproducts()->attach($data['tagproducts']);
+            if(isset($data['department_id'])){
+                $userable->departments()->attach($data['department_id']);
+            }
+            if(isset($data['category_id'])){
+                $userable->categories()->attach($data['category_id']);
+            }
+            if(isset($data['tagproducts'])){
+                $userable->tagproducts()->attach($data['tagproducts']);
+            }
             if(isset($data['cataloge'])){
                 $path = $data['cataloge']->store('public/cataloge');
                 $userable->company_cataloge = str_replace('public/','',$path);
