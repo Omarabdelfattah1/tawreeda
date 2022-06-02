@@ -105,8 +105,17 @@ class SuppliersController extends Controller
     public function update(Request $request, Supplier $supplier)
     {
 //         dd($request->all());
-        $files = [];
+        if (isset($request->profile)){
+            $this->updateProfile($supplier->user(),$request);
+        }else{
+            $this->updateSettings($supplier,$request);
+        }
+        session()->flash('success','تم التعديل بنجاح');
+        return redirect()->back();
+    }
 
+    public function updateSettings($supplier,Request $request){
+        $files = [];
         // departments , tags and categories
         $supplier->departments()->sync($request->departments);
         $supplier->categories()->sync($request->categories);
@@ -125,7 +134,7 @@ class SuppliersController extends Controller
         {
             // dd($request->file('quality_files'));
             foreach($request->file('quality_files') as $file){
-            // dd($file);
+                // dd($file);
                 $path = str_replace('public/','',$file->store('public/quality_files'));
                 $files[]=[
                     'type' => 'quality',
@@ -138,13 +147,13 @@ class SuppliersController extends Controller
         if($request->file('production_files'))
         {
             foreach($request->file('production_files') as $file){
-            $path = str_replace('public/','',$file->store('public/production_files'));
-            $files[]=[
-                'type' => 'production',
-                'fileable_type' => 'App\Models\Supplier',
-                'fileable_id' => $supplier->id,
-                'path' => $path
-            ];
+                $path = str_replace('public/','',$file->store('public/production_files'));
+                $files[]=[
+                    'type' => 'production',
+                    'fileable_type' => 'App\Models\Supplier',
+                    'fileable_id' => $supplier->id,
+                    'path' => $path
+                ];
             }
         }
 
@@ -158,11 +167,9 @@ class SuppliersController extends Controller
         {
             File::insert($files);
         }
-        session()->flash('success','تم التعديل بنجاح');
-        return redirect()->back();
+        return true;
     }
-
-    public function updateProfile($user,$request){
+    public function updateProfile($user,Request $request){
         $updates = $request->except(['_token','_method','profile','password','password_confirmation']);
         if($request->file('photo'))
         {
@@ -183,9 +190,6 @@ class SuppliersController extends Controller
         }else{
             $updates['locked']= false;
         }
-//        dd($updates);
-        session()->flash('success','تم تعديل المورد بنجاح');
-
         return $user->update($updates);
     }
     /**

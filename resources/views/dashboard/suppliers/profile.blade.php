@@ -74,7 +74,6 @@
                 <input type="checkbox" name="locked" {{$supplier->user->locked ? 'checked':''}} id="name" placeholder="" class="form-control rounded-lg">
 
               </div>
-            </div>
             <button class="btn btn-primary btn-sm rounded px-6" type="submit">حفظ</button>
           </form>
         </div>
