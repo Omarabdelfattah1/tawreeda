@@ -19,7 +19,9 @@ class SettingsController extends Controller
             }
 //            dd($key,$value);
 
-            Setting::set($key,$value);
+            if (!empty($value)){
+                Setting::set($key,$value);
+            }
         }
         return redirect()->back();
     }

@@ -14,14 +14,14 @@
               </div>
               <div class="form-group col-md-6">
                 <label class="mb-3" for="name"> رقم الموبيل:</label>
-                <input type="text" name="" name="mobile" value="{{$supplier->user->mobile}}" id="name" placeholder="" class="form-control rounded-lg">
+                <input type="text" name="mobile" value="{{$supplier->user->mobile}}" id="name" placeholder="" class="form-control rounded-lg">
                   @error('mobile')
                   <span class="text-danger">{{$message}}</span>
                   @enderror
               </div>
               <div class="form-group col-md-6">
                 <label class="mb-3" for="name">  عنوان البريد الإلكتروني:</label>
-                <input type="text" name="" name="email" value="{{$supplier->user->email}}" id="name" placeholder="" class="form-control rounded-lg">
+                <input type="text" name="email" value="{{$supplier->user->email}}" id="name" placeholder="" class="form-control rounded-lg">
                   @error('email')
                   <span class="text-danger">{{$message}}</span>
                   @enderror

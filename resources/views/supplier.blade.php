@@ -31,7 +31,9 @@
         </div>
         <div class="col-lg-9 col-md-7 col-sm-7  col-xs-8 text-right">
           <h3 class="font-weight-bold mb-3">{{$supplier->company_name}}@if($supplier->verified)<img class=" mr-2" style="width:20px;" src="{{asset('assets/xd/verified.svg')}}" alt="">@endif</h3>
-          <p class="mb-3">{{$supplier->about}}</p>
+          <p class="mb-3">
+              {{ \Illuminate\Support\Str::limit($supplier->about, 150, $end='...') }}
+          </p>
           <p class="mb-3"> <img style="width:15px;" src="{{asset('assets/xd/location.svg')}}" alt="">
             {{$supplier->company_address}}
           </p>
@@ -153,7 +155,7 @@
             @foreach($supplier->products as $p)
             <div class="col-lg-4 col-md-6 col-12">
               <div class="mx-2 my-3 rounded-lg border border-secondary media">
-                <img class="p-3" width="100px" src="{{asset($p->img)}}" alt="">
+                <img class="p-3" width="100px" src="{{asset('storage/'.$p->img)}}" alt="">
                 <div class="my-6 pr-3">{{$p->name}}</div>
               </div>
 
