@@ -239,7 +239,7 @@
                 @csrf
                 <div class="form-group">
                     <label>إسم المنتج</label>
-                    <input name="name" type="text" class="form-control rounded-lg" id="">
+                    <input name="name" type="text" class="form-control rounded-lg" required>
                 </div>
                 <div class="form-group" style="clear: right;">
                     <label class="mb-3">قم بإضافة صورة</label>
@@ -250,7 +250,7 @@
                                 <img id="productId" src="../assets/xd/icons/file.png" alt="">
                             </div>
                             <div class="btn btn-sm rounded btn-primary w-70" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                                <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" data-imgid="#productId" class="ml-2 m-0 imgPreviewInputFinal" name="img">
+                                <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" data-imgid="#productId" class="ml-2 m-0 imgPreviewInputFinal" name="img" required>
                             </div>
                         </div>
                     </div>
@@ -264,14 +264,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-primary" id="editProductLabel">إضافة منتج</h5>
+                <h5 class="modal-title text-primary" id="editProductLabel">تعديل منتج</h5>
             </div>
             <form class="modal-body" action="_" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="form-group">
                     <label>إسم المنتج</label>
-                    <input name="name" type="text" class="form-control rounded-lg" id="name">
+                    <input name="name" type="text" class="form-control rounded-lg" id="name" required>
                 </div>
                 <div class="form-group" style="clear: right;">
                     <label class="mb-3">قم بإضافة صورة</label>
@@ -287,7 +287,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary rounded-lg">إضافة</button>
+                <button class="btn btn-primary rounded-lg">تعديل</button>
             </form>
         </div>
     </div>

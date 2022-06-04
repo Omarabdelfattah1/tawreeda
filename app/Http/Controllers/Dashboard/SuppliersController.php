@@ -231,6 +231,8 @@ class SuppliersController extends Controller
         $request->validate([
             'img'=>'nullable|image',
             'name' => 'required|string'
+        ],[
+            'name' => 'إسم المنتج'
         ]);
         $data = [
             'name' => $request->name,
