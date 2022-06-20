@@ -95,9 +95,9 @@
 
         <div class="col-xl-4 col-lg-4 col-md-12 text-right">
           <div class="social">
-            <a class="social-facebook" href="{{$storage['facebook']?? 'https://www.facebook.com'}}"><i class="fa fa-facebook"></i></a>
-            <a class="social-twitter" href="{{$storage['twitter']?? 'https://www.twitter.com'}}"><i class="fa fa-twitter"></i></a>
-            <a class="social-instagram" href="{{$storage['instagram']?? 'https://www.instagram.com'}}"><i class="fa fa-instagram"></i></a>
+            <a class="social-facebook" href="{{$settings['facebook']?? 'https://www.facebook.com'}}"><i class="fa fa-facebook"></i></a>
+            <a class="social-twitter" href="{{$settings['twitter']?? 'https://www.twitter.com'}}"><i class="fa fa-twitter"></i></a>
+            <a class="social-instagram" href="{{$settings['instagram']?? 'https://www.instagram.com'}}"><i class="fa fa-instagram"></i></a>
           </div>
         </div>
       </div>

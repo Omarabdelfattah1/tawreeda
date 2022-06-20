@@ -24,7 +24,7 @@
 @yield('header')
                 @yield('test')
   @yield('footer')
-  <a target="_blank" href="https://wa.me/{{$storage['watsapp']??env('TAWREEDA_ADMIN_MOBILE')}}" style="position:fixed;bottom:40px;right:40px;z-index:1111;"><img style="width:70px;" src="{{asset('assets/xd/whatsapp.svg')}}" alt=""></a>
+  <a target="_blank" href="https://wa.me/{{$settings['phone'] ?? env('TAWREEDA_ADMIN_MOBILE')}}" style="position:fixed;bottom:40px;right:40px;z-index:1111;"><img style="width:70px;" src="{{asset('assets/xd/whatsapp.svg')}}" alt=""></a>
   <!-- /.footer -->
   <!-- Scripts -->
 
@@ -38,7 +38,6 @@
   @livewireScripts
   @if(session()->has('message'))
     <script type="text/javascript">
-
         let timerInterval
         Swal.fire({
           title: `<div class='text-center'>{!!  session()->get('message') !!}</div> `,
@@ -64,6 +63,7 @@
     </script>
   @endif
     <script>
+
         window.addEventListener('render_select2',event =>{
             console.log('render');
             $('.select2').select2();
