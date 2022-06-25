@@ -34,7 +34,7 @@
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
                 <div class="py-2 mx-auto">
-                  <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
+                  <img class="w-30 float-right" src="/assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
                   <input  id="companyImgUpload" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="company_logo">
@@ -117,13 +117,32 @@
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
                 <div class="py-2 mx-auto">
-                  <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
+                  <img class="w-30 float-right" src="/assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
                   <input id="teamImgUpload" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="team_photo">
                 </div>
               </div>
             </div>
+          </div>
+          <div class="form-group col-md-6" style="clear: right;">
+            <label class="mb-3"> الكتالوج:</label>
+              <div class="d-flex" style="max-width: 300px;">
+                  <a href="{{asset($supplier->company_cataloge)}}" target="_blank">
+                      <img id="prevCataloge" style="width: 50px;height:50px;" src="{{asset($supplier->company_cataloge)}}" alt="">
+                  </a>
+                  <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
+
+                      <div class="py-2 mx-auto">
+                          <img class="w-30 float-right" src="/assets/xd/icons/file.png" alt="">
+                      </div>
+                      <div class="p-1">
+                          <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;height: 40px;"> إستعراض الملفات
+                              <input data-imgid="#prevCataloge" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" name="company_cataloge">
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
           <div class="form-group col-12">
             <label class="mb-3" for="team_description">   وصف فريق العمل</label>
@@ -247,7 +266,7 @@
                         <div class="px-3 py-1 mr-3  d-flex  w-80 border border-primary-dotted rounded-lg">
 
                             <div class="py-2 mx-2 w-30">
-                                <img id="productId" src="../assets/xd/icons/file.png" alt="">
+                                <img id="productId" src="/assets/xd/icons/file.png" alt="">
                             </div>
                             <div class="btn btn-sm rounded btn-primary w-70" style="position: relative;overflow: hidden;"> إستعراض الملفات
                                 <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" data-imgid="#productId" class="ml-2 m-0 imgPreviewInputFinal" name="img" required>
@@ -279,7 +298,7 @@
                         <div class="px-3 py-1 mr-3  d-flex  w-80 border border-primary-dotted rounded-lg">
 
                             <div class="py-2 mx-2 w-30">
-                                <img id="productId" src="../assets/xd/icons/file.png" alt="">
+                                <img id="productId" src="/assets/xd/icons/file.png" alt="">
                             </div>
                             <div class="btn btn-sm rounded btn-primary w-70" style="position: relative;overflow: hidden;"> إستعراض الملفات
                                 <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" data-imgid="#productId" class="ml-2 m-0 imgPreviewInputFinal" name="img">

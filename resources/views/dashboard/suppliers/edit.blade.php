@@ -41,7 +41,7 @@ function editProduct(id,route,product_name){
 @section('content')
 
 <div id="content">
-  <div class="text-right" style="font-size:30px;">
+  <div class="text-right text-md" style="font-size:30px;">
     تعديل بائع <span class="text-primary">{{$supplier->user->name}}</span>
   </div>
 
@@ -50,7 +50,7 @@ function editProduct(id,route,product_name){
             <div class="alert alert-danger">{{$error}}</div>
         @endforeach
     @endif
-  <div class="mt-6 card mx-4 px-5 w-100">
+  <div class="mt-6 card w-100">
     <ul class="nav nav-tabs px-0 font-weight-bold" id="myTab" role="tablist" style="height: 60px;">
       <li class="nav-item" style="border-left:1px solid #f1f2f3 !important;">
         <a  style="height: 100%;line-height: 30px;" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">

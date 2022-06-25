@@ -162,6 +162,11 @@ class SuppliersController extends Controller
             $supplier->company_logo = str_replace('public/','',$path);
             $supplier->save();
         }
+        if($request->file('company_cataloge')){
+            $path = $request->company_cataloge->store('public/cataloge');
+            $supplier->company_cataloge = str_replace('public/','',$path);
+            $supplier->save();
+        }
         // dd($files);
         if(count($files))
         {

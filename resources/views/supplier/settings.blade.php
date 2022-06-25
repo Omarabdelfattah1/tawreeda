@@ -49,7 +49,7 @@
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
                 <div class="py-2 mx-auto">
-                  <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
+                  <img class="w-30 float-right" src="/assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
                   <input id="imgUpload1" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="company_logo">
@@ -124,7 +124,7 @@
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
                 <div class="py-2 mx-auto">
-                  <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
+                  <img class="w-30 float-right" src="/assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
                   <input id="imgUpload2" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInput" name="team_photo">
@@ -132,6 +132,25 @@
               </div>
             </div>
           </div>
+            <div class="form-group col-md-6" style="clear: right;">
+                <label class="mb-3"> الكتالوج:</label>
+                <div class="d-flex" style="max-width: 300px;">
+                    <a href="{{asset($supplier->company_cataloge)}}" target="_blank">
+                        <img class="prevCataloge" style="width: 50px;height:50px;" src="{{asset($supplier->company_cataloge)}}" alt="">
+                    </a>
+                    <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
+
+                        <div class="p-1">
+                            <img  style="width: 40px;height:40px;" src="/assets/xd/icons/file.png" alt="">
+                        </div>
+                        <div class="p-1">
+                            <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;height: 40px;"> إستعراض الملفات
+                                <input data-imgid="#prevCataloge" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" name="company_cataloge">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="form-group col-12">
             <label class="mb-3" for="team_description">   وصف فريق العمل</label>
             <textarea type="text" name="team_description" id="team_description" placeholder="" class="form-control rounded-lg" rows="3">{{$supplier->team_description}}</textarea>

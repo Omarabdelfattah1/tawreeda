@@ -120,6 +120,13 @@ class SupplierController extends Controller
         $path = str_replace('public/','',$request->file('company_logo')->store('public/logos'));
         $updates['company_logo'] = $path;
       }
+      if($request->file('company_cataloge'))
+      {
+        Storage::delete('public/'.$supplier->company_cataloge);
+
+        $path = str_replace('public/','',$request->file('company_cataloge')->store('public/cataloge'));
+        $updates['company_cataloge'] = $path;
+      }
       // dd($updates);
       if($supplier instanceof Supplier){
         $supplier->update($updates);

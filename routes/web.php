@@ -16,7 +16,7 @@ use App\Models\File;
 |
 */
 Route::get('/', function () {
-    return view('soon');
+    return view('welcome');
 });
 
 Route::get('/home',function ()

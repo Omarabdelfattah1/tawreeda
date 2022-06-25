@@ -42,6 +42,9 @@ class Supplier extends Model
     public function getCompanyLogoAttribute(){
         return $this->attributes['company_logo'] ? 'storage/'. $this->attributes['company_logo'] : 'my-profile.png';
     }
+    public function getCompanyCatalogeAttribute(){
+        return $this->attributes['company_cataloge'] ? 'storage/'. $this->attributes['company_cataloge'] : 'my-profile.png';
+    }
     public function user()
     {
         return $this->morphOne(User::class,'userable');
