@@ -7,7 +7,7 @@
   </div>
 
 
-  <div class="mt-6 card mx-4 px-5 w-100">
+  <div class="mt-6 card w-100">
     <ul class="nav nav-tabs px-0 font-weight-bold" id="myTab" role="tablist" style="height: 60px;">
       <li class="nav-item" style="border-left:1px solid #f1f2f3 !important;">
         <a  style="height: 100%;line-height: 30px;" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
@@ -45,7 +45,7 @@
               <div class="col-md-8">
                 <h6 class="py-1 font-weight-bold">
                   {{$buyer->company_name}}
-                
+
                 </h6>
                 <p style="line-height: 1rem;font-size: 12px;">{{$request->description}}</p>
                 <div class="row mt-3">
@@ -74,7 +74,7 @@
             </div>
             @endforeach
           </div>
-        
+
         </div>
       </div>
       <div class="tab-pane  fade" id="product" role="tabpanel" aria-labelledby="product-tab" style="border-right:0px !important;color: #6F6F6F !important;background: none !important;">
@@ -91,7 +91,7 @@
           <div style="display:table-row;font-size:12px;width: auto;clear: both;" class="sm-tbl-row mb-3">
             <div style="display:table-cell;" class="sm-tbl-cell">
               <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header">التاريخ</div>
-              
+
               <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">{{$call->date}}</div>
             </div>
             <div style="display:table-cell;" class="sm-tbl-cell">
@@ -100,7 +100,7 @@
             </div>
             <div style="display:table-cell" class="sm-tbl-cell">
               <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header">الشركة</div>
-              
+
               <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                 <div class="media">
                   <img src="{{asset($call->supplier->company_logo)}}" alt="" style="width: 30px;">
@@ -117,7 +117,7 @@
             </div>
             <div style="display:table-cell;" class="sm-tbl-cell">
               <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header">نوع الإتصال</div>
-              
+
               <div class="d-flex py-3 sm-tbl-cell-header" style="padding:6px;"  >
                 <img src="{{asset('assets/xd/phone.svg')}}" alt="" style="width: 25px; margin: auto;">
                 <img src="{{asset('assets/xd/mail.svg')}}" alt="" style="width: 25px;">
@@ -125,7 +125,7 @@
             </div>
             <div style="display:table-cell" class="sm-tbl-cell">
               <div style="display:none;padding:6px;" class="py-3 sm-tbl-cell-header">الحالة</div>
-              
+
               <div style="padding:6px;"  class="py-3 sm-tbl-cell-header">
                 <button class="btn btn-xs btn-success rounded-lg">تم الإتصال</button>
               </div>
@@ -167,7 +167,7 @@
         <div class="bg-white">
           <div class="pt-6 p-4">
             <form action="{{route('dashboard.buyers.update',$buyer)}}" method="post" enctype="multipart/form-data">
-              @csrf 
+              @csrf
               @method('put')
 
               <input type="hidden" value="settings"  name="settings" id="">
@@ -184,7 +184,7 @@
                     </div>
                     <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                      <div class="py-2 mx-auto"> 
+                      <div class="py-2 mx-auto">
                         <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                       </div>
                       <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -209,7 +209,7 @@
       <div class="tab-pane  fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab" style="border-right:0px !important;color: #6F6F6F !important;background: none !important;">
         <div class="pt-6 p-4">
           <form action="{{route('dashboard.buyers.update',$buyer)}}" method="post"  enctype="multipart/form-data">
-              @csrf 
+              @csrf
               @method('put')
               <input type="hidden" name="profile" value="profile" id="">
               <div class="row">
@@ -228,7 +228,7 @@
                 <div class="form-group col-md-6">
                   <label class="mb-3" for="name">  اللقب:</label>
                   <input type="text" name="title" value="{{$buyer->user->title}}" id="name" placeholder="" class="form-control rounded-lg">
-                  
+
                 </div>
                 <div class="form-group col-md-6">
                   <label class="mb-3" for="name">  نبذة عن صفة المستخدم:</label>
@@ -242,7 +242,7 @@
                     </div>
                     <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-                      <div class="py-2 mx-auto"> 
+                      <div class="py-2 mx-auto">
                         <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                       </div>
                       <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
@@ -258,7 +258,7 @@
                 <div class="form-group col-md-6">
                   <label class="mb-3" for="password"> إيقاف الحساب:</label>
                   <input type="checkbox" name="locked" {{$buyer->locked ? 'checked':''}} id="name" placeholder="" class="form-control rounded-lg">
-                
+
                 </div>
               </div>
 

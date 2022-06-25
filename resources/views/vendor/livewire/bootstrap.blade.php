@@ -1,9 +1,8 @@
-<div>
+
     @if ($paginator->hasPages())
         @php(isset($this->numberOfPaginatorsRendered[$paginator->getPageName()]) ? $this->numberOfPaginatorsRendered[$paginator->getPageName()]++ : $this->numberOfPaginatorsRendered[$paginator->getPageName()] = 1)
-        
-        <nav class="">
-            <ul class="pagination my-3 justify-content-center">
+
+            <ul style="max-width: 200px !important;" class="pagination my-3 mx-auto justify-content-center flex-wrap">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
@@ -45,6 +44,5 @@
                     </li>
                 @endif
             </ul>
-        </nav>
+
     @endif
-</div>
