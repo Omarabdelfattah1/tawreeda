@@ -18,7 +18,7 @@
       <div class="row">
         <!-- start-form  -->
         <form method="post" class="col-md-8 col-xl-8 mx-auto input-border" action="{{route('register')}}" enctype="multipart/form-data">
-          @csrf 
+          @csrf
           <input type="hidden" name="user_type" value="buyer" id="">
           <div class="form-group clearfix">
             <label for="name" class="float-right mb-5">إسم المستخدم</label>
@@ -47,7 +47,7 @@
                 <strong>{{ $message }}</strong>
             </span>
           @enderror
-          
+
           <div class="form-group my-6">
             <label  class="float-right mb-5"> نوع الشركة</label>
             <div class="row" style="clear: right;">
@@ -58,7 +58,7 @@
                 <label class="radio-inline ">
                   <input type="radio" class="ml-2" style="transform: scale(2);" name="company_type" value="consumer"> مستهلك نهائي
                 </label>
-                
+
               </div>
             </div>
           </div>
@@ -76,14 +76,15 @@
             <div class="d-flex">
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-                <div class="py-2 mx-autos"> 
-                  <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
+                <div class="py-2 mx-autos">
+                  <img  class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="company_logo">
+                  <input data-imgid="#previewLogo" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" name="company_logo">
                 </div>
               </div>
             </div>
+              <img  id="previewLogo" src="" style="max-width: 50px !important;">
           </div>
           @error('logo')
             <span class="text-danger">
@@ -93,7 +94,7 @@
           <div class="form-group clearfix">
             <label for="title" class="float-right mb-5">  اللقب </label>
             <input name="title" value="{{old('title')}}" id="" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="مثال: مهندس">
-            
+
           </div>
           @error('title')
             <span class="text-danger">
@@ -114,13 +115,14 @@
             <div class="d-flex">
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-                <div class="py-2 mx-autos"> 
+                <div class="py-2 mx-autos">
                   <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" value="{{old('photo')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="photo">
+                  <input data-imgid="#personalImg" type="file" value="{{old('photo')}}" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" name="photo">
                 </div>
               </div>
+                <img  id="personalImg" src="" style="max-width: 50px !important;">
             </div>
           </div>
           @error('photo')
@@ -144,9 +146,9 @@
           <div class="form-group ">
             <button class="btn rounded-lg btn-xl btn-primary d-block ml-auto mt-5"> إرسال</button>
           </div>
-          
+
         </form>
-        
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content text-right p-2 pb-1 rounded-lg font-weight-bold">
@@ -156,12 +158,12 @@
               <div class="modal-body rounded-lg">
                 <!-- form  -->
                 <div class="mx-auto input-border">
-      
+
                   <div class="form-group clear-both">
                     <label for="phone-email" class="float-right mb-5">رقم الموبيل أو البريد الإلكتروني</label>
                     <input id="phone-email" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="رقم الموبيل أو البريد الإلكتروني">
                   </div>
-        
+
                   <div class="form-group">
                     <label for="password" class="float-right mb-5">الرقم السري</label>
                     <input id="password" type="password" class="form-control form-control-lg rounded-lg border border-secondary" placeholder="الرقم السري">
@@ -172,7 +174,7 @@
                     <p class="small mt-3 opacity-70  text-right mt-5">معندكش حساب؟ <a href="#">أنشئ دلوقتي </a></p>
                   </div>
                 <p  class="text-default mt-6" style="font-size: 10px;">من خلال التسجيل فأنت توافق على <a class="text-primary" href="">شروط الإستخدام</a>&nbsp; و &nbsp;<a class="text-primary" href="">سياسة الخصوصية</a> </p>
-        
+
                 </div>
                 <!-- end-form -->
               </div>

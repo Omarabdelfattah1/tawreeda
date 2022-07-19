@@ -113,7 +113,7 @@ class RegisterController extends Controller
             $userable;
             if($data['user_type'] == 'buyer'){
                 $userable = $this->storeBuyer($data);
-                if($data['company_logo']){
+                if(isset($data['company_logo'])){
                     $path = $data['company_logo']->store('public/logo');
                     $userable->company_logo = str_replace('/public','',$path);
                     $userable->save();
@@ -138,7 +138,7 @@ class RegisterController extends Controller
                 'mobile' => $data['mobile'],
                 'password' => Hash::make($data['password']),
             ]);
-            if($data['photo']){
+            if(isset($data['photo'])){
                 $path = $data['photo']->store('public/users/photos');
                 $user->photo = str_replace('public/','',$path);
                 $user->save();
