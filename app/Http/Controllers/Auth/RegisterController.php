@@ -115,7 +115,7 @@ class RegisterController extends Controller
                 $userable = $this->storeBuyer($data);
                 if(isset($data['company_logo'])){
                     $path = $data['company_logo']->store('public/logo');
-                    $userable->company_logo = str_replace('/public','',$path);
+                    $userable->company_logo = str_replace('public/','',$path);
                     $userable->save();
                 }
             }

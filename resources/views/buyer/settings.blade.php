@@ -20,15 +20,15 @@
             <label class="mb-3">شعار الشركة:</label>
             <div class="d-flex">
               <div>
-                <img style="width: 50px;height:50px;" src="{{asset($buyer->company_logo)}}" alt="">
+                <img id="personalImg" style="width: 50px;height:50px;" src="{{asset($buyer->company_logo)}}" alt="">
               </div>
               <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                <div class="py-2 mx-auto"> 
+                <div class="py-2 mx-auto">
                   <img class="w-30 float-right" src="../assets/xd/icons/file.png" alt="">
                 </div>
                 <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                  <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="company_logo">
+                  <input data-imgid="#personalImg" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" name="company_logo">
                 </div>
               </div>
             </div>

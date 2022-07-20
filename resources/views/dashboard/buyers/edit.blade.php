@@ -176,23 +176,23 @@
                   <label class="mb-3" for="name">إسم الشركة:</label>
                   <input type="text" name="company_name" id="name" value="{{$buyer->company_name}}" placeholder="" class="form-control rounded-lg">
                 </div>
-                <div class="form-group col-md-6" style="clear: right;">
-                  <label class="mb-3">شعار الشركة:</label>
-                  <div class="d-flex">
-                    <div>
-                      <img style="width: 50px;" src="{{asset($buyer->company_logo)}}" alt="">
-                    </div>
-                    <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
+                  <div class="form-group col-md-6" style="clear: right;">
+                      <label class="mb-3">شعار الشركة:</label>
+                      <div class="d-flex">
+                          <div>
+                              <img id="personalImg" style="width: 50px;height:50px;" src="{{asset($buyer->company_logo)}}" alt="">
+                          </div>
+                          <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded-lg">
 
-                      <div class="py-2 mx-auto">
-                        <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
+                              <div class="py-2 mx-auto">
+                                  <img class="w-30 float-right" src="/assets/xd/icons/file.png" alt="">
+                              </div>
+                              <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
+                                  <input data-imgid="#personalImg" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" name="company_logo">
+                              </div>
+                          </div>
                       </div>
-                      <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                        <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="company_logo">
-                      </div>
-                    </div>
                   </div>
-                </div>
                 <div class="form-group col-md-6">
                   <label class="mb-3" for="name">إسم الشركة:</label>
                   <select type="text" name="company_type" id="name" placeholder="" class="form-control rounded-lg">
@@ -234,23 +234,23 @@
                   <label class="mb-3" for="name">  نبذة عن صفة المستخدم:</label>
                   <input type="text" name="summary" value="{{$buyer->user->summary}}" id="name" placeholder="" class="form-control rounded-lg">
                 </div>
-                <div class="form-group col-md-6" style="clear: right;">
-                  <label class="mb-3"> صورة المستخدم:</label>
-                  <div class="d-flex">
-                    <div>
-                      <img style="width: 50px;" src="{{asset($buyer->user->photo)}}" alt="">
-                    </div>
-                    <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
+                  <div class="form-group col-md-6" style="clear: right;">
+                      <label class="mb-3"> صورة المستخدم:</label>
+                      <div class="d-flex">
+                          <div>
+                              <img id="personalImg" class="rounded-circle" style="width: 50px;height:50px;" src="{{asset($buyer->user->photo)}}" alt="">
+                          </div>
+                          <div class="px-3 py-1 mr-3 d-flex justify-content-around border border-primary-dotted rounded">
 
-                      <div class="py-2 mx-auto">
-                        <img class="w-30 float-right" src="{{asset('assets/xd/icons/file.png')}}" alt="">
+                              <div class="py-2 mx-auto">
+                                  <img class="w-30 float-right" src="/assets/xd/icons/file.png" alt="">
+                              </div>
+                              <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
+                                  <input data-imgid="#personalImg" type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2 imgPreviewInputFinal" name="photo">
+                              </div>
+                          </div>
                       </div>
-                      <div class="btn btn-sm rounded btn-primary" style="position: relative;overflow: hidden;"> إستعراض الملفات
-                        <input type="file" style="position: absolute;opacity: 0;top: 0;right: 0;" class="ml-2" name="photo">
-                      </div>
-                    </div>
                   </div>
-                </div>
                 <div class="form-group col-md-6">
                   <label class="mb-3" for="name">كلمة المرور </label>
                   <input type="password" name="password" id="name" placeholder="" class="form-control rounded-lg">
