@@ -241,7 +241,7 @@ button,a,.btn,h1,h2,h3,h4,h5,h6,p{
     color: #FF6A00;
   }
   .rtl{
-    direction: rt;
+    direction: rtl;
   }
 .bg-primary{
   background-color: #FF6A00 !important;

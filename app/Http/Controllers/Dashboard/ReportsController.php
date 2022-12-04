@@ -14,7 +14,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.reports')->with('reports',Report::paginate(15));
+        return view('dashboard.reports');
     }
 
 
@@ -29,7 +29,7 @@ class ReportsController extends Controller
         //
     }
 
-  
+
     /**
      * Update the specified resource in storage.
      *

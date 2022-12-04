@@ -11,6 +11,8 @@ class Supplier extends Model
     use HasFactory;
 
     protected $fillable = [
+        'instagram',
+        'facebook',
         'email',
         'phones',
         'team_photo',

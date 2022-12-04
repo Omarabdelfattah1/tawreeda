@@ -2,6 +2,12 @@
 
 @section('styles')
 <style>
+    .star-rating {
+        line-height:32px;
+        font-size:1.25em;
+    }
+
+    .star-rating .fa-star{color: orange;}
 @media(max-width:994px){
 
   #categories{
@@ -68,7 +74,10 @@
           @endif
         </p>
 
-        <p class="mb-1 text-sm" style="vertical-align: middle;"> <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/phone.svg')}}" alt="">{{$supplier->user->mobile}}</p>
+        <p class="mb-1 text-sm" style="vertical-align: middle;">
+            <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/phone.svg')}}" alt="">
+            {{$supplier->user->mobile}}
+        </p>
         @if($supplier->email)
         <p class="mb-1 text-sm" style="vertical-align: middle;"> <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/mail.svg')}}" alt="">{{$supplier->email}}</p>
         @endif
@@ -84,6 +93,14 @@
           <img style="vertical-align: middle;width: 20px;" class="py-1" src="{{asset('assets/xd/not-valid.svg')}}" alt=""> سجل تجاري
         @endif
         </p>
+          <p class="mb-1 d-flex" style="vertical-align: middle; gap: 50px;font-size: 30px">
+              @if($supplier->facebook)
+                  <a class="social-facebook" href="{{$supplier->facebook?? 'https://www.facebook.com'}}"><i class="fa fa-facebook"></i></a>
+              @endif
+              @if($supplier->instagram)
+                  <a class="social-instagram" href="{{$supplier->instagram?? 'https://www.instagram.com'}}"><i class="fa fa-instagram"></i></a>
+              @endif
+          </p>
         <div>
           <button class="ml-1 px-1 btn rounded btn-outline-primary" type="button" data-toggle="modal" @auth data-target="#review-modal" @else data-target="#login-modal" @endauth>تقييم المورد</button>
           <button class="ml-1 px-1 btn rounded btn-primary"  type="button" data-toggle="modal" @auth data-target="#contact-modal" @else data-target="#login-modal" @endauth> طلب الإتصال</button>
@@ -151,14 +168,17 @@
           </div>
         </div>
         <div class="tab-pane fade" id="product" role="tabpanel" aria-labelledby="product-tab">
+            <div class="row m-2 p-2">
+                <a class="btn btn-primary btn-lg h3" href="{{asset('storage/'.$supplier->company_cataloge)}}" download>تحميل الكتالوج </a>
+            </div>
+            <hr>
           <div class="row">
             @foreach($supplier->products as $p)
             <div class="col-lg-4 col-md-6 col-12">
-              <div class="mx-2 my-3 rounded-lg border border-secondary media">
+              <a href="{{asset('storage/'.$p->img)}}" target="_blank" class="mx-2 my-3 rounded-lg border border-secondary media">
                 <img class="p-3" width="100px" src="{{asset('storage/'.$p->img)}}" alt="">
                 <div class="my-6 pr-3">{{$p->name}}</div>
-              </div>
-
+              </a>
             </div>
             @endforeach
           </div>
@@ -299,13 +319,36 @@
 @endsection
 
 @section('scripts')
+    <script>
+        var $star_rating = $('.star-rating .fa');
 
+        var SetRatingStar = function() {
+            return $star_rating.each(function() {
+                if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+                    return $(this).removeClass('fa-star-o').addClass('fa-star');
+                } else {
+                    return $(this).removeClass('fa-star').addClass('fa-star-o');
+                }
+            });
+        };
+
+        $star_rating.on('click', function() {
+            $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+            return SetRatingStar();
+        });
+
+        SetRatingStar();
+        $(document).ready(function() {
+
+        });
+    </script>
+@endsection
 @guest
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="checkLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content text-right p-2 pb-1 rounded-lg font-weight-bold">
       <div class="modal-header" style="border-bottom: 0px;">
-        <h5 class="modal-title lead-6 text-primary font-weight-bold " id="loginLabel">عندك حساب؟</h2>
+        <h5 class="modal-title lead-6 text-primary font-weight-bold " id="loginLabel">عندك حساب؟</h5>
       </div>
       <div class="modal-body rounded-lg">
         <!-- form  -->
@@ -338,7 +381,7 @@
     <div class="modal-dialog">
       <div class="modal-content text-right p-2 pb-1 rounded-lg font-weight-bold">
         <div class="modal-header" style="border-bottom: 0px;">
-          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">تقييم المورد</h2>
+          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">تقييم المورد</h5>
         </div>
         <div class="modal-body rounded-lg">
           <!-- form  -->
@@ -353,18 +396,17 @@
 
             <div class="form-group">
               <label for="password" class="float-right mb-5">التقييم</label>
-              <div class="stars">
-                <input class="star star-5" id="star-5" type="radio" name="review" value="5"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="review" value="4"/>
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="review" value="3"/>
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="review" value="2"/>
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="review" value="1"/>
-                <label class="star star-1" for="star-1"></label>
-              </div>
+                <div class="col-lg-12">
+                <div class="star-rating">
+                    <span class="fa fa-star-o" data-rating="1"></span>
+                    <span class="fa fa-star-o" data-rating="2"></span>
+                    <span class="fa fa-star-o" data-rating="3"></span>
+                    <span class="fa fa-star-o" data-rating="4"></span>
+                    <span class="fa fa-star-o" data-rating="5"></span>
+                    <input type="hidden" name="stars" class="rating-value" value="0">
+                </div>
+            </div>
+
             </div>
             <div class="form-group clear-both">
               <label for="comment" class="float-right mb-5">التعليق</label>
@@ -384,7 +426,7 @@
     <div class="modal-dialog">
       <div class="modal-content text-right p-2 pb-1 rounded-lg font-weight-bold">
         <div class="modal-header" style="border-bottom: 0px;">
-          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">طلب إتصال</h2>
+          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">طلب إتصال</h5>
         </div>
         <div class="modal-body rounded-lg">
           <!-- form  -->
@@ -430,7 +472,7 @@
     <div class="modal-dialog">
       <div class="modal-content text-right p-2 pb-1 rounded-lg font-weight-bold">
         <div class="modal-header" style="border-bottom: 0px;">
-          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">عندك حساب؟</h2>
+          <h5 class="modal-title lead-6 text-primary font-weight-bold " id="reviewLabel">عندك حساب؟</h5>
         </div>
         <div class="modal-body rounded-lg">
           <!-- form  -->
@@ -472,4 +514,3 @@
     </div>
   </div>
 @endguest
-  @endsection

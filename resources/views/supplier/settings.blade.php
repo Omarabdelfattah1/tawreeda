@@ -112,7 +112,7 @@
           </div>
           <div class="form-group col-md-6">
             <label class="mb-3" for="emp-number"> عدد موظفين الشركة</label>
-            <input type="text" name="employees_number" value="{{$supplier->employees_number}}" id="emp-number" placeholder="" class="form-control rounded-lg">
+            <input type="number" name="employees_number" value="{{$supplier->employees_number}}" id="emp-number" placeholder="" class="form-control rounded-lg">
 
           </div>
           <div class="form-group col-md-6" style="clear: right;">
@@ -150,6 +150,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="mb-3" for="instagram">إنستغرام</label>
+                <input type="url" name="instagram" value="{{$supplier->instagram}}" id="instagram" placeholder="" class="form-control rounded-lg">
+            </div>
+            <div class="form-group col-md-6">
+                <label class="mb-3" for="facebook">فيسبوك</label>
+                <input type="url" name="facebook" value="{{$supplier->facebook}}" id="facebook" placeholder="" class="form-control rounded-lg">
             </div>
           <div class="form-group col-12">
             <label class="mb-3" for="team_description">   وصف فريق العمل</label>

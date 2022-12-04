@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReviewRequest;
 use Illuminate\Http\Request;
 use App\Models\Request as PRequest;
 use App\Models\Supplier;
@@ -38,14 +39,14 @@ class BuyerController extends Controller
   public function reviews(){
     return view('buyer.reviews');
   }
-  public function review(Request $request,Supplier $supplier)
+  public function review(StoreReviewRequest $request,Supplier $supplier)
   {
-    // dd($request->all());
+//     dd($request->all());
     $buyer = auth()->user()->userable;
     $buyer->reviews()->create([
       'supplier_id' => $supplier->id,
       'comment' => $request->comment,
-      'stars' => $request->review,
+      'stars' => $request->stars,
       'title' => $request->title
     ]);
     return redirect()->route('buyer.reviews');

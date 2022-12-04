@@ -27,20 +27,6 @@
             <input type="text" name="title" value="{{auth()->user()->title}}" id="name" placeholder="مثال: مهندس " class="form-control rounded-lg">
 
           </div>
-          @if(empty(auth()->user()->telegram_id))
-          <div class="form-group col-md-6">
-            <label class="mb-3" for="name">  تفعيل إشعارات تيليجرام:</label>
-
-            <script async
-              src="https://telegram.org/js/telegram-widget.js?15"
-              data-telegram-login="TawreedaBot"
-              data-size="medium" data-userpic="false"
-              data-request-access="write"
-              data-auth-url="{{route('telegram.connect')}}"
-              >
-            </script>
-          </div>
-          @endif
           <div class="form-group col-md-6">
             <label class="mb-3" for="name">  نبذة عن صفة المستخدم:</label>
             <input type="text" name="summary" value="{{auth()->user()->summary}}" id="name" placeholder="" class="form-control rounded-lg">
@@ -62,14 +48,14 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="form-group col-md-6">
-          <label class="mb-3" for="password">  كلمة المرور:</label>
-          <input type="text" name="password" id="password" placeholder="" class="form-control rounded-lg">
-        </div>
-        <div class="form-group col-md-6">
-          <label class="mb-3" for="password">  تأكيد كلمة المرور:</label>
-          <input type="text" name="password-confirmation" id="password" placeholder="" class="form-control rounded-lg">
+            <div class="form-group col-md-6">
+                <label class="mb-3" for="password">  كلمة المرور:</label>
+                <input type="text" name="password" id="password" placeholder="" class="form-control rounded-lg">
+            </div>
+            <div class="form-group col-md-6">
+                <label class="mb-3" for="password">  تأكيد كلمة المرور:</label>
+                <input type="text" name="password-confirmation" id="password" placeholder="" class="form-control rounded-lg">
+            </div>
         </div>
         <button class="btn btn-primary btn-sm rounded px-6" type="submit">حفظ</button>
       </form>
