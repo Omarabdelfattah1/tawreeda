@@ -128,8 +128,6 @@ class SuppliersController extends Controller
             $supplier->verified =0;
             $supplier->save();
         }
-
-
         if($request->file('quality_files'))
         {
             // dd($request->file('quality_files'));

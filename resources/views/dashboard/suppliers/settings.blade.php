@@ -211,6 +211,17 @@
             </div>
           </div>
         </div>
+          <hr>
+          <div class="row">
+              <div class="form-group col-md-6">
+                  <label class="mb-3" for="instagram">إنستغرام</label>
+                  <input type="url" name="instagram" value="{{$supplier->instagram}}" id="instagram" placeholder="" class="form-control rounded-lg">
+              </div>
+              <div class="form-group col-md-6">
+                  <label class="mb-3" for="facebook">فيسبوك</label>
+                  <input type="url" name="facebook" value="{{$supplier->facebook}}" id="facebook" placeholder="" class="form-control rounded-lg">
+              </div>
+          </div>
         <hr>
         <div class="row">
 
@@ -242,9 +253,9 @@
           </div>
           @endforeach
         </div>
+      </form>
         <hr>
         <button onclick="$('#editSupplier').submit()" class="btn btn-primary btn-sm rounded px-6">حفظ</button>
-      </form>
     </div>
   </div>
 </div>
