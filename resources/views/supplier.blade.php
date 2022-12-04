@@ -169,7 +169,7 @@
         </div>
         <div class="tab-pane fade" id="product" role="tabpanel" aria-labelledby="product-tab">
             <div class="row m-2 p-2">
-                <a class="btn btn-primary btn-lg h3" href="{{asset('storage/'.$supplier->company_cataloge)}}" download>تحميل الكتالوج </a>
+                <a class="btn btn-primary btn-lg h3" href="{{asset($supplier->company_cataloge)}}" download>تحميل الكتالوج </a>
             </div>
             <hr>
           <div class="row">
