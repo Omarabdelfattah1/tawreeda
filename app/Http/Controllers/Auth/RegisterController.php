@@ -50,7 +50,7 @@ class RegisterController extends Controller
 
     public function registered(Request $request, $user)
     {
-        if (!is_null(auth()->user()->userable instanceof (Buyer::class))){
+        if (auth()->user()->userable instanceof (Buyer::class)){
             return redirect()->back();
         }
     }
