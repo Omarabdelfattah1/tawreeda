@@ -45,7 +45,14 @@
           </div>
         </div>
       </div>
-      <a href="{{route('request')}}" class="px-6 py-2 mx-auto mt-6 lead-3 btn rounded-lg btn-primary">أطلب عرض أسعار</a>
+      <div class="d-flex justify-content-center" style="gap: 20px !important;">
+            <div>
+                <a href="{{route('request')}}" class="px-6 py-2 mx-auto mt-6 lead-3 btn rounded-lg btn-primary">أطلب عرض أسعار</a>
+            </div>
+            <div>
+                <a href="{{route('departments')}}" class="px-6 py-2 mx-auto mt-6 lead-3 btn rounded-lg btn-outline-primary">الموردين</a>
+            </div>
+      </div>
       <h1 class="mt-6 pt-6 mx-auto lead-3 text-default">لو بتدور على منتج، توريدة هتقدملك ايه ؟</h1>
 
       <div class="row mt-6 pt-6">
@@ -80,12 +87,12 @@
             </div>
           </div>
         </div>
-        
+
         <div class="col-md-6" style="position: relative;">
           <img src="assets/xd/offers.png" alt="">
         </div>
       </div>
-    </div> 
-      
+    </div>
+
   </header>
 @endsection

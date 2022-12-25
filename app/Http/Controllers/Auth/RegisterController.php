@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -45,6 +46,13 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function registered(Request $request, $user)
+    {
+        if (!is_null(auth()->user()->userable instanceof (Buyer::class))){
+            return redirect()->back();
+        }
     }
 
     public function showBuyerRegisterationFrom(){

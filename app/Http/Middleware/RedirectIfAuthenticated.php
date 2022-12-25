@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Buyer;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
@@ -26,7 +27,6 @@ class RedirectIfAuthenticated
                 return redirect()->intended('/');
             }
         }
-
         return $next($request);
     }
 }
